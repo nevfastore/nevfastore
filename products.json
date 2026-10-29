@@ -1,0 +1,157 @@
+[
+  {
+    "id": "netflix",
+    "title": "Netflix",
+    "logo": "netflix.png",
+    "startPrice": "Rp20.000",
+    "desc": "Streaming film & series favorit dengan kualitas terbaik.",
+    "benefit": "Streaming Ultra HD 4K anti lemot, support TV & HP, legal resmi.",
+    "garansi": "Garansi full sesuai durasi berlangganan.",
+    "deskripsi": "Akun Netflix resmi berkualitas tinggi anti hold.",
+    "packages": [
+      { "nama": "Sharing 1 Bulan", "harga": "Rp20.000" },
+      { "nama": "Anti Limit 1 Bulan", "harga": "Rp40.000" },
+      { "nama": "Private 1 Bulan", "harga": "Rp110.000" }
+    ]
+  },
+  {
+    "id": "canva",
+    "title": "Canva Pro",
+    "logo": "canva.png",
+    "startPrice": "Rp8.000",
+    "desc": "Desain tanpa batas dengan semua fitur premium Canva.",
+    "benefit": "Akses semua template pro, elemen pro, hapus latar belakang otomatis, dan kit merek.",
+    "garansi": "Garansi invite ulang jika link tim kendala selama masa aktif.",
+    "deskripsi": "Akun Canva Pro via link invite resmi team edu/enterprise.",
+    "packages": [
+      { "nama": "Invite Member 1 Bulan", "harga": "Rp8.000" },
+      { "nama": "Invite Member 1 Tahun", "harga": "Rp25.000" }
+    ]
+  },
+  {
+    "id": "capcut",
+    "title": "CapCut Pro",
+    "logo": "capcut.png",
+    "startPrice": "Rp10.000",
+    "desc": "Edit video profesional dengan efek dan template pro.",
+    "benefit": "Buka semua efek pro, transisi premium, export tanpa watermark.",
+    "garansi": "Garansi penggantian akun baru jika terjadi kendala login.",
+    "deskripsi": "Akun CapCut Pro siap pakai untuk editing video sosmed.",
+    "packages": [
+      { "nama": "Sharing 1 Bulan", "harga": "Rp10.000" },
+      { "nama": "Private 1 Bulan", "harga": "Rp35.000" }
+    ]
+  },
+  {
+    "id": "youtube",
+    "title": "YouTube Premium",
+    "logo": "youtube.png",
+    "startPrice": "Rp25.000",
+    "desc": "Tanpa iklan, bisa background play dan download.",
+    "benefit": "Bebas iklan total, putar di latar belakang, akses YouTube Music.",
+    "garansi": "Garansi full 1 bulan anti putus di tengah jalan.",
+    "deskripsi": "YouTube Premium legal via invite keluarga / akun baru.",
+    "packages": [
+      { "nama": "Famplan Invite 1 Bulan", "harga": "Rp10.000" },
+      { "nama": "Indplan 1 Bulan", "harga": "Rp25.000" }
+    ]
+  },
+  {
+    "id": "vidio",
+    "title": "Vidio Platinum",
+    "logo": "vidio.png",
+    "startPrice": "Rp20.000",
+    "desc": "Nonton liga, sinema, dan tayangan eksklusif Vidio.",
+    "benefit": "Streaming Liga Champions, Premier League, sinema lokal & serial korea.",
+    "garansi": "Garansi full durasi sesuai paket.",
+    "deskripsi": "Akun Vidio Platinum resmi dan aman.",
+    "packages": [
+      { "nama": "Platinum Mobile 30 Hari", "harga": "Rp35.000" },
+      { "nama": "Platinum All Device 30 Hari", "harga": "Rp45.000" }
+    ]
+  },
+  {
+    "id": "wetv",
+    "title": "WeTV VIP",
+    "logo": "wetv.png",
+    "startPrice": "Rp15.000",
+    "desc": "Drama Asia terbaru tanpa iklan, kualitas HD.",
+    "benefit": "Nonton episode lebih awal, tanpa iklan, kualitas video jernih.",
+    "garansi": "Garansi pergantian akun baru jika error.",
+    "deskripsi": "WeTV VIP legal anti limit.",
+    "packages": [
+      { "nama": "VIP Sharing 1 Bulan", "harga": "Rp15.000" },
+      { "nama": "VIP Private 1 Bulan", "harga": "Rp35.000" }
+    ]
+  },
+  {
+    "id": "iqiyi",
+    "title": "iQIYI",
+    "logo": "iqiyi.png",
+    "startPrice": "Rp9.000",
+    "desc": "Serial dan film Asia lengkap dengan subtitle Indonesia.",
+    "benefit": "Akses drama china & korea eksklusif lebih cepat tanpa iklan.",
+    "garansi": "Garansi full aman selama masa aktif.",
+    "deskripsi": "Akun iQIYI VIP resmi.",
+    "packages": [
+      { "nama": "VIP Standard 1 Bulan", "harga": "Rp9.000" },
+      { "nama": "VIP Premium 1 Bulan", "harga": "Rp18.000" }
+    ]
+  },
+  {
+    "id": "viu",
+    "title": "VIU",
+    "logo": "viu.png",
+    "startPrice": "Rp5.000",
+    "desc": "Drama Korea dan Asia dengan harga paling terjangkau.",
+    "benefit": "Download sepuasnya, bebas iklan, update drama on-going tercepat.",
+    "garansi": "Garansi penggantian akun jika kendala login.",
+    "deskripsi": "Akun Viu Premium private aman.",
+    "packages": [
+      { "nama": "Premium Private 1 Bulan", "harga": "Rp5.000" },
+      { "nama": "Premium Private 3 Bulan", "harga": "Rp12.000" }
+    ]
+  },
+  {
+    "id": "prime",
+    "title": "Prime Video",
+    "logo": "prime.png",
+    "startPrice": "Rp15.000",
+    "desc": "Streaming film blockbuster dan Amazon Originals.",
+    "benefit": "Nonton film kualitas HDR/4K dengan subtitle Indonesia lengkap.",
+    "garansi": "Garansi full sesuai durasi.",
+    "deskripsi": "Prime Video legal resmi.",
+    "packages": [
+      { "nama": "Sharing 1 Bulan", "harga": "Rp15.000" },
+      { "nama": "Private 1 Bulan", "harga": "Rp30.000" }
+    ]
+  },
+  {
+    "id": "loklok",
+    "title": "Loklok",
+    "logo": "loklok.png",
+    "startPrice": "Rp15.000",
+    "desc": "Nonton anime, drama, dan film tanpa batas dengan kualitas HD.",
+    "benefit": "Bebas iklan, akses semua anime dan film VIP terbaru.",
+    "garansi": "Garansi penggantian akun baru jika bermasalah.",
+    "deskripsi": "Loklok VIP legal anti gangguan.",
+    "packages": [
+      { "nama": "VIP 1 Bulan", "harga": "Rp15.000" },
+      { "nama": "VIP 3 Bulan", "harga": "Rp35.000" }
+    ]
+  },
+  {
+    "id": "hbo",
+    "title": "HBO GO",
+    "logo": "hbo.png",
+    "startPrice": "Rp25.000",
+    "desc": "Tayangan sinema Hollywood, HBO Originals, dan DC Universe.",
+    "benefit": "Streaming film box office Hollywood terbaru kualitas HD terbaik.",
+    "garansi": "Garansi full durasi berlangganan.",
+    "deskripsi": "HBO GO resmi dan terpercaya.",
+    "packages": [
+      { "nama": "Sharing 1 Bulan", "harga": "Rp25.000" },
+      { "nama": "Private 1 Bulan", "harga": "Rp50.000" }
+    ]
+  }
+]
