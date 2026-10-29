@@ -97,7 +97,6 @@
       text-decoration: none;
     }
 
-    /* GAYA LOGO TEKS MODERN, TEGAS & BERKELAS */
     .brand-text-custom {
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 800;
@@ -777,10 +776,20 @@
     }
 
     .tab-btn.active { color: var(--primary); background: rgba(139, 44, 245, 0.1); }
-    .tab-content { display: none; font-size: 13.5px; color: var(--text-muted); line-height: 1.65; overflow-y: auto; max-height: 380px; }
+    
+    /* KUNCI UTAMA: AGAR TEKS DARI ADMIN TAMPIL RAPI KE BAWAH TANPA TUMPANG TINDIH */
+    .tab-content { 
+      display: none; 
+      font-size: 13.5px; 
+      color: var(--text-muted); 
+      line-height: 1.65; 
+      overflow-y: auto; 
+      max-height: 380px; 
+      white-space: pre-line; 
+    }
     .tab-content.active { display: block; }
     .tab-content h4 { font-size: 17px; font-weight: 800; color: var(--text-main); margin-bottom: 10px; }
-    .tab-content p { margin-bottom: 14px; color: var(--text-muted); }
+    .tab-content p { margin-bottom: 14px; color: var(--text-muted); white-space: pre-line; }
     .tab-content ul { margin-left: 18px; color: var(--text-muted); }
     .tab-content ul li { margin-bottom: 8px; }
 
@@ -899,7 +908,7 @@
       <p class="section-subtitle">Pilih layanan favoritmu, lihat pilihan paketnya, lalu pesan langsung via WhatsApp.</p>
     </div>
     <div class="product-grid" id="productGrid">
-      <!-- Produk otomatis dimuat dari penyimpanan Tegeks Admin -->
+      <!-- Produk otomatis dimuat dari localStorage Admin -->
     </div>
   </section>
 
@@ -957,9 +966,9 @@
           <button class="tab-btn active" onclick="switchTab('garansi')">Garansi</button>
           <button class="tab-btn" onclick="switchTab('deskripsi')">Deskripsi</button>
         </div>
-        <div class="tab-content" id="tab-benefit"><h4>Benefit Produk</h4><div class="tab-body-text" id="modalBenefitText"><ul><li>Fitur Pro / Legal.</li></ul></div></div>
-        <div class="tab-content active" id="tab-garansi"><h4>Garansi Produk</h4><div class="tab-body-text" id="modalGaransiText"><p>Garansi full durasi.</p></div></div>
-        <div class="tab-content" id="tab-deskripsi"><h4>Deskripsi Produk</h4><div class="tab-body-text" id="modalDeskripsiText"><p>Akun resmi Nevfa Store.</p></div></div>
+        <div class="tab-content" id="tab-benefit"><div class="tab-body-text" id="modalBenefitText">-</div></div>
+        <div class="tab-content active" id="tab-garansi"><div class="tab-body-text" id="modalGaransiText">-</div></div>
+        <div class="tab-content" id="tab-deskripsi"><div class="tab-body-text" id="modalDeskripsiText">-</div></div>
       </div>
       <div class="modal-col-right">
         <h3 class="modal-title" id="modalTitle">Produk</h3>
@@ -1200,22 +1209,29 @@
       if (!prod) return;
 
       document.getElementById('modalTitle').innerText = prod.title;
-      document.getElementById('modalBenefitText').innerHTML = `<ul><li>${prod.benefit}</li></ul>`;
-      document.getElementById('modalGaransiText').innerHTML = `<p>${prod.garansi}</p>`;
-      document.getElementById('modalDeskripsiText').innerHTML = `<p>${prod.deskripsi}</p>`;
+      
+      // MEMASTIKAN TEKS DARI ADMIN TAMPIL KE BAWAH DENGAN RAPI TANPA TUMPANG TINDIH
+      document.getElementById('modalBenefitText').innerText = prod.benefit || '-';
+      document.getElementById('modalGaransiText').innerText = prod.garansi || '-';
+      document.getElementById('modalDeskripsiText').innerText = prod.deskripsi || '-';
 
       const listContainer = document.getElementById('modalPackages');
       listContainer.innerHTML = '';
-      prod.packages.forEach(pkg => {
-        const bersihNama = pkg.nama.replace(/[-–—]/g, '').trim();
-        const item = document.createElement('div');
-        item.className = 'package-row';
-        item.innerHTML = `
-          <div class="pkg-info"><h4>${bersihNama}</h4><p>${pkg.harga}</p></div>
-          <a href="#" class="btn-order-tag" onclick="pesanWA('${prod.title}', '${bersihNama}', '${pkg.harga}')">💬 Pesan</a>
-        `;
-        listContainer.appendChild(item);
-      });
+      if (prod.packages && prod.packages.length > 0) {
+        prod.packages.forEach(pkg => {
+          const bersihNama = pkg.nama.replace(/[-–—]/g, '').trim();
+          const item = document.createElement('div');
+          item.className = 'package-row';
+          item.innerHTML = `
+            <div class="pkg-info"><h4>${bersihNama}</h4><p>${pkg.harga}</p></div>
+            <a href="#" class="btn-order-tag" onclick="pesanWA('${prod.title}', '${bersihNama}', '${pkg.harga}')">💬 Pesan</a>
+          `;
+          listContainer.appendChild(item);
+        });
+      } else {
+        listContainer.innerHTML = `<p style="text-align:center; color:var(--text-muted); padding: 20px;">Belum ada paket tersedia.</p>`;
+      }
+
       document.getElementById('packageModal').style.display = 'flex';
     }
 
