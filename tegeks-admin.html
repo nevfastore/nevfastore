@@ -343,8 +343,12 @@
                   <input type="text" class="admin-input" id="admin_price_${pIndex}" value="${p.startPrice}">
                 </div>
                 <div>
-                  <label class="admin-label">Deskripsi Singkat:</label>
+                  <label class="admin-label">Deskripsi Singkat (Tampil di Kartu Depan):</label>
                   <input type="text" class="admin-input" id="admin_desc_${pIndex}" value="${p.desc}">
+                </div>
+                <div>
+                  <label class="admin-label">Deskripsi Produk (Tampil di Modal Tab Deskripsi):</label>
+                  <textarea class="admin-textarea" id="admin_deskripsi_${pIndex}">${p.deskripsi || ''}</textarea>
                 </div>
               </div>
 
@@ -378,6 +382,7 @@
         const logoEl = document.getElementById(`admin_logo_${pIndex}`);
         const priceEl = document.getElementById(`admin_price_${pIndex}`);
         const descEl = document.getElementById(`admin_desc_${pIndex}`);
+        const deskripsiEl = document.getElementById(`admin_deskripsi_${pIndex}`);
         const benefitEl = document.getElementById(`admin_benefit_${pIndex}`);
         const garansiEl = document.getElementById(`admin_garansi_${pIndex}`);
 
@@ -385,6 +390,7 @@
         if (logoEl) p.logo = logoEl.value;
         if (priceEl) p.startPrice = priceEl.value;
         if (descEl) p.desc = descEl.value;
+        if (deskripsiEl) p.deskripsi = deskripsiEl.value;
         if (benefitEl) p.benefit = benefitEl.value;
         if (garansiEl) p.garansi = garansiEl.value;
 
@@ -420,9 +426,10 @@
         title: "Produk Baru",
         logo: "default.png",
         startPrice: "Rp10.000",
-        desc: "Deskripsi produk baru.",
+        desc: "Deskripsi singkat produk baru.",
         benefit: "Benefit produk baru.",
         garansi: "Garansi produk baru.",
+        deskripsi: "Deskripsi lengkap produk baru.",
         packages: [
           { nama: "Paket 1 Bulan", harga: "Rp10.000" }
         ]
