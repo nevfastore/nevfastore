@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Panel — Nevfa Store</title>
   
-  <!-- GOOGLE FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
@@ -20,7 +19,6 @@
       --text-main: #f4f4f5;
       --text-muted: #a1a1aa;
       --border-color: rgba(139, 44, 245, 0.25);
-      --nav-bg: rgba(13, 13, 18, 0.95);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
@@ -33,10 +31,7 @@
       padding: 30px 20px;
     }
 
-    .admin-container {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+    .admin-container { max-width: 1100px; margin: 0 auto; }
 
     .admin-header {
       background: var(--card-bg);
@@ -48,6 +43,8 @@
       align-items: center;
       justify-content: space-between;
       box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      flex-wrap: wrap;
+      gap: 15px;
     }
 
     .admin-title {
@@ -74,7 +71,7 @@
       margin-bottom: 12px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: space-between;
     }
 
     .admin-card p {
@@ -84,10 +81,7 @@
       line-height: 1.5;
     }
 
-    .form-group {
-      margin-bottom: 14px;
-    }
-
+    .form-group { margin-bottom: 14px; }
     .form-group label {
       display: block;
       font-size: 13px;
@@ -108,6 +102,8 @@
     }
     .form-control:focus { border-color: var(--primary); }
 
+    textarea.form-control { height: 90px; resize: vertical; }
+
     .btn-purple {
       background: var(--primary-gradient);
       color: #fff;
@@ -119,34 +115,64 @@
       cursor: pointer;
       box-shadow: 0 4px 15px rgba(139,44,245,0.3);
       transition: all 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
     .btn-purple:hover { transform: translateY(-2px); opacity: 0.9; }
 
-    textarea.form-control {
-      height: 180px;
-      font-family: monospace;
-      color: #22c55e;
-      background: #0d0d12;
+    .btn-danger {
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .btn-danger:hover { background: rgba(239, 68, 68, 0.3); }
+
+    .btn-success {
+      background: rgba(34, 197, 94, 0.15);
+      color: #4ade80;
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      padding: 10px 20px;
+      border-radius: 99px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
     }
 
-    .banner-preview-list {
+    .variant-row {
       display: flex;
-      gap: 12px;
-      margin-bottom: 15px;
-      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 8px;
+      align-items: center;
     }
+
     .banner-badge-item {
       background: rgba(139,44,245,0.15);
       border: 1px solid var(--border-color);
-      padding: 6px 14px;
-      border-radius: 8px;
-      font-size: 12.5px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 13px;
       color: #c084fc;
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: space-between;
+      margin-bottom: 8px;
     }
-    .banner-badge-item span { cursor: pointer; color: #f43f5e; font-weight: 800; }
+    .banner-badge-item span { cursor: pointer; color: #f43f5e; font-weight: 800; padding: 0 6px; }
+
+    .product-box {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
@@ -154,15 +180,18 @@
   <div class="admin-container">
     <div class="admin-header">
       <div class="admin-title">⚙️ Nevfa Store <span>Admin Panel</span></div>
-      <a href="index.html" target="_blank" class="btn-purple" style="text-decoration:none;">🌐 Lihat Web Toko</a>
+      <div style="display: flex; gap: 10px;">
+        <button class="btn-success" onclick="saveData()">💾 Simpan & Perbarui Web</button>
+        <a href="index.html" target="_blank" class="btn-purple">🌐 Buka Web Toko</a>
+      </div>
     </div>
 
-    <!-- KELOLA BANNER -->
+    <!-- 1. KELOLA BANNER -->
     <div class="admin-card">
       <h3>🖼️ Kelola Banner Promo (Slider)</h3>
-      <p>Masukkan nama file gambar banner baru (contoh: <b>banner4.jpg</b>) yang sudah Anda masukkan ke folder web.</p>
+      <p>Tambah atau hapus nama file gambar banner (contoh: <code>banner1.jpg</code>) yang tampil di beranda secara otomatis.</p>
       
-      <div class="banner-preview-list" id="bannerListPreview"></div>
+      <div id="bannerListContainer" style="margin-bottom: 14px;"></div>
 
       <div style="display: flex; gap: 10px;">
         <input type="text" id="newBannerInput" class="form-control" placeholder="Nama file banner (misal: banner4.jpg)">
@@ -170,70 +199,219 @@
       </div>
     </div>
 
-    <!-- EXPORT & SIMPAN DATA JSON -->
+    <!-- 2. KELOLA PRODUK & VARIAN -->
     <div class="admin-card">
-      <h3>💾 Simpan & Sinkronisasi Data Toko</h3>
-      <p>Setelah menambah banner atau mengubah produk, salin kode konfigurasi di bawah ini atau simpan ke file <b>products.json</b> di project Anda.</p>
+      <h3>
+        📦 Kelola Produk & Paket Varian
+        <button class="btn-purple" onclick="addProduct()" style="padding: 6px 14px; font-size: 12px;">+ Tambah Produk Baru</button>
+      </h3>
+      <p>Atur nama, logo, harga mulai dari, deskripsi, benefit, garansi, dan varian paket harga di sini.</p>
       
-      <div class="form-group">
-        <button class="btn-purple" onclick="generateAndCopyJSON()">📋 Salin Data JSON Terbaru</button>
-      </div>
-      
-      <div class="form-group" style="margin-top: 15px;">
-        <textarea id="jsonOutput" readonly></textarea>
-      </div>
+      <div id="productListContainer"></div>
     </div>
   </div>
 
   <script>
-    // Data Banner Awal
-    let banners = ["banner1.jpg", "banner2.jpg", "banner3.jpg"];
+    let storeData = {
+      banners: ["banner1.jpg", "banner2.jpg", "banner3.jpg"],
+      products: [
+        {
+          id: "netflix",
+          title: "Netflix",
+          logo: "netflix.png",
+          startPrice: "Rp20.000",
+          desc: "Streaming film & series favorit kualitas Ultra HD 4K anti lemot.",
+          cardBg: "linear-gradient(135deg, rgba(229, 9, 20, 0.35) 0%, rgba(18, 12, 31, 0.95) 75%)",
+          benefit: "• Streaming Ultra HD 4K anti lemot\n• Support Smart TV, HP, & Laptop\n• Legal resmi dan aman anti hold",
+          garansi: "• Garansi penuh selama durasi berlangganan\n• Pergantian akun langsung jika terjadi kendala",
+          deskripsi: "Akun Netflix resmi berkualitas tinggi siap pakai untuk hiburan keluarga.",
+          packages: [
+            { nama: "Sharing 1 Bulan", harga: "Rp20.000" },
+            { nama: "Anti Limit 1 Bulan", harga: "Rp40.000" },
+            { nama: "Private 1 Bulan", harga: "Rp110.000" }
+          ]
+        },
+        {
+          id: "canva",
+          title: "Canva Pro",
+          logo: "canva.png",
+          startPrice: "Rp8.000",
+          desc: "Desain tanpa batas dengan semua fitur premium & template pro.",
+          cardBg: "linear-gradient(135deg, rgba(0, 196, 204, 0.35) 0%, rgba(18, 12, 31, 0.95) 75%)",
+          benefit: "• Akses semua template & elemen Pro\n• Fitur hapus latar belakang otomatis\n• Brand kit & penyimpanan besar",
+          garansi: "• Garansi invite ulang jika link tim bermasalah\n• Full support masa aktif",
+          deskripsi: "Akun Canva Pro via link invite resmi tim Edu/Enterprise anti ribet.",
+          packages: [
+            { nama: "Invite Member 1 Bulan", harga: "Rp8.000" },
+            { nama: "Invite Member 1 Tahun", harga: "Rp25.000" }
+          ]
+        },
+        {
+          id: "youtube",
+          title: "YouTube Premium",
+          logo: "youtube.png",
+          startPrice: "Rp25.000",
+          desc: "Nonton video tanpa iklan, background play, dan download offline.",
+          cardBg: "linear-gradient(135deg, rgba(255, 0, 0, 0.35) 0%, rgba(18, 12, 31, 0.95) 75%)",
+          benefit: "• Bebas iklan total di semua perangkat\n• Putar video di latar belakang / HP terkunci\n• Akses YouTube Music",
+          garansi: "• Garansi full 1 bulan anti putus di tengah jalan",
+          deskripsi: "YouTube Premium legal via invite keluarga atau akun baru.",
+          packages: [
+            { nama: "Famplan Invite 1 Bulan", harga: "Rp10.000" },
+            { nama: "Indplan 1 Bulan", harga: "Rp25.000" }
+          ]
+        }
+      ]
+    };
 
-    function renderBanners() {
-      const list = document.getElementById('bannerListPreview');
-      list.innerHTML = '';
-      banners.forEach((b, idx) => {
-        list.innerHTML += `
+    function loadData() {
+      const saved = localStorage.getItem('nevfa_store_data');
+      if (saved) {
+        try { storeData = JSON.parse(saved); } catch(e){}
+      }
+      renderAdmin();
+    }
+
+    function renderAdmin() {
+      const bContainer = document.getElementById('bannerListContainer');
+      bContainer.innerHTML = '';
+      storeData.banners.forEach((b, idx) => {
+        bContainer.innerHTML += `
           <div class="banner-badge-item">
-            📷 ${b} <span onclick="removeBanner(${idx})" title="Hapus">✕</span>
+            <span>📷 ${b}</span>
+            <span onclick="removeBanner(${idx})" title="Hapus Banner">✕ Hapus</span>
           </div>
         `;
       });
-      updateJSONOutput();
+
+      const pContainer = document.getElementById('productListContainer');
+      pContainer.innerHTML = '';
+      storeData.products.forEach((prod, pIdx) => {
+        let pkgHtml = '';
+        prod.packages.forEach((pkg, pkgIdx) => {
+          pkgHtml += `
+            <div class="variant-row">
+              <input type="text" class="form-control" value="${pkg.nama}" oninput="updatePkg(${pIdx}, ${pkgIdx}, 'nama', this.value)" placeholder="Nama Paket">
+              <input type="text" class="form-control" value="${pkg.harga}" oninput="updatePkg(${pIdx}, ${pkgIdx}, 'harga', this.value)" placeholder="Harga">
+              <button class="btn-danger" onclick="removePkg(${pIdx}, ${pkgIdx})">✕</button>
+            </div>
+          `;
+        });
+
+        pContainer.innerHTML += `
+          <div class="product-box">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+              <h4 style="color:#c084fc; font-size:16px; font-weight:800;">📦 ${prod.title || 'Produk Baru'}</h4>
+              <button class="btn-danger" onclick="removeProduct(${pIdx})">🗑️ Hapus Produk</button>
+            </div>
+
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+              <div class="form-group">
+                <label>Nama Produk:</label>
+                <input type="text" class="form-control" value="${prod.title}" oninput="updateProd(${pIdx}, 'title', this.value)">
+              </div>
+              <div class="form-group">
+                <label>File Logo (.png):</label>
+                <input type="text" class="form-control" value="${prod.logo}" oninput="updateProd(${pIdx}, 'logo', this.value)">
+              </div>
+              <div class="form-group">
+                <label>Harga Mulai Dari:</label>
+                <input type="text" class="form-control" value="${prod.startPrice}" oninput="updateProd(${pIdx}, 'startPrice', this.value)">
+              </div>
+              <div class="form-group">
+                <label>Warna Card (Gradasi CSS):</label>
+                <input type="text" class="form-control" value="${prod.cardBg || ''}" oninput="updateProd(${pIdx}, 'cardBg', this.value)">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Deskripsi Singkat:</label>
+              <input type="text" class="form-control" value="${prod.desc}" oninput="updateProd(${pIdx}, 'desc', this.value)">
+            </div>
+
+            <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:12px;">
+              <div class="form-group">
+                <label>Benefit:</label>
+                <textarea class="form-control" oninput="updateProd(${pIdx}, 'benefit', this.value)">${prod.benefit}</textarea>
+              </div>
+              <div class="form-group">
+                <label>Garansi:</label>
+                <textarea class="form-control" oninput="updateProd(${pIdx}, 'garansi', this.value)">${prod.garansi}</textarea>
+              </div>
+              <div class="form-group">
+                <label>Deskripsi Lengkap:</label>
+                <textarea class="form-control" oninput="updateProd(${pIdx}, 'deskripsi', this.value)">${prod.deskripsi}</textarea>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-top:10px;">
+              <label style="color:#c084fc;">⚡ Varian Paket & Harga:</label>
+              <div id="pkgs-${pIdx}">${pkgHtml}</div>
+              <button class="btn-purple" onclick="addPkg(${pIdx})" style="padding: 6px 14px; font-size:12px; margin-top:6px;">+ Tambah Varian</button>
+            </div>
+          </div>
+        `;
+      });
     }
 
     function addBanner() {
       const input = document.getElementById('newBannerInput');
       const val = input.value.trim();
-      if (!val) {
-        alert("Nama file banner tidak boleh kosong!");
-        return;
-      }
-      banners.push(val);
+      if (!val) return alert("Nama file banner kosong!");
+      storeData.banners.push(val);
       input.value = '';
-      renderBanners();
+      renderAdmin();
     }
-
     function removeBanner(idx) {
-      banners.splice(idx, 1);
-      renderBanners();
+      storeData.banners.splice(idx, 1);
+      renderAdmin();
     }
 
-    function updateJSONOutput() {
-      const storeData = {
-        banners: banners,
-        updatedAt: new Date().toISOString()
-      };
-      document.getElementById('jsonOutput').value = JSON.stringify(storeData, null, 2);
+    function updateProd(pIdx, field, val) {
+      storeData.products[pIdx][field] = val;
+    }
+    function addProduct() {
+      storeData.products.push({
+        id: "prod_" + Date.now(),
+        title: "Produk Baru",
+        logo: "logo.png",
+        startPrice: "Rp10.000",
+        desc: "Deskripsi singkat produk baru.",
+        cardBg: "linear-gradient(135deg, rgba(139, 44, 245, 0.35) 0%, rgba(18, 12, 31, 0.95) 75%)",
+        benefit: "• Benefit 1\n• Benefit 2",
+        garansi: "• Garansi resmi.",
+        deskripsi: "Deskripsi lengkap produk.",
+        packages: [
+          { nama: "Paket 1 Bulan", harga: "Rp10.000" }
+        ]
+      });
+      renderAdmin();
+    }
+    function removeProduct(pIdx) {
+      if (confirm("Yakin ingin menghapus produk ini?")) {
+        storeData.products.splice(pIdx, 1);
+        renderAdmin();
+      }
     }
 
-    function generateAndCopyJSON() {
-      const text = document.getElementById('jsonOutput').value;
-      navigator.clipboard.writeText(text);
-      alert("Data konfigurasi berhasil disalin ke clipboard!");
+    function updatePkg(pIdx, pkgIdx, field, val) {
+      storeData.products[pIdx].packages[pkgIdx][field] = val;
+    }
+    function addPkg(pIdx) {
+      storeData.products[pIdx].packages.push({ nama: "Paket Baru", harga: "Rp15.000" });
+      renderAdmin();
+    }
+    function removePkg(pIdx, pkgIdx) {
+      storeData.products[pIdx].packages.splice(pkgIdx, 1);
+      renderAdmin();
     }
 
-    window.onload = renderBanners;
+    function saveData() {
+      localStorage.setItem('nevfa_store_data', JSON.stringify(storeData));
+      alert("✅ Berhasil Disimpan! Perubahan sekarang sudah langsung aktif secara real-time di web toko utama.");
+    }
+
+    window.onload = loadData;
   </script>
 </body>
 </html>
