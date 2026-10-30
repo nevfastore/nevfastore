@@ -9,12 +9,11 @@
   <link rel="icon" type="image/png" href="logo.png?v=2">
   <link rel="shortcut icon" type="image/png" href="logo.png?v=2">
 
-  <!-- GOOGLE FONTS MODERN (PLUS JAKARTA SANS & SPACE GROTESK) -->
+  <!-- GOOGLE FONTS MODERN -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800;900&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
 
-  <!-- KODE VERIFIKASI GOOGLE SEARCH CONSOLE -->
   <meta name="google-site-verification" content="m3NvNDjc7CSZtHrQy17T3SNQFjTKUJpsSWSN3NxQD2w" />
   
   <style>
@@ -104,13 +103,7 @@
       letter-spacing: -0.5px;
     }
 
-    .brand-nevfa {
-      color: #ffffff;
-    }
-    html:not([data-theme="dark"]) .brand-nevfa {
-      color: #09090b;
-    }
-
+    .brand-nevfa { color: var(--text-main); }
     .brand-store {
       background: linear-gradient(135deg, #c084fc 0%, #8B3DFF 50%, #6d28d9 100%);
       -webkit-background-clip: text;
@@ -130,12 +123,7 @@
       overflow: hidden;
       flex-shrink: 0;
     }
-
-    .brand-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
+    .brand-icon img { width: 100%; height: 100%; object-fit: contain; }
 
     .store-open-badge {
       display: inline-flex;
@@ -148,7 +136,6 @@
       font-size: 11.5px;
       font-weight: 800;
       color: #16a34a;
-      box-shadow: 0 2px 10px rgba(34, 197, 94, 0.1);
     }
 
     .status-dot-green {
@@ -166,31 +153,11 @@
       100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
     }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      list-style: none;
-    }
+    .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 14px; font-weight: 600; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--primary); }
 
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-muted);
-      font-size: 14px;
-      font-weight: 600;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--primary);
-    }
-
-    .nav-right-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
+    .nav-right-actions { display: flex; align-items: center; gap: 12px; }
     .theme-toggle-btn {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
@@ -202,8 +169,6 @@
       justify-content: center;
       cursor: pointer;
       font-size: 18px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      transition: transform 0.2s;
       color: var(--text-main);
     }
     .theme-toggle-btn:hover { transform: scale(1.08); }
@@ -219,155 +184,14 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      transition: all 0.2s;
       box-shadow: 0 4px 14px rgba(139, 44, 245, 0.25);
     }
+    .btn-nav-wa:hover { background: var(--primary-hover); }
 
-    .btn-nav-wa:hover {
-      background: var(--primary-hover);
-      transform: translateY(-1px);
-    }
-
-    /* HERO */
-    .hero-section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 50px 20px 45px;
-      text-align: center;
-      position: relative;
-    }
-
-    .hero-subtitle {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-
-    .hero-title {
-      font-size: 44px;
-      font-weight: 900;
-      letter-spacing: -1.2px;
-      margin-bottom: 30px;
-      color: var(--text-main);
-    }
-
-    .hero-title .purple-text {
-      color: var(--primary);
-    }
-
-    .guarantee-wrapper {
-      max-width: 720px;
-      margin: 0 auto;
-      position: relative;
-      padding-bottom: 30px;
-    }
-
-    .guarantee-box {
-      background: var(--primary-gradient);
-      color: #ffffff;
-      border-radius: 24px;
-      padding: 24px 30px;
-      box-shadow: 0 16px 36px rgba(139, 44, 245, 0.25);
-      position: relative;
-      z-index: 1;
-    }
-
-    .guarantee-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-size: 16px;
-      font-weight: 900;
-      margin-bottom: 6px;
-    }
-
-    .guarantee-desc {
-      font-size: 14px;
-      font-weight: 500;
-      opacity: 0.95;
-      line-height: 1.5;
-    }
-
-    /* WIDGET MASKOT INTERAKTIF DESKTOP */
-    .mascot-interactive-widget {
-      position: absolute;
-      right: -285px;
-      bottom: -170px;
-      width: 250px;
-      height: 260px;
-      z-index: 3;
-      pointer-events: none;
-      transform: translate3d(0, 0, 0);
-      animation: floatSmooth 5s ease-in-out infinite;
-    }
-
-    .mascot-character {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 235px;
-      height: auto;
-      filter: drop-shadow(0 14px 22px rgba(139, 44, 245, 0.3));
-    }
-
-    .mascot-bubble {
-      position: absolute;
-      top: -20px;
-      left: 55%;
-      transform: translateX(-50%);
-      background: var(--card-bg);
-      color: var(--text-main);
-      border: 1.5px solid #d8b4fe;
-      padding: 7px 16px;
-      border-radius: 99px;
-      font-size: 11.5px;
-      font-weight: 800;
-      white-space: nowrap;
-      box-shadow: 0 8px 22px rgba(139, 44, 245, 0.18);
-      z-index: 4;
-    }
-
-    .mascot-product-bubble {
-      position: absolute;
-      top: 65px;
-      left: -15px;
-      width: 52px;
-      height: 52px;
-      background: var(--card-bg);
-      border: 1.5px solid #d8b4fe;
-      border-radius: 16px;
-      padding: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 22px rgba(139, 44, 245, 0.14);
-      z-index: 4;
-      overflow: hidden;
-    }
-
-    .mascot-product-bubble img {
-      position: absolute;
-      width: calc(100% - 12px);
-      height: calc(100% - 12px);
-      object-fit: contain;
-      border-radius: 10px;
-      transition: opacity 0.6s ease-in-out;
-    }
-
-    .mascot-product-bubble img.hidden-img { opacity: 0; }
-    .mascot-product-bubble img.active-img { opacity: 1; }
-
-    @keyframes floatSmooth {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
-
-    /* CAROUSEL */
+    /* BANNER CAROUSEL UTAMA */
     .carousel-section {
       max-width: 1200px;
-      margin: 40px auto 20px;
+      margin: 25px auto 10px;
       padding: 0 20px;
       position: relative;
     }
@@ -375,11 +199,11 @@
     .carousel-container {
       position: relative;
       width: 100%;
-      border-radius: 28px;
+      border-radius: 24px;
       overflow: hidden;
-      box-shadow: 0 12px 36px rgba(139, 44, 245, 0.15);
+      box-shadow: 0 10px 30px rgba(139, 44, 245, 0.12);
       border: 1.5px solid var(--border-color);
-      aspect-ratio: 16 / 5;
+      aspect-ratio: 21 / 7;
       background: #0f172a;
     }
 
@@ -390,43 +214,98 @@
       transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    .carousel-slide {
-      min-width: 100%;
-      height: 100%;
-      position: relative;
-    }
-
-    .carousel-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+    .carousel-slide { min-width: 100%; height: 100%; position: relative; }
+    .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     .carousel-btn {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(6px);
       border: 1px solid rgba(0, 0, 0, 0.08);
       color: #0f172a;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 800;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 10;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    }
+    .carousel-btn.prev { left: 14px; }
+    .carousel-btn.next { right: 14px; }
+
+    /* SECTION PRODUK FAVORIT BUNDAR (DENGAN JUDUL DI ATASNYA) */
+    .circular-marquee-section {
+      max-width: 1200px;
+      margin: 20px auto 35px;
+      padding: 0 20px;
+      overflow: hidden;
     }
 
-    .carousel-btn:hover { background: #ffffff; transform: translateY(-50%) scale(1.08); }
-    .carousel-btn.prev { left: 16px; }
-    .carousel-btn.next { right: 16px; }
+    .section-header-mini {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .section-header-mini span {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      background: rgba(139, 44, 245, 0.08);
+      padding: 4px 14px;
+      border-radius: 99px;
+      border: 1px solid rgba(139, 44, 245, 0.2);
+    }
+
+    .circular-track {
+      display: flex;
+      gap: 22px;
+      width: max-content;
+      animation: scrollCircles 22s linear infinite;
+      padding: 8px 0;
+    }
+
+    .circular-track:hover { animation-play-state: paused; }
+
+    .circle-item {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      border: 2px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 18px rgba(139, 44, 245, 0.12);
+      overflow: hidden;
+      flex-shrink: 0;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .circle-item:hover {
+      transform: scale(1.12);
+      border-color: var(--primary);
+    }
+
+    .circle-item img {
+      width: 72%;
+      height: 72%;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    @keyframes scrollCircles {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
 
     /* SECTION HEADINGS */
     .section-badge {
@@ -445,227 +324,145 @@
       font-weight: 900;
       color: var(--text-main);
       letter-spacing: -0.8px;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       text-align: center;
     }
 
     .section-subtitle {
       color: var(--text-muted);
-      font-size: 15px;
+      font-size: 14.5px;
       max-width: 580px;
-      margin: 0 auto 40px;
+      margin: 0 auto 35px;
       line-height: 1.5;
       text-align: center;
     }
 
-    /* KATALOG PRODUK */
+    /* KATALOG PRODUK LEBIH PADAT & RAPI (COMPACT) */
     .catalog-section {
       max-width: 1200px;
-      margin: 40px auto 90px;
+      margin: 15px auto 90px;
       padding: 0 20px;
     }
 
     .product-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
+      gap: 20px;
     }
 
     .card {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
-      border-radius: 28px;
-      padding: 24px 20px 20px;
+      border-radius: 24px;
+      padding: 20px 16px 16px;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
       transition: all 0.25s ease;
     }
 
     .card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(139, 44, 245, 0.09);
-      border-color: #8b2cf5;
+      box-shadow: 0 12px 30px rgba(139, 44, 245, 0.1);
+      border-color: var(--primary);
     }
 
     .logo-container {
-      width: 72px;
-      height: 72px;
+      width: 58px;
+      height: 58px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 16px;
+      margin-bottom: 10px;
     }
+    .logo-container img { width: 100%; height: 100%; object-fit: contain; border-radius: 12px; }
 
-    .logo-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-radius: 14px;
-    }
-
-    .card-title {
-      font-size: 18px;
-      font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 6px;
-    }
-
-    .card-price {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-    }
-
+    .card-title { font-size: 16.5px; font-weight: 800; color: var(--text-main); margin-bottom: 4px; }
+    .card-price { font-size: 13px; color: var(--text-muted); margin-bottom: 8px; }
     .card-price strong { color: var(--primary); font-weight: 800; }
+    .card-desc { font-size: 12px; color: var(--text-muted); line-height: 1.4; min-height: 34px; margin-bottom: 10px; }
 
-    .card-desc {
-      font-size: 12.5px;
-      color: var(--text-muted);
-      line-height: 1.5;
-      min-height: 40px;
-      margin-bottom: 14px;
-    }
-
-    .pill-group {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-
+    .pill-group { display: flex; gap: 6px; margin-bottom: 10px; }
     .pill {
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 600;
-      padding: 5px 12px;
+      padding: 3px 10px;
       border-radius: 99px;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      background: rgba(139, 44, 245, 0.1);
+      background: rgba(139, 44, 245, 0.08);
       color: var(--primary);
     }
 
-    .card-divider {
-      width: 100%;
-      height: 1px;
-      background: var(--border-color);
-      margin: 10px 0 14px;
-    }
+    .card-divider { width: 100%; height: 1px; background: var(--border-color); margin: 6px 0 10px; }
+    .card-mini-specs { display: flex; justify-content: center; gap: 12px; font-size: 11px; font-weight: 600; color: var(--text-muted); margin-bottom: 12px; width: 100%; }
 
-    .card-mini-specs {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      font-size: 11.5px;
-      font-weight: 600;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-      width: 100%;
-    }
-
-    .btn-group {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: auto;
-    }
-
+    .btn-group { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-top: auto; }
     .btn-purple {
       background: var(--primary);
       color: #ffffff;
       border: none;
-      padding: 13px 0;
+      padding: 11px 0;
       border-radius: 99px;
       font-weight: 700;
-      font-size: 14px;
+      font-size: 13.5px;
       cursor: pointer;
       width: 100%;
-      transition: background 0.2s;
+      box-shadow: 0 4px 14px rgba(139, 44, 245, 0.2);
     }
-
     .btn-purple:hover { background: var(--primary-hover); }
 
     .btn-white {
       background: var(--card-bg);
       color: var(--text-main);
       border: 1px solid var(--border-color);
-      padding: 12px 0;
+      padding: 10px 0;
       border-radius: 99px;
       font-weight: 700;
-      font-size: 13px;
+      font-size: 12.5px;
       cursor: pointer;
       width: 100%;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
-      transition: all 0.2s;
+      gap: 6px;
     }
-
     .btn-white:hover { border-color: var(--primary); background: rgba(139,44,245,0.05); }
 
     /* TESTIMONI CTA BANNER */
-    .cta-testi-section {
-      max-width: 900px;
-      margin: 80px auto;
-      padding: 0 20px;
-    }
-
+    .cta-testi-section { max-width: 900px; margin: 70px auto; padding: 0 20px; }
     .cta-testi-box {
       background: var(--primary-gradient);
       border-radius: 36px;
-      padding: 55px 30px;
+      padding: 50px 30px;
       text-align: center;
       color: #ffffff;
       box-shadow: 0 20px 50px rgba(139, 44, 245, 0.35);
     }
-
-    .cta-testi-box h2 { font-size: 36px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 8px; }
-    .cta-testi-box p { font-size: 15px; opacity: 0.95; margin-bottom: 26px; }
+    .cta-testi-box h2 { font-size: 34px; font-weight: 900; margin-bottom: 8px; }
+    .cta-testi-box p { font-size: 14.5px; opacity: 0.95; margin-bottom: 24px; }
 
     .btn-testi {
       background: #0f172a;
       color: #ffffff;
       text-decoration: none;
-      padding: 14px 34px;
+      padding: 13px 32px;
       border-radius: 99px;
       font-size: 14px;
       font-weight: 800;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-      transition: all 0.2s;
+      gap: 8px;
     }
+    .btn-testi:hover { background: #000000; }
 
-    .btn-testi:hover { background: #000000; transform: translateY(-2px); }
-
-    /* FOOTER & SOSMED */
-    .footer {
-      background: #0d0b14;
-      color: #ffffff;
-      padding: 60px 20px 40px;
-      margin-top: 100px;
-    }
-
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 40px;
-      padding-bottom: 40px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
+    /* FOOTER */
+    .footer { background: #0d0b14; color: #ffffff; padding: 60px 20px 40px; margin-top: 90px; }
+    .footer-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
     .footer-brand { max-width: 420px; }
     .footer-brand-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-    .footer-logo-icon { width: 38px; height: 38px; border-radius: 10px; background: #121216; border: 1px solid #27272a; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; }
+    .footer-logo-icon { width: 38px; height: 38px; border-radius: 10px; background: #121216; border: 1px solid #27272a; display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .footer-logo-icon img { width: 100%; height: 100%; object-fit: contain; }
     .footer-brand-name { font-size: 18px; font-weight: 800; }
     .footer-desc { font-size: 13.5px; color: #94a3b8; line-height: 1.6; }
@@ -673,171 +470,56 @@
     .footer-socials h4 { font-size: 15px; font-weight: 700; margin-bottom: 14px; color: #fff; }
     .social-icons-group { display: flex; gap: 12px; }
     .social-icon-link {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
+      width: 44px; height: 44px; border-radius: 50%;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      text-decoration: none;
-      transition: all 0.2s;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; text-decoration: none; transition: all 0.2s;
     }
-    .social-icon-link svg {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-    }
-    .social-icon-link:hover {
-      background: var(--primary);
-      border-color: var(--primary);
-      transform: translateY(-3px);
-    }
-
+    .social-icon-link svg { width: 20px; height: 20px; fill: currentColor; }
+    .social-icon-link:hover { background: var(--primary); border-color: var(--primary); }
     .footer-bottom { max-width: 1200px; margin: 30px auto 0; text-align: center; font-size: 12.5px; color: #64748b; }
 
-    /* MODAL 2 KOLOM */
+    /* MODAL */
     .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(9, 9, 11, 0.65);
-      backdrop-filter: blur(8px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 999;
-      padding: 20px;
+      position: fixed; inset: 0; background: rgba(9, 9, 11, 0.65);
+      backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; z-index: 999; padding: 20px;
     }
-
     .modal-box-split {
-      background: var(--modal-bg);
-      color: var(--text-main);
-      width: 100%;
-      max-width: 880px;
-      max-height: 90vh;
-      border-radius: 32px;
-      padding: 32px;
-      position: relative;
-      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3);
-      display: flex;
-      gap: 28px;
-      overflow-y: auto;
-      border: 1px solid var(--border-color);
+      background: var(--modal-bg); color: var(--text-main); width: 100%; max-width: 880px; max-height: 90vh;
+      border-radius: 32px; padding: 32px; position: relative; box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3);
+      display: flex; gap: 28px; overflow-y: auto; border: 1px solid var(--border-color);
     }
-
     .btn-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--border-color);
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
+      position: absolute; top: 20px; right: 20px; width: 36px; height: 36px; border-radius: 50%;
+      background: var(--border-color); border: none; cursor: pointer; font-size: 16px; color: var(--text-main);
+      display: flex; align-items: center; justify-content: center; z-index: 10;
     }
-
-    .modal-col-left {
-      flex: 1.1;
-      border: 1px solid var(--border-color);
-      border-radius: 22px;
-      padding: 22px 24px;
-      background: var(--modal-left-bg);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .modal-tabs {
-      display: flex;
-      gap: 8px;
-      border-bottom: 2px solid var(--border-color);
-      padding-bottom: 12px;
-      margin-bottom: 20px;
-    }
-
-    .tab-btn {
-      background: none;
-      border: none;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text-muted);
-      cursor: pointer;
-      padding: 6px 14px;
-      border-radius: 99px;
-      transition: all 0.2s;
-    }
-
+    .modal-col-left { flex: 1.1; border: 1px solid var(--border-color); border-radius: 22px; padding: 22px 24px; background: var(--modal-left-bg); display: flex; flex-direction: column; }
+    .modal-tabs { display: flex; gap: 8px; border-bottom: 2px solid var(--border-color); padding-bottom: 12px; margin-bottom: 20px; }
+    .tab-btn { background: none; border: none; font-size: 14px; font-weight: 700; color: var(--text-muted); cursor: pointer; padding: 6px 14px; border-radius: 99px; }
     .tab-btn.active { color: var(--primary); background: rgba(139, 44, 245, 0.1); }
-    
-    /* KUNCI UTAMA: AGAR TEKS DARI ADMIN TAMPIL RAPI KE BAWAH TANPA TUMPANG TINDIH */
-    .tab-content { 
-      display: none; 
-      font-size: 13.5px; 
-      color: var(--text-muted); 
-      line-height: 1.65; 
-      overflow-y: auto; 
-      max-height: 380px; 
-      white-space: pre-line; 
-    }
+    .tab-content { display: none; font-size: 13.5px; color: var(--text-muted); line-height: 1.65; overflow-y: auto; max-height: 380px; white-space: pre-line; }
     .tab-content.active { display: block; }
-    .tab-content h4 { font-size: 17px; font-weight: 800; color: var(--text-main); margin-bottom: 10px; }
-    .tab-content p { margin-bottom: 14px; color: var(--text-muted); white-space: pre-line; }
-    .tab-content ul { margin-left: 18px; color: var(--text-muted); }
-    .tab-content ul li { margin-bottom: 8px; }
-
     .modal-col-right { flex: 1; display: flex; flex-direction: column; }
     .modal-title { font-size: 26px; font-weight: 900; color: var(--text-main); }
     .modal-subtitle { font-size: 13.5px; color: var(--text-muted); margin: 4px 0 20px; }
     .package-container { display: flex; flex-direction: column; gap: 12px; overflow-y: auto; max-height: 380px; }
-
     .package-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border: 1.5px solid var(--border-color);
-      background: var(--package-bg);
-      padding: 16px 20px;
-      border-radius: 20px;
-      transition: all 0.2s;
+      display: flex; align-items: center; justify-content: space-between; border: 1.5px solid var(--border-color);
+      background: var(--package-bg); padding: 16px 20px; border-radius: 20px;
     }
-
-    .package-row:hover { border-color: var(--primary); transform: translateY(-2px); }
+    .package-row:hover { border-color: var(--primary); }
     .pkg-info h4 { font-size: 14.5px; font-weight: 800; color: var(--text-main); }
     .pkg-info p { font-size: 14px; font-weight: 900; color: var(--primary); margin-top: 3px; }
-
-    .btn-order-tag {
-      background: var(--primary);
-      color: #fff;
-      text-decoration: none;
-      padding: 10px 20px;
-      border-radius: 99px;
-      font-size: 13px;
-      font-weight: 800;
-      transition: background 0.2s;
-    }
-
-    .btn-order-tag:hover { background: var(--primary-hover); }
+    .btn-order-tag { background: var(--primary); color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 99px; font-size: 13px; font-weight: 800; }
 
     @media (max-width: 1060px) {
       .product-grid { grid-template-columns: repeat(2, 1fr); }
       .nav-links { display: none; }
-      .mascot-interactive-widget { right: -30px; width: 160px; height: 190px; }
-      .mascot-character { width: 160px; }
       .footer-container { flex-direction: column; }
     }
-
-    @media (max-width: 640px) {
-      .product-grid { grid-template-columns: 1fr; }
-      .hero-title { font-size: 30px; }
-    }
+    @media (max-width: 640px) { .product-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -863,32 +545,13 @@
         <li><a href="#kontak">Kontak</a></li>
       </ul>
       <div class="nav-right-actions">
-        <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Ganti Mode Terang / Gelap">🌙</button>
-        <a href="https://wa.me/6285196223649?text=Halo%20Nevfa%20Store%2C%20saya%20mau%20order%20akun%20premium" target="_blank" class="btn-nav-wa">💬 WhatsApp</a>
+        <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Ganti Mode">🌙</button>
+        <a href="https://wa.me/6285196223649?text=Halo%20Nevfa%20Store" target="_blank" class="btn-nav-wa">💬 WhatsApp</a>
       </div>
     </div>
   </nav>
 
-  <section class="hero-section">
-    <div class="hero-subtitle">Toko Akun Premium Terpercaya</div>
-    <h1 class="hero-title">Selamat Datang di <span class="purple-text">Nevfa Store</span></h1>
-    <div class="guarantee-wrapper">
-      <div class="guarantee-box">
-        <div class="guarantee-header"><span>🛡️</span> GARANSI 100%</div>
-        <p class="guarantee-desc">Penggantian akun apabila terjadi kendala sesuai syarat dan ketentuan garansi.</p>
-      </div>
-      <div class="mascot-interactive-widget">
-        <div class="mascot-bubble" id="mascotStatus"><span>⚡</span> Proses 5 Menit</div>
-        <div class="mascot-product-bubble">
-          <img id="mascotProductImg1" src="netflix.png" alt="Produk 1" class="active-img" onerror="this.style.display='none'">
-          <img id="mascotProductImg2" src="canva.png" alt="Produk 2" class="hidden-img" onerror="this.style.display='none'">
-        </div>
-        <img src="maskot.png" alt="Mascot Nevfa" class="mascot-character" onerror="this.style.display='none'">
-      </div>
-    </div>
-  </section>
-
-  <!-- BANNER CAROUSEL PROMOSI -->
+  <!-- BANNER CAROUSEL UTAMA -->
   <section class="carousel-section">
     <div class="carousel-container">
       <div class="carousel-track" id="carouselTrack">
@@ -901,6 +564,34 @@
     </div>
   </section>
 
+  <!-- PRODUK FAVORIT BUNDAR BERGESER DENGAN JUDUL -->
+  <section class="circular-marquee-section">
+    <div class="section-header-mini">
+      <span>⭐ Produk Favorit</span>
+    </div>
+    <div class="circular-track">
+      <!-- Set 1 -->
+      <div class="circle-item"><img src="netflix.png" alt="Netflix" onerror="this.style.display='none'"></div>
+      <div class="circle-item"><img src="vidio.png" alt="Vidio" onerror="this.style.display='none'"></div>
+      <div class="circle-item"><img src="disney.png" alt="Disney" onerror="this.style.display='none'"></div>
+      <div class="circle-item"><img src="capcut.png" alt="CapCut" onerror="this.style.display='none'"></div>
+      <div class="circle-item"><img src="youtube.png" alt="YouTube" onerror="this.style.display='none'"></div>
+      <div class="circle-item"><img src="canva.png" alt="Canva" onerror="this.style.display='none'"></div>
+      <div class="circle-item"><img src="wetv.png" alt="WeTV" onerror="this.style.display='none'"></div>
+      <div class="circle-item"><img src="viu.png" alt="Viu" onerror="this.style.display='none'"></div>
+      <!-- Set 2 (Duplikasi untuk pergerakan looping mulus) -->
+      <div class="circle-item"><img src="netflix.png" alt="Netflix" onerror="this.style.display='none'"></div>
+      <div class="circle-item"><img src="vidio.png" alt="Vidio" onerror="this.style.display='none'"></div>
+      <div class="circle-item"><img src="disney.png" alt="Disney" onerror="this.style.display='none'"></div>
+      <div class="circle-item"><img src="capcut.png" alt="CapCut" onerror="this.style.display='none'"></div>
+      <div class="circle-item"><img src="youtube.png" alt="YouTube" onerror="this.style.display='none'"></div>
+      <div class="circle-item"><img src="canva.png" alt="Canva" onerror="this.style.display='none'"></div>
+      <div class="circle-item"><img src="wetv.png" alt="WeTV" onerror="this.style.display='none'"></div>
+      <div class="circle-item"><img src="viu.png" alt="Viu" onerror="this.style.display='none'"></div>
+    </div>
+  </section>
+
+  <!-- KATALOG UTAMA (PADAT & RAPI) -->
   <section class="catalog-section" id="katalog">
     <div style="text-align: center;">
       <span class="section-badge">PRODUK</span>
@@ -908,7 +599,7 @@
       <p class="section-subtitle">Pilih layanan favoritmu, lihat pilihan paketnya, lalu pesan langsung via WhatsApp.</p>
     </div>
     <div class="product-grid" id="productGrid">
-      <!-- Produk otomatis dimuat dari localStorage Admin -->
+      <!-- Produk otomatis dimuat dari products.json / online -->
     </div>
   </section>
 
@@ -924,9 +615,7 @@
     <div class="footer-container">
       <div class="footer-brand">
         <div class="footer-brand-header">
-          <div class="footer-logo-icon">
-            <img src="logo.png" alt="Logo Nevfa" onerror="this.style.display='none'">
-          </div>
+          <div class="footer-logo-icon"><img src="logo.png" alt="" onerror="this.style.display='none'"></div>
           <h3 class="footer-brand-name">Nevfa Store</h3>
         </div>
         <p class="footer-desc">Tempat untuk mendapatkan berbagai akun premium favoritmu dengan garansi resmi dan proses cepat.</p>
@@ -934,29 +623,17 @@
       <div class="footer-socials">
         <h4>Ikuti Sosial Media Kami</h4>
         <div class="social-icons-group">
-          <!-- Instagram -->
-          <a href="https://www.instagram.com/nevfa_store" target="_blank" class="social-icon-link" title="Instagram">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </a>
-          <!-- WhatsApp -->
-          <a href="https://wa.me/6285196223649" target="_blank" class="social-icon-link" title="WhatsApp">
-            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-          </a>
-          <!-- TikTok -->
-          <a href="https://www.tiktok.com/@nevfameahnwilee" target="_blank" class="social-icon-link" title="TikTok">
-            <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z"/></svg>
-          </a>
-          <!-- Facebook -->
-          <a href="https://www.facebook.com/nevfastore" target="_blank" class="social-icon-link" title="Facebook">
-            <svg viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.376 14.5 5 15.5 5H18V0h-3.808C10.59 0 9 1.589 9 4.7V8z"/></svg>
-          </a>
+          <a href="https://www.instagram.com/nevfa_store" target="_blank" class="social-icon-link" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="https://wa.me/6285196223649" target="_blank" class="social-icon-link" title="WhatsApp"><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
+          <a href="https://www.tiktok.com/@nevfameahnwilee" target="_blank" class="social-icon-link" title="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z"/></svg></a>
+          <a href="https://www.facebook.com/nevfastore" target="_blank" class="social-icon-link" title="Facebook"><svg viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.376 14.5 5 15.5 5H18V0h-3.808C10.59 0 9 1.589 9 4.7V8z"/></svg></a>
         </div>
       </div>
     </div>
     <div class="footer-bottom"><p>&copy; 2026 Nevfa Store. All rights reserved.</p></div>
   </footer>
 
-  <!-- POPUP MODAL 2 KOLOM -->
+  <!-- MODAL -->
   <div class="modal-backdrop" id="packageModal">
     <div class="modal-box-split">
       <button class="btn-close" onclick="closeModal()">✕</button>
@@ -966,9 +643,9 @@
           <button class="tab-btn active" onclick="switchTab('garansi')">Garansi</button>
           <button class="tab-btn" onclick="switchTab('deskripsi')">Deskripsi</button>
         </div>
-        <div class="tab-content" id="tab-benefit"><div class="tab-body-text" id="modalBenefitText">-</div></div>
-        <div class="tab-content active" id="tab-garansi"><div class="tab-body-text" id="modalGaransiText">-</div></div>
-        <div class="tab-content" id="tab-deskripsi"><div class="tab-body-text" id="modalDeskripsiText">-</div></div>
+        <div class="tab-content" id="tab-benefit"><div id="modalBenefitText">-</div></div>
+        <div class="tab-content active" id="tab-garansi"><div id="modalGaransiText">-</div></div>
+        <div class="tab-content" id="tab-deskripsi"><div id="modalDeskripsiText">-</div></div>
       </div>
       <div class="modal-col-right">
         <h3 class="modal-title" id="modalTitle">Produk</h3>
@@ -1000,176 +677,22 @@
       document.getElementById('themeToggleBtn').innerHTML = '☀️';
     }
 
-    const defaultProducts = [
-      {
-        id: "netflix",
-        title: "Netflix",
-        logo: "netflix.png",
-        startPrice: "Rp20.000",
-        desc: "Streaming film & series favorit dengan kualitas terbaik.",
-        benefit: "Streaming Ultra HD 4K anti lemot, support TV & HP, legal resmi.",
-        garansi: "Garansi full sesuai durasi berlangganan.",
-        deskripsi: "Akun Netflix resmi berkualitas tinggi anti hold.",
-        packages: [
-          { nama: "Sharing 1 Bulan", harga: "Rp20.000" },
-          { nama: "Anti Limit 1 Bulan", harga: "Rp40.000" },
-          { nama: "Private 1 Bulan", harga: "Rp110.000" }
-        ]
-      },
-      {
-        id: "canva",
-        title: "Canva Pro",
-        logo: "canva.png",
-        startPrice: "Rp8.000",
-        desc: "Desain tanpa batas dengan semua fitur premium Canva.",
-        benefit: "Akses semua template pro, elemen pro, hapus latar belakang otomatis, dan kit merek.",
-        garansi: "Garansi invite ulang jika link tim kendala selama masa aktif.",
-        deskripsi: "Akun Canva Pro via link invite resmi team edu/enterprise.",
-        packages: [
-          { nama: "Invite Member 1 Bulan", harga: "Rp8.000" },
-          { nama: "Invite Member 1 Tahun", harga: "Rp25.000" }
-        ]
-      },
-      {
-        id: "capcut",
-        title: "CapCut Pro",
-        logo: "capcut.png",
-        startPrice: "Rp10.000",
-        desc: "Edit video profesional dengan efek dan template pro.",
-        benefit: "Buka semua efek pro, transisi premium, export tanpa watermark.",
-        garansi: "Garansi penggantian akun baru jika terjadi kendala login.",
-        deskripsi: "Akun CapCut Pro siap pakai untuk editing video sosmed.",
-        packages: [
-          { nama: "Sharing 1 Bulan", harga: "Rp10.000" },
-          { nama: "Private 1 Bulan", harga: "Rp35.000" }
-        ]
-      },
-      {
-        id: "youtube",
-        title: "YouTube Premium",
-        logo: "youtube.png",
-        startPrice: "Rp25.000",
-        desc: "Tanpa iklan, bisa background play dan download.",
-        benefit: "Bebas iklan total, putar di latar belakang, akses YouTube Music.",
-        garansi: "Garansi full 1 bulan anti putus di tengah jalan.",
-        deskripsi: "YouTube Premium legal via invite keluarga / akun baru.",
-        packages: [
-          { nama: "Famplan Invite 1 Bulan", harga: "Rp10.000" },
-          { nama: "Indplan 1 Bulan", harga: "Rp25.000" }
-        ]
-      },
-      {
-        id: "vidio",
-        title: "Vidio Platinum",
-        logo: "vidio.png",
-        startPrice: "Rp20.000",
-        desc: "Nonton liga, sinema, dan tayangan eksklusif Vidio.",
-        benefit: "Streaming Liga Champions, Premier League, sinema lokal & serial korea.",
-        garansi: "Garansi full durasi sesuai paket.",
-        deskripsi: "Akun Vidio Platinum resmi dan aman.",
-        packages: [
-          { nama: "Platinum Mobile 30 Hari", harga: "Rp35.000" },
-          { nama: "Platinum All Device 30 Hari", harga: "Rp45.000" }
-        ]
-      },
-      {
-        id: "wetv",
-        title: "WeTV VIP",
-        logo: "wetv.png",
-        startPrice: "Rp15.000",
-        desc: "Drama Asia terbaru tanpa iklan, kualitas HD.",
-        benefit: "Nonton episode lebih awal, tanpa iklan, kualitas video jernih.",
-        garansi: "Garansi pergantian akun baru jika error.",
-        deskripsi: "WeTV VIP legal anti limit.",
-        packages: [
-          { nama: "VIP Sharing 1 Bulan", harga: "Rp15.000" },
-          { nama: "VIP Private 1 Bulan", harga: "Rp35.000" }
-        ]
-      },
-      {
-        id: "iqiyi",
-        title: "iQIYI",
-        logo: "iqiyi.png",
-        startPrice: "Rp9.000",
-        desc: "Serial dan film Asia lengkap dengan subtitle Indonesia.",
-        benefit: "Akses drama china & korea eksklusif lebih cepat tanpa iklan.",
-        garansi: "Garansi full aman selama masa aktif.",
-        deskripsi: "Akun iQIYI VIP resmi.",
-        packages: [
-          { nama: "VIP Standard 1 Bulan", harga: "Rp9.000" },
-          { nama: "VIP Premium 1 Bulan", harga: "Rp18.000" }
-        ]
-      },
-      {
-        id: "viu",
-        title: "VIU",
-        logo: "viu.png",
-        startPrice: "Rp5.000",
-        desc: "Drama Korea dan Asia dengan harga paling terjangkau.",
-        benefit: "Download sepuasnya, bebas iklan, update drama on-going tercepat.",
-        garansi: "Garansi penggantian akun jika kendala login.",
-        deskripsi: "Akun Viu Premium private aman.",
-        packages: [
-          { nama: "Premium Private 1 Bulan", harga: "Rp5.000" },
-          { nama: "Premium Private 3 Bulan", harga: "Rp12.000" }
-        ]
-      },
-      {
-        id: "prime",
-        title: "Prime Video",
-        logo: "prime.png",
-        startPrice: "Rp15.000",
-        desc: "Streaming film blockbuster dan Amazon Originals.",
-        benefit: "Nonton film kualitas HDR/4K dengan subtitle Indonesia lengkap.",
-        garansi: "Garansi full sesuai durasi.",
-        deskripsi: "Prime Video legal resmi.",
-        packages: [
-          { nama: "Sharing 1 Bulan", harga: "Rp15.000" },
-          { nama: "Private 1 Bulan", harga: "Rp30.000" }
-        ]
-      },
-      {
-        id: "loklok",
-        title: "Loklok",
-        logo: "loklok.png",
-        startPrice: "Rp15.000",
-        desc: "Nonton anime, drama, dan film tanpa batas dengan kualitas HD.",
-        benefit: "Bebas iklan, akses semua anime dan film VIP terbaru.",
-        garansi: "Garansi penggantian akun baru jika bermasalah.",
-        deskripsi: "Loklok VIP legal anti gangguan.",
-        packages: [
-          { nama: "VIP 1 Bulan", harga: "Rp15.000" },
-          { nama: "VIP 3 Bulan", harga: "Rp35.000" }
-        ]
-      },
-      {
-        id: "hbo",
-        title: "HBO GO",
-        logo: "hbo.png",
-        startPrice: "Rp25.000",
-        desc: "Tayangan sinema Hollywood, HBO Originals, dan DC Universe.",
-        benefit: "Streaming film box office Hollywood terbaru kualitas HD terbaik.",
-        garansi: "Garansi full durasi berlangganan.",
-        deskripsi: "HBO GO resmi dan terpercaya.",
-        packages: [
-          { nama: "Sharing 1 Bulan", harga: "Rp25.000" },
-          { nama: "Private 1 Bulan", harga: "Rp50.000" }
-        ]
+    let products = [];
+    async function loadProductsOnline() {
+      try {
+        const response = await fetch('products.json?v=' + Date.now());
+        if (response.ok) {
+          products = await response.json();
+          renderCatalog();
+        }
+      } catch (e) {
+        console.error("Gagal memuat produk online.");
       }
-    ];
-
-    let products = defaultProducts;
-    try {
-      const saved = localStorage.getItem('nevfa_custom_products');
-      if (saved) {
-        products = JSON.parse(saved);
-      }
-    } catch (e) {
-      products = defaultProducts;
     }
 
     function renderCatalog() {
       const grid = document.getElementById('productGrid');
+      if (!grid) return;
       grid.innerHTML = '';
       products.forEach(prod => {
         const card = document.createElement('div');
@@ -1179,9 +702,9 @@
           <h3 class="card-title">${prod.title}</h3>
           <div class="card-price">Mulai dari <strong>${prod.startPrice}</strong></div>
           <p class="card-desc">${prod.desc}</p>
-          <div class="pill-group"><span class="pill">✔ Ready</span><span class="pill">⚡ Fast Delivery</span></div>
+          <div class="pill-group"><span class="pill">✔ Ready</span><span class="pill">⚡ Fast</span></div>
           <div class="card-divider"></div>
-          <div class="card-mini-specs"><span>🛡️ Garansi Full</span><span>🔒 Legal/Aman</span></div>
+          <div class="card-mini-specs"><span>🛡️ Garansi</span><span>🔒 Legal</span></div>
           <div class="btn-group">
             <button class="btn-purple" onclick="openProductModal('${prod.id}')">Lihat Paket</button>
             <a href="#" onclick="pesanWA('${prod.title}', 'Paket ${prod.title}')" class="btn-white">💬 Pesan via WhatsApp</a>
@@ -1209,8 +732,6 @@
       if (!prod) return;
 
       document.getElementById('modalTitle').innerText = prod.title;
-      
-      // MEMASTIKAN TEKS DARI ADMIN TAMPIL KE BAWAH DENGAN RAPI TANPA TUMPANG TINDIH
       document.getElementById('modalBenefitText').innerText = prod.benefit || '-';
       document.getElementById('modalGaransiText').innerText = prod.garansi || '-';
       document.getElementById('modalDeskripsiText').innerText = prod.deskripsi || '-';
@@ -1235,15 +756,10 @@
       document.getElementById('packageModal').style.display = 'flex';
     }
 
-    function closeModal() {
-      document.getElementById('packageModal').style.display = 'none';
-    }
+    function closeModal() { document.getElementById('packageModal').style.display = 'none'; }
+    window.onclick = function(e) { if (e.target === document.getElementById('packageModal')) closeModal(); }
 
-    window.onclick = function(e) {
-      if (e.target === document.getElementById('packageModal')) closeModal();
-    }
-
-    window.onload = renderCatalog;
+    window.onload = loadProductsOnline;
 
     let currentSlide = 0;
     const slides = document.querySelectorAll('.carousel-slide');
@@ -1254,41 +770,6 @@
       track.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
     setInterval(() => moveCarousel(1), 5000);
-
-    const mascotItems = [
-      { text: "⚡ Proses 5 Menit", icon: "netflix.png" },
-      { text: "🛡️ Full Garansi", icon: "canva.png" },
-      { text: "🔒 Legal & Aman", icon: "capcut.png" },
-      { text: "💬 Fast Respons WA", icon: "youtube.png" }
-    ];
-    let mascotIndex = 0;
-    const statusBubble = document.getElementById('mascotStatus');
-    const img1 = document.getElementById('mascotProductImg1');
-    const img2 = document.getElementById('mascotProductImg2');
-    let showImg1 = true;
-
-    if (statusBubble && img1 && img2) {
-      setInterval(() => {
-        mascotIndex = (mascotIndex + 1) % mascotItems.length;
-        const currentData = mascotItems[mascotIndex];
-        const emoji = currentData.text.split(' ')[0];
-        const label = currentData.text.replace(/^[^\s]+\s/, '');
-        statusBubble.innerHTML = `<span>${emoji}</span> ${label}`;
-
-        const nextImgSrc = currentData.icon;
-        if (showImg1) {
-          img2.src = nextImgSrc;
-          img1.className = 'hidden-img';
-          img2.className = 'active-img';
-          showImg1 = false;
-        } else {
-          img1.src = nextImgSrc;
-          img2.className = 'hidden-img';
-          img1.className = 'active-img';
-          showImg1 = true;
-        }
-      }, 3500);
-    }
   </script>
 </body>
 </html>
