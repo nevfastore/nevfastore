@@ -9,9 +9,18 @@
     "garansi": "Garansi full sesuai durasi berlangganan.",
     "deskripsi": "Akun Netflix resmi berkualitas tinggi anti hold.",
     "packages": [
-      { "nama": "Sharing 1 Bulan", "harga": "Rp20.000" },
-      { "nama": "Anti Limit 1 Bulan", "harga": "Rp40.000" },
-      { "nama": "Private 1 Bulan", "harga": "Rp110.000" }
+      {
+        "nama": "Sharing 1 Bulan",
+        "harga": "Rp20.000"
+      },
+      {
+        "nama": "Anti Limit 1 Bulan",
+        "harga": "Rp40.000"
+      },
+      {
+        "nama": "Private 1 Bulan",
+        "harga": "Rp110.000"
+      }
     ]
   },
   {
@@ -24,8 +33,14 @@
     "garansi": "Garansi invite ulang jika link tim kendala selama masa aktif.",
     "deskripsi": "Akun Canva Pro via link invite resmi team edu/enterprise.",
     "packages": [
-      { "nama": "Invite Member 1 Bulan", "harga": "Rp8.000" },
-      { "nama": "Invite Member 1 Tahun", "harga": "Rp25.000" }
+      {
+        "nama": "Invite Member 1 Bulan",
+        "harga": "Rp8.000"
+      },
+      {
+        "nama": "Invite Member 1 Tahun",
+        "harga": "Rp25.000"
+      }
     ]
   },
   {
@@ -38,8 +53,14 @@
     "garansi": "Garansi penggantian akun baru jika terjadi kendala login.",
     "deskripsi": "Akun CapCut Pro siap pakai untuk editing video sosmed.",
     "packages": [
-      { "nama": "Sharing 1 Bulan", "harga": "Rp10.000" },
-      { "nama": "Private 1 Bulan", "harga": "Rp35.000" }
+      {
+        "nama": "Sharing 1 Bulan",
+        "harga": "Rp10.000"
+      },
+      {
+        "nama": "Private 1 Bulan",
+        "harga": "Rp35.000"
+      }
     ]
   },
   {
@@ -52,22 +73,14 @@
     "garansi": "Garansi full 1 bulan anti putus di tengah jalan.",
     "deskripsi": "YouTube Premium legal via invite keluarga / akun baru.",
     "packages": [
-      { "nama": "Famplan Invite 1 Bulan", "harga": "Rp10.000" },
-      { "nama": "Indplan 1 Bulan", "harga": "Rp25.000" }
-    ]
-  },
-  {
-    "id": "vidio",
-    "title": "Vidio Platinum",
-    "logo": "vidio.png",
-    "startPrice": "Rp20.000",
-    "desc": "Nonton liga, sinema, dan tayangan eksklusif Vidio.",
-    "benefit": "Streaming Liga Champions, Premier League, sinema lokal & serial korea.",
-    "garansi": "Garansi full durasi sesuai paket.",
-    "deskripsi": "Akun Vidio Platinum resmi dan aman.",
-    "packages": [
-      { "nama": "Platinum Mobile 30 Hari", "harga": "Rp35.000" },
-      { "nama": "Platinum All Device 30 Hari", "harga": "Rp45.000" }
+      {
+        "nama": "Famplan Invite 1 Bulan",
+        "harga": "Rp10.000"
+      },
+      {
+        "nama": "Indplan 1 Bulan",
+        "harga": "Rp25.000"
+      }
     ]
   }
 ]
