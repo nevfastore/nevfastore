@@ -1,86 +1,81 @@
-[
-  {
-    "id": "netflix",
-    "title": "Netflix",
-    "logo": "netflix.png",
-    "startPrice": "Rp20.000",
-    "desc": "Streaming film & series favorit dengan kualitas terbaik.",
-    "benefit": "Streaming Ultra HD 4K anti lemot, support TV & HP, legal resmi.",
-    "garansi": "Garansi full sesuai durasi berlangganan.",
-    "deskripsi": "Akun Netflix resmi berkualitas tinggi anti hold.",
-    "packages": [
-      {
-        "nama": "Sharing 1 Bulan",
-        "harga": "Rp20.000"
-      },
-      {
-        "nama": "Anti Limit 1 Bulan",
-        "harga": "Rp40.000"
-      },
-      {
-        "nama": "Private 1 Bulan",
-        "harga": "Rp110.000"
-      }
-    ]
-  },
-  {
-    "id": "canva",
-    "title": "Canva Pro",
-    "logo": "canva.png",
-    "startPrice": "Rp8.000",
-    "desc": "Desain tanpa batas dengan semua fitur premium Canva.",
-    "benefit": "Akses semua template pro, elemen pro, hapus latar belakang otomatis, dan kit merek.",
-    "garansi": "Garansi invite ulang jika link tim kendala selama masa aktif.",
-    "deskripsi": "Akun Canva Pro via link invite resmi team edu/enterprise.",
-    "packages": [
-      {
-        "nama": "Invite Member 1 Bulan",
-        "harga": "Rp8.000"
-      },
-      {
-        "nama": "Invite Member 1 Tahun",
-        "harga": "Rp25.000"
-      }
-    ]
-  },
-  {
-    "id": "capcut",
-    "title": "CapCut Pro",
-    "logo": "capcut.png",
-    "startPrice": "Rp10.000",
-    "desc": "Edit video profesional dengan efek dan template pro.",
-    "benefit": "Buka semua efek pro, transisi premium, export tanpa watermark.",
-    "garansi": "Garansi penggantian akun baru jika terjadi kendala login.",
-    "deskripsi": "Akun CapCut Pro siap pakai untuk editing video sosmed.",
-    "packages": [
-      {
-        "nama": "Sharing 1 Bulan",
-        "harga": "Rp10.000"
-      },
-      {
-        "nama": "Private 1 Bulan",
-        "harga": "Rp35.000"
-      }
-    ]
-  },
-  {
-    "id": "youtube",
-    "title": "YouTube Premium",
-    "logo": "youtube.png",
-    "startPrice": "Rp25.000",
-    "desc": "Tanpa iklan, bisa background play dan download.",
-    "benefit": "Bebas iklan total, putar di latar belakang, akses YouTube Music.",
-    "garansi": "Garansi full 1 bulan anti putus di tengah jalan.",
-    "deskripsi": "YouTube Premium legal via invite keluarga / akun baru.",
-    "packages": [
-      {
-        "nama": "Famplan Invite 1 Bulan",
-        "harga": "Rp10.000"
-      },
-      {
-        "nama": "Indplan 1 Bulan",
-        "harga": "Rp25.000"
-      }
-    ]
-  }
-]
+	
+0	
+id	"netflix"
+title	"Netflix"
+logo	"netflix.png"
+startPrice	"Rp20.000"
+desc	"Streaming film & series favorit dengan kualitas terbaik."
+benefit	"Streaming Ultra HD 4K anti lemot, support TV & HP, legal resmi."
+garansi	"Garansi full sesuai durasi berlangganan."
+deskripsi	"Akun Netflix resmi berkualitas tinggi anti hold."
+packages	
+0	
+nama	"Sharing 1 Bulan"
+harga	"Rp20.000"
+1	
+nama	"Anti Limit 1 Bulan"
+harga	"Rp40.000"
+2	
+nama	"Private 1 Bulan"
+harga	"Rp110.000"
+1	
+id	"canva"
+title	"Canva Pro"
+logo	"canva.png"
+startPrice	"Rp8.000"
+desc	"Desain tanpa batas dengan semua fitur premium Canva."
+benefit	"Akses semua template pro, elemen pro, hapus latar belakang otomatis, dan kit merek."
+garansi	"Garansi invite ulang jika link tim kendala selama masa aktif."
+deskripsi	"Akun Canva Pro via link invite resmi team edu/enterprise."
+packages	
+0	
+nama	"Invite Member 1 Bulan"
+harga	"Rp8.000"
+1	
+nama	"Invite Member 1 Tahun"
+harga	"Rp25.000"
+2	
+id	"capcut"
+title	"CapCut Pro"
+logo	"capcut.png"
+startPrice	"Rp10.000"
+desc	"Edit video profesional dengan efek dan template pro."
+benefit	"Buka semua efek pro, transisi premium, export tanpa watermark."
+garansi	"Garansi penggantian akun baru jika terjadi kendala login."
+deskripsi	"Akun CapCut Pro siap pakai untuk editing video sosmed."
+packages	
+0	
+nama	"Sharing 1 Bulan"
+harga	"Rp10.000"
+1	
+nama	"Private 1 Bulan"
+harga	"Rp35.000"
+3	
+id	"youtube"
+title	"YouTube Premium"
+logo	"youtube.png"
+startPrice	"Rp25.000"
+desc	"Tanpa iklan, bisa background play dan download."
+benefit	"Bebas iklan total, putar di latar belakang, akses YouTube Music."
+garansi	"Garansi full 1 bulan anti putus di tengah jalan."
+deskripsi	"YouTube Premium legal via invite keluarga / akun baru."
+packages	
+0	
+nama	"Famplan Invite 1 Bulan"
+harga	"Rp10.000"
+1	
+nama	"Indplan 1 Bulan"
+harga	"Rp25.000"
+4	
+id	"prod_1793376884525"
+title	"disney"
+logo	"disney.png"
+startPrice	"Rp20.000"
+desc	"Deskripsi singkat produk baru."
+benefit	"Fitur Pro dan legal."
+garansi	"Garansi penuh."
+deskripsi	"Deskripsi lengkap produk baru."
+packages	
+0	
+nama	"Paket 1 Bulan"
+harga	"Rp10.000"
