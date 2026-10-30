@@ -3,246 +3,627 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nevfa Store — Platform Digital Profesional</title>
+  <title>Nevfa Store — Toko Akun Premium Terpercaya</title>
   
+  <!-- FAVICON RESMI -->
+  <link rel="icon" type="image/png" href="logo.png?v=2">
+  <link rel="shortcut icon" type="image/png" href="logo.png?v=2">
+
+  <!-- GOOGLE FONTS INTER & SPACE GROTESK -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
 
+  <meta name="google-site-verification" content="m3NvNDjc7CSZtHrQy17T3SNQFjTKUJpsSWSN3NxQD2w" />
+  
   <style>
     :root {
       --primary: #8b2cf5;
       --primary-hover: #7922db;
       --primary-gradient: linear-gradient(135deg, #a855f7 0%, #8b2cf5 50%, #6d28d9 100%);
-      --bg-gradient: linear-gradient(135deg, #09090b 0%, #120c1f 50%, #09090b 100%);
-      --card-bg: #16161e;
+      --bg: #ffffff;
+      --card-bg: #ffffff;
+      --text-main: #09090b;
+      --text-muted: #71717a;
+      --border-color: #f1f5f9;
+      --nav-bg: rgba(255, 255, 255, 0.95);
+      --modal-bg: #ffffff;
+      --modal-left-bg: #fafafa;
+      --package-bg: #fafafa;
+    }
+
+    [data-theme="dark"] {
+      --primary: #a855f7;
+      --primary-hover: #9333ea;
+      --primary-gradient: linear-gradient(135deg, #c084fc 0%, #a855f7 50%, #7e22ce 100%);
+      --bg: #09090b;
+      --card-bg: #13131a;
       --text-main: #f4f4f5;
       --text-muted: #a1a1aa;
-      --border-color: rgba(139, 44, 245, 0.25);
-      --nav-bg: rgba(13, 13, 18, 0.95);
-      --modal-bg: #13131a;
+      --border-color: #27272a;
+      --nav-bg: rgba(9, 9, 11, 0.95);
+      --modal-bg: #121216;
+      --modal-left-bg: #18181b;
+      --package-bg: #18181b;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-    
-    html, body {
-      width: 100%;
-      min-height: 100vh;
-      background: var(--bg-gradient);
-      background-attachment: fixed;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      scroll-behavior: smooth;
+      transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    }
+
+    body {
+      background-color: var(--bg);
       color: var(--text-main);
       overflow-x: hidden;
+      padding-bottom: 70px;
     }
 
+    /* NAVBAR */
     .navbar {
-      width: 100%; border-bottom: 1px solid var(--border-color); background: var(--nav-bg);
-      position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(14px);
+      width: 100%;
+      border-bottom: 1px solid var(--border-color);
+      background: var(--nav-bg);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
     }
+
     .nav-container {
-      max-width: 1240px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .nav-left { display: flex; align-items: center; gap: 35px; }
-    .brand-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; cursor: pointer; }
+
+    .brand-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .brand-text-custom {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 21px;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-nevfa { color: var(--text-main); }
+    .brand-store {
+      background: linear-gradient(135deg, #c084fc 0%, #8B3DFF 50%, #6d28d9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 900;
+    }
+
     .brand-icon {
-      width: 38px; height: 38px; border-radius: 10px; background: rgba(139, 44, 245, 0.15);
-      border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-weight: 900; color: #c084fc; font-size: 18px; overflow: hidden;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
     }
     .brand-icon img { width: 100%; height: 100%; object-fit: contain; }
-    .brand-text { font-family: 'Space Grotesk', sans-serif; font-size: 19px; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
-    .brand-text span { color: #c084fc; }
 
-    .nav-menu { display: flex; align-items: center; gap: 24px; list-style: none; }
-    .nav-menu a {
-      color: var(--text-muted); text-decoration: none; font-size: 13.5px; font-weight: 600; transition: color 0.2s; cursor: pointer;
+    .store-open-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      padding: 5px 12px;
+      border-radius: 99px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #16a34a;
     }
-    .nav-menu a:hover, .nav-menu a.active { color: #c084fc; }
 
-    .nav-right { display: flex; align-items: center; gap: 15px; }
-    .search-bar-top { position: relative; width: 280px; display: flex; align-items: center; }
-    .search-bar-top input {
-      width: 100%; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color);
-      padding: 8px 36px 8px 36px; border-radius: 99px; color: #fff; font-size: 13px; outline: none;
+    .status-dot-green {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      display: inline-block;
+      animation: pulseGreenDot 1.8s infinite ease-in-out;
     }
-    .search-bar-top input:focus { border-color: var(--primary); }
-    .search-icon-top { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 12px; color: var(--text-muted); cursor: pointer; }
-    .search-enter-btn { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #c084fc; font-size: 11px; font-weight: 700; cursor: pointer; }
 
-    .btn-login {
-      background: var(--primary); color: #fff; border: none; padding: 8px 20px; border-radius: 99px;
-      font-size: 13px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(139,44,245,0.3); transition: background 0.2s; text-decoration: none; white-space: nowrap;
+    @keyframes pulseGreenDot {
+      0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.65); }
+      70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+      100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
     }
-    .btn-login:hover { background: var(--primary-hover); }
 
-    .main-content { max-width: 1240px; margin: 24px auto; padding: 0 20px; min-height: 60vh; width: 100%; }
+    .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 14px; font-weight: 600; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--primary); }
 
-    .banner-section { width: 100%; margin-bottom: 35px; }
-    .banner-container {
-      position: relative; width: 100%; border-radius: 20px; overflow: hidden;
-      border: 1px solid var(--border-color); background: #120c1f; aspect-ratio: 21 / 7.2;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    .nav-right-actions { display: flex; align-items: center; gap: 12px; }
+    .theme-toggle-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      color: var(--text-main);
     }
-    .banner-track { display: flex; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
-    .banner-slide { min-width: 100%; height: 100%; position: relative; }
-    .banner-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .theme-toggle-btn:hover { transform: scale(1.08); }
 
-    .section-header-flex { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
-    .section-title-main { font-size: 20px; font-weight: 800; letter-spacing: -0.3px; color: #fff; display: flex; align-items: center; gap: 8px; }
-    .btn-see-more { background: rgba(255,255,255,0.06); border: 1px solid var(--border-color); color: var(--text-main); font-size: 12px; font-weight: 600; padding: 6px 16px; border-radius: 99px; cursor: pointer; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
-    .btn-see-more:hover { background: rgba(139,44,245,0.15); border-color: var(--primary); }
+    .btn-nav-wa {
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 9px 22px;
+      border-radius: 99px;
+      font-size: 13.5px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(139, 44, 245, 0.25);
+    }
+    .btn-nav-wa:hover { background: var(--primary-hover); }
 
-    .exclusive-section { margin-bottom: 40px; }
-    .exclusive-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; }
+    /* BANNER CAROUSEL UTAMA */
+    .carousel-section {
+      max-width: 1200px;
+      margin: 25px auto 10px;
+      padding: 0 20px;
+      position: relative;
+    }
 
-    .ex-card {
-      border-radius: 22px;
-      padding: 22px; 
-      position: relative; 
-      cursor: pointer; 
-      transition: all 0.25s ease;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
-      display: flex; 
-      align-items: center; 
-      gap: 18px;
-      overflow: hidden;
-      border: none !important;
-      outline: none !important;
+    .carousel-container {
+      position: relative;
       width: 100%;
-    }
-    .ex-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,0.7); }
-
-    @keyframes pulseGlow {
-      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.9), 0 10px 30px rgba(0,0,0,0.5); }
-      50% { transform: scale(1.04); box-shadow: 0 0 35px 12px rgba(168, 85, 247, 0.7), 0 18px 45px rgba(0,0,0,0.8); }
-      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(168, 85, 247, 0), 0 10px 30px rgba(0,0,0,0.5); }
-    }
-    .ex-card.highlight-pulse {
-      animation: pulseGlow 1.0s ease-in-out 4;
-      border: 2px solid #c084fc !important;
-    }
-    
-    .ex-card-img {
-      width: 72px; height: 72px; border-radius: 18px; background: #ffffff;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; overflow: hidden; padding: 8px; z-index: 2;
-      border: none !important;
-    }
-    .ex-card-img img { width: 100%; height: 100%; object-fit: contain; }
-    
-    .ex-card-info { flex: 1; min-width: 0; z-index: 2; }
-    .ex-card-title { font-size: 18px; font-weight: 800; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 4px; }
-    .ex-card-sub { font-size: 13px; color: rgba(255,255,255,0.8); display: block; margin-bottom: 12px; }
-    .ex-card-footer { display: flex; align-items: center; justify-content: space-between; }
-    .badge-promo-tag { background: rgba(34, 197, 94, 0.25); color: #22c55e; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 8px; }
-    .badge-discount { color: #ffffff; font-size: 13px; font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,0.4); }
-
-    .page-view { display: none; }
-    .page-view.active { display: block; }
-
-    .catalog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; }
-    .catalog-card {
-      background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px;
-      padding: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.4); display: flex; flex-direction: column; transition: all 0.25s;
-    }
-    .catalog-card:hover { transform: translateY(-4px); border-color: var(--primary); box-shadow: 0 12px 35px rgba(139,44,245,0.3); }
-    .catalog-top { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
-    .catalog-logo { width: 64px; height: 64px; border-radius: 16px; background: rgba(139,44,245,0.1); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; }
-    .catalog-logo img { width: 80%; height: 80%; object-fit: contain; }
-    .catalog-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 2px; }
-    .catalog-price-label { font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
-    .catalog-price-val { font-size: 20px; font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .catalog-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-bottom: 16px; }
-    .btn-detail-prod {
-      background: var(--primary-gradient); color: #fff; border: none; padding: 11px 0; border-radius: 99px;
-      font-weight: 700; font-size: 13.5px; cursor: pointer; width: 100%; margin-top: auto; box-shadow: 0 4px 15px rgba(139,44,245,0.3);
-    }
-    .btn-detail-prod:hover { background: var(--primary-hover); }
-
-    .content-box-card {
-      background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 30px; margin-bottom: 20px;
-    }
-    .content-box-card h2 { font-size: 22px; font-weight: 800; margin-bottom: 10px; color: #fff; }
-    .content-box-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
-    .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
-    .testi-item { background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 14px; padding: 16px; }
-    .testi-name { font-weight: 700; font-size: 13.5px; color: #c084fc; margin-bottom: 4px; }
-    .testi-text { font-size: 13px; color: var(--text-muted); }
-
-    .footer {
-      background: #060608; border-top: 1px solid var(--border-color); color: #fff; padding: 50px 20px 30px; margin-top: 60px; width: 100%;
-    }
-    .footer-container {
-      max-width: 1240px; margin: 0 auto; display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; flex-wrap: wrap;
-    }
-    .footer-left { max-width: 400px; }
-    .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-    .footer-brand-icon {
-      width: 36px; height: 36px; border-radius: 10px; background: rgba(139,44,245,0.15); border: 1px solid var(--border-color);
-      display: flex; align-items: center; justify-content: center; font-weight: 900; color: #c084fc; overflow: hidden;
-    }
-    .footer-brand-icon img { width: 100%; height: 100%; object-fit: contain; }
-    .footer-brand-text { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 800; color: #fff; }
-    .footer-brand-text span { color: #c084fc; }
-    .footer-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
-
-    .footer-right { display: flex; flex-direction: column; align-items: flex-start; }
-    .footer-social-title { font-size: 13.5px; font-weight: 700; color: #fff; margin-bottom: 14px; }
-    .social-icons-row { display: flex; gap: 12px; }
-    .social-icon-btn {
-      width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color);
-      display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; transition: all 0.2s; font-size: 16px;
-    }
-    .social-icon-btn:hover { background: var(--primary); border-color: var(--primary); transform: translateY(-3px); }
-
-    .footer-bottom {
-      max-width: 1240px; margin: 40px auto 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05);
-      text-align: center; font-size: 12px; color: var(--text-muted);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(139, 44, 245, 0.12);
+      border: 1.5px solid var(--border-color);
+      aspect-ratio: 21 / 7;
+      background: #0f172a;
     }
 
+    .carousel-track {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .carousel-slide { min-width: 100%; height: 100%; position: relative; }
+    .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      color: #0f172a;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    .carousel-btn.prev { left: 14px; }
+    .carousel-btn.next { right: 14px; }
+
+    /* PRODUK UNGGULAN BERGESER BESAR (TANPA OUTLINE PUTIH, FULL LOGO BERGESER MULUS) */
+    .featured-marquee-section {
+      max-width: 1200px;
+      margin: 20px auto 35px;
+      padding: 0 20px;
+      overflow: hidden;
+    }
+
+    .featured-wrapper-clean {
+      background: rgba(19, 19, 26, 0.7);
+      border: 1.5px solid #27272a;
+      border-radius: 24px;
+      padding: 20px 24px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* KOTAK JUDUL DENGAN WARNA ORANYE/KUNING & EMOJI API BERKOBAR */
+    .featured-header-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, #f97316 0%, #eab308 100%);
+      color: #09090b;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 6px 16px;
+      border-radius: 99px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 15px rgba(249, 115, 22, 0.35);
+    }
+
+    .flame-icon {
+      display: inline-block;
+      animation: flameAnim 0.8s ease-in-out infinite alternate;
+      transform-origin: bottom center;
+    }
+
+    @keyframes flameAnim {
+      0% { transform: scale(1) rotate(-3deg); filter: drop-shadow(0 0 2px rgba(255,255,255,0.6)); }
+      100% { transform: scale(1.2) rotate(3deg); filter: drop-shadow(0 0 6px rgba(255,100,0,0.9)); }
+    }
+
+    .marquee-container {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 32px;
+      width: max-content;
+      animation: scrollFeatured 20s linear infinite;
+    }
+
+    .marquee-track:hover { animation-play-state: paused; }
+
+    /* LOGO BESAR TANPA OUTLINE PUTIH */
+    .marquee-item {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+
+    .marquee-item:hover { transform: scale(1.12); }
+
+    .marquee-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 20px;
+      background: transparent;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    @keyframes scrollFeatured {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* SECTION HEADINGS */
+    .section-badge {
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.8px;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 14.5px;
+      max-width: 580px;
+      margin: 0 auto 35px;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    /* KATALOG PRODUK GAYA HORIZONTAL */
+    .catalog-section {
+      max-width: 1200px;
+      margin: 15px auto 90px;
+      padding: 0 20px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border-color);
+      border-radius: 28px;
+      padding: 24px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.04);
+      transition: all 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 35px rgba(139, 44, 245, 0.12);
+      border-color: var(--primary);
+    }
+
+    .badge-best {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 99px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+    }
+
+    .card-top-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 16px;
+    }
+
+    .logo-container-horizontal {
+      width: 92px;
+      height: 92px;
+      border-radius: 22px;
+      background: rgba(139, 44, 245, 0.06);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .logo-container-horizontal img {
+      width: 82%;
+      height: 82%;
+      object-fit: contain;
+      border-radius: 16px;
+    }
+
+    .card-info-right {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-title {
+      font-size: 23px;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+
+    .card-price-label {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .card-price-value {
+      font-size: 27px;
+      font-weight: 800;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.1;
+    }
+
+    .card-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+
+    .features-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .feature-pill {
+      background: rgba(139, 44, 245, 0.08);
+      border: 1px solid rgba(139, 44, 245, 0.15);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 99px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .specs-row {
+      display: flex;
+      gap: 18px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .btn-purple {
+      background: var(--primary-gradient);
+      color: #ffffff;
+      border: none;
+      padding: 14px 0;
+      border-radius: 99px;
+      font-weight: 700;
+      font-size: 14.5px;
+      cursor: pointer;
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 6px 20px rgba(139, 44, 245, 0.3);
+      transition: all 0.2s;
+    }
+    .btn-purple:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(139, 44, 245, 0.4); }
+
+    .btn-white {
+      background: transparent;
+      color: var(--text-main);
+      border: 1.5px solid var(--border-color);
+      padding: 13px 0;
+      border-radius: 99px;
+      font-weight: 700;
+      font-size: 13.5px;
+      cursor: pointer;
+      width: 100%;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .btn-white:hover { border-color: var(--primary); background: rgba(139,44,245,0.05); }
+
+    /* TESTIMONI CTA BANNER */
+    .cta-testi-section { max-width: 900px; margin: 80px auto; padding: 0 20px; }
+    .cta-testi-box {
+      background: var(--primary-gradient);
+      border-radius: 36px;
+      padding: 50px 30px;
+      text-align: center;
+      color: #ffffff;
+      box-shadow: 0 20px 50px rgba(139, 44, 245, 0.35);
+    }
+    .cta-testi-box h2 { font-size: 34px; font-weight: 800; margin-bottom: 8px; }
+    .cta-testi-box p { font-size: 14.5px; opacity: 0.95; margin-bottom: 24px; font-weight: 600; }
+
+    .btn-testi {
+      background: #0f172a;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 13px 32px;
+      border-radius: 99px;
+      font-size: 14px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-testi:hover { background: #000000; }
+
+    /* FOOTER */
+    .footer { background: #0d0b14; color: #ffffff; padding: 60px 20px 40px; margin-top: 90px; }
+    .footer-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+    .footer-brand { max-width: 420px; }
+    .footer-brand-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .footer-logo-icon { width: 38px; height: 38px; border-radius: 10px; background: #121216; border: 1px solid #27272a; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .footer-logo-icon img { width: 100%; height: 100%; object-fit: contain; }
+    .footer-brand-name { font-size: 18px; font-weight: 700; }
+    .footer-desc { font-size: 13.5px; color: #94a3b8; line-height: 1.6; }
+
+    .footer-socials h4 { font-size: 15px; font-weight: 700; margin-bottom: 14px; color: #fff; }
+    .social-icons-group { display: flex; gap: 12px; }
+    .social-icon-link {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; text-decoration: none; transition: all 0.2s;
+    }
+    .social-icon-link svg { width: 20px; height: 20px; fill: currentColor; }
+    .social-icon-link:hover { background: var(--primary); border-color: var(--primary); }
+    .footer-bottom { max-width: 1200px; margin: 30px auto 0; text-align: center; font-size: 12.5px; color: #64748b; }
+
+    /* MODAL */
     .modal-backdrop {
-      position: fixed; inset: 0; background: rgba(5, 5, 7, 0.85); backdrop-filter: blur(8px);
-      display: none; align-items: center; justify-content: center; z-index: 2000; padding: 16px;
+      position: fixed; inset: 0; background: rgba(9, 9, 11, 0.65);
+      backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; z-index: 999; padding: 20px;
     }
-    .modal-box {
-      background: var(--modal-bg); color: var(--text-main); width: 100%; max-width: 800px; max-height: 85vh;
-      border-radius: 24px; padding: 24px; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-      display: flex; gap: 20px; overflow-y: auto; border: 1px solid var(--border-color);
+    .modal-box-split {
+      background: var(--modal-bg); color: var(--text-main); width: 100%; max-width: 880px; max-height: 90vh;
+      border-radius: 32px; padding: 32px; position: relative; box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3);
+      display: flex; gap: 28px; overflow-y: auto; border: 1px solid var(--border-color);
     }
     .btn-close {
-      position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; border-radius: 50%;
-      background: var(--border-color); border: none; cursor: pointer; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700;
+      position: absolute; top: 20px; right: 20px; width: 36px; height: 36px; border-radius: 50%;
+      background: var(--border-color); border: none; cursor: pointer; font-size: 16px; color: var(--text-main);
+      display: flex; align-items: center; justify-content: center; z-index: 10;
     }
-    .modal-col-left { flex: 1; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 16px; padding: 16px; }
-    .modal-tabs { display: flex; gap: 6px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin-bottom: 14px; }
-    .tab-btn { background: none; border: none; font-size: 12.5px; font-weight: 700; color: var(--text-muted); cursor: pointer; padding: 5px 12px; border-radius: 99px; }
-    .tab-btn.active { color: #c084fc; background: rgba(139,44,245,0.15); }
-    .tab-pane { display: none; font-size: 13px; color: var(--text-muted); line-height: 1.6; white-space: pre-line; }
-    .tab-pane.active { display: block; }
-    .modal-col-right { flex: 1.1; display: flex; flex-direction: column; }
-    .modal-title-main { font-size: 20px; font-weight: 800; color: #fff; }
-    .modal-subtitle-main { font-size: 12.5px; color: var(--text-muted); margin: 4px 0 16px; }
-    .package-list { display: flex; flex-direction: column; gap: 10px; overflow-y: auto; max-height: 280px; }
+    .modal-col-left { flex: 1.1; border: 1px solid var(--border-color); border-radius: 22px; padding: 22px 24px; background: var(--modal-left-bg); display: flex; flex-direction: column; }
+    .modal-tabs { display: flex; gap: 8px; border-bottom: 2px solid var(--border-color); padding-bottom: 12px; margin-bottom: 20px; }
+    .tab-btn { background: none; border: none; font-size: 14px; font-weight: 700; color: var(--text-muted); cursor: pointer; padding: 6px 14px; border-radius: 99px; }
+    .tab-btn.active { color: var(--primary); background: rgba(139, 44, 245, 0.1); }
+    .tab-content { display: none; font-size: 13.5px; color: var(--text-muted); line-height: 1.65; overflow-y: auto; max-height: 380px; white-space: pre-line; }
+    .tab-content.active { display: block; }
+    .modal-col-right { flex: 1; display: flex; flex-direction: column; }
+    .modal-title { font-size: 26px; font-weight: 800; color: var(--text-main); }
+    .modal-subtitle { font-size: 13.5px; color: var(--text-muted); margin: 4px 0 20px; }
+    .package-container { display: flex; flex-direction: column; gap: 12px; overflow-y: auto; max-height: 380px; }
     .package-row {
-      display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--border-color);
-      background: rgba(255,255,255,0.03); padding: 12px 16px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: space-between; border: 1.5px solid var(--border-color);
+      background: var(--package-bg); padding: 16px 20px; border-radius: 20px;
     }
-    .pkg-info h4 { font-size: 13.5px; font-weight: 700; color: #fff; }
-    .pkg-info p { font-size: 13px; font-weight: 800; color: #c084fc; margin-top: 2px; }
-    .btn-wa-order { background: var(--primary); color: #fff; text-decoration: none; padding: 7px 14px; border-radius: 99px; font-size: 12px; font-weight: 700; }
-    .btn-wa-order:hover { background: var(--primary-hover); }
+    .package-row:hover { border-color: var(--primary); }
+    .pkg-info h4 { font-size: 14.5px; font-weight: 700; color: var(--text-main); }
+    .pkg-info p { font-size: 14px; font-weight: 800; color: var(--primary); margin-top: 3px; }
+    .btn-order-tag { background: var(--primary); color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 99px; font-size: 13px; font-weight: 700; }
 
     @media (max-width: 900px) {
-      .nav-container { padding: 10px 14px; gap: 10px; flex-wrap: wrap; }
-      .nav-left { width: 100%; justify-content: space-between; gap: 15px; }
-      .nav-menu { display: none; }
-      .nav-right { width: 100%; justify-content: space-between; }
-      .search-bar-top { width: 70%; }
-      
-      .exclusive-grid, .catalog-grid, .testimonial-grid { grid-template-columns: 1fr !important; gap: 16px; }
-      .main-content { margin: 15px auto; padding: 0 14px; }
-      .banner-container { border-radius: 16px; aspect-ratio: 16 / 9; }
-      .ex-card { padding: 18px; }
-      .footer { padding: 40px 16px 20px; }
-      .footer-container { flex-direction: column; gap: 30px; }
+      .product-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .footer-container { flex-direction: column; }
     }
   </style>
 </head>
@@ -250,356 +631,267 @@
 
   <nav class="navbar">
     <div class="nav-container">
-      <div class="nav-left">
-        <a class="brand-logo" onclick="switchPage('beranda')">
-          <div class="brand-icon"><img src="logo.png" alt="Logo" onerror="this.parentElement.innerText='N'"></div>
-          <span class="brand-text">Nevfa<span>Store</span></span>
+      <div class="brand-left">
+        <a href="#" class="brand-logo">
+          <div class="brand-icon">
+            <img src="logo.png" alt="Logo Nevfa" onerror="this.style.display='none'">
+          </div>
+          <span class="brand-text-custom"><span class="brand-nevfa">Nevfa</span> <span class="brand-store">Store</span></span>
         </a>
-        <ul class="nav-menu">
-          <li><a onclick="switchPage('beranda')" id="nav-beranda" class="active">Beranda</a></li>
-          <li><a onclick="switchPage('produk')" id="nav-produk">Produk</a></li>
-          <li><a onclick="switchPage('testimoni')" id="nav-testimoni">Testimoni</a></li>
-          <li><a onclick="switchPage('kontak')" id="nav-kontak">Kontak</a></li>
-        </ul>
-      </div>
-
-      <div class="nav-right">
-        <div class="search-bar-top">
-          <span class="search-icon-top" onclick="triggerSearch()">🔍</span>
-          <input type="text" id="headerSearchInput" placeholder="Cari layanan (misal: Netflix)..." onkeydown="if(event.key === 'Enter') triggerSearch()">
-          <button class="search-enter-btn" onclick="triggerSearch()">Cari</button>
+        <div class="store-open-badge">
+          <span class="status-dot-green"></span>
+          <span>OPEN</span>
         </div>
-        <a href="https://wa.me/6285196223649" target="_blank" class="btn-login">💬 WhatsApp</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">Beranda</a></li>
+        <li><a href="#katalog">Produk</a></li>
+        <li><a href="https://nevfatestimoni.netlify.app" target="_blank">Testimoni</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+      <div class="nav-right-actions">
+        <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Ganti Mode">🌙</button>
+        <a href="https://wa.me/6285196223649?text=Halo%20Nevfa%20Store" target="_blank" class="btn-nav-wa">💬 WhatsApp</a>
       </div>
     </div>
   </nav>
 
-  <div class="main-content">
-    <div id="page-beranda" class="page-view active">
-      <section class="banner-section">
-        <div class="banner-container">
-          <div class="banner-track" id="bannerTrack"></div>
-        </div>
-      </section>
-
-      <section class="exclusive-section">
-        <div class="section-header-flex">
-          <div class="section-title-main">🔥 Penawaran Eksklusif</div>
-          <a onclick="switchPage('produk')" class="btn-see-more">Lihat lebih banyak ❯</a>
-        </div>
-        <div class="exclusive-grid" id="exclusiveGrid"></div>
-      </section>
-    </div>
-
-    <div id="page-produk" class="page-view">
-      <div class="section-header-flex" style="margin-bottom: 24px;">
-        <div>
-          <h2 style="font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 4px;">Katalog Akun Premium</h2>
-          <p style="font-size: 13.5px; color: var(--text-muted);">Pilih layanan favoritmu, cek varian paket, dan pesan langsung.</p>
-        </div>
+  <!-- BANNER CAROUSEL UTAMA -->
+  <section class="carousel-section">
+    <div class="carousel-container">
+      <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-slide"><img src="banner1.jpg" alt="Promo 1" onerror="this.style.display='none'"></div>
+        <div class="carousel-slide"><img src="banner2.jpg" alt="Promo 2" onerror="this.style.display='none'"></div>
+        <div class="carousel-slide"><img src="banner3.jpg" alt="Promo 3" onerror="this.style.display='none'"></div>
       </div>
-      <div class="catalog-grid" id="catalogGrid"></div>
+      <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
+      <button class="carousel-btn next" onclick="moveCarousel(1)">&#10095;</button>
     </div>
+  </section>
 
-    <div id="page-testimoni" class="page-view">
-      <div class="content-box-card">
-        <h2>Apa Kata Pelanggan Kami?</h2>
-        <p>Ulasan nyata dari para pelanggan setia Nevfa Store yang telah menikmati layanan digital premium kami.</p>
-        <div class="testimonial-grid">
-          <div class="testi-item">
-            <div class="testi-name">Rian Pratama ⭐⭐⭐⭐⭐</div>
-            <div class="testi-text">"Netflix-nya lancar jaya kualitas 4K, adminnya super ramah dan fast response banget!"</div>
-          </div>
-          <div class="testi-item">
-            <div class="testi-name">Siti Aisyah ⭐⭐⭐⭐⭐</div>
-            <div class="testi-text">"Canva Pro aktif kurang dari 5 menit. Bener-bener recommended buat mahasiswa."</div>
-          </div>
-          <div class="testi-item">
-            <div class="testi-name">Dimas Nugroho ⭐⭐⭐⭐⭐</div>
-            <div class="testi-text">"YouTube Premium aman tanpa iklan sebulan penuh. Mantap pokoknya!"</div>
-          </div>
+  <!-- PRODUK UNGGULAN BERGESER BESAR (OTOMATIS DARI PRODUCTS.JSON) -->
+  <section class="featured-marquee-section">
+    <div class="featured-wrapper-clean">
+      <div class="featured-header-box">
+        <span class="flame-icon">🔥</span> Produk Unggulan
+      </div>
+      <div class="marquee-container">
+        <div class="marquee-track" id="featuredMarqueeTrack">
+          <!-- Otomatis diisi oleh JavaScript dari data products.json -->
         </div>
       </div>
     </div>
+  </section>
 
-    <div id="page-kontak" class="page-view">
-      <div class="content-box-card" style="text-align: center; max-width: 600px; margin: 40px auto;">
-        <h2>Hubungi Nevfa Store</h2>
-        <p style="margin-bottom: 24px;">Butuh bantuan cepat atau konfirmasi pembayaran? Silakan hubungi admin kami melalui WhatsApp resmi.</p>
-        <a href="https://wa.me/6285196223649?text=Halo%20Admin%20Nevfa%20Store" target="_blank" class="btn-login" style="padding: 12px 30px; font-size: 15px; display: inline-block;">💬 Chat WhatsApp Official</a>
-      </div>
+  <!-- KATALOG UTAMA -->
+  <section class="catalog-section" id="katalog">
+    <div style="text-align: center;">
+      <span class="section-badge">PRODUK</span>
+      <h2 class="section-title">Katalog Akun Premium</h2>
+      <p class="section-subtitle">Pilih layanan favoritmu, lihat pilihan paketnya, lalu pesan langsung via WhatsApp.</p>
     </div>
-  </div>
+    <div class="product-grid" id="productGrid">
+      <!-- Produk otomatis dimuat dari products.json -->
+    </div>
+  </section>
 
-  <footer class="footer">
+  <section class="cta-testi-section" id="testimoni">
+    <div class="cta-testi-box">
+      <h2>Apa Kata Pelanggan Kami?</h2>
+      <p>Lihat ulasan dan testimoni pelanggan Nevfa Store.</p>
+      <a href="https://nevfatestimoni.netlify.app" target="_blank" class="btn-testi">📢 Lihat Testimoni</a>
+    </div>
+  </section>
+
+  <footer class="footer" id="kontak">
     <div class="footer-container">
-      <div class="footer-left">
-        <div class="footer-brand">
-          <div class="footer-brand-icon"><img src="logo.png" alt="Logo" onerror="this.parentElement.innerText='N'"></div>
-          <span class="footer-brand-text">Nevfa <span>Store</span></span>
+      <div class="footer-brand">
+        <div class="footer-brand-header">
+          <div class="footer-logo-icon"><img src="logo.png" alt="" onerror="this.style.display='none'"></div>
+          <h3 class="footer-brand-name">Nevfa Store</h3>
         </div>
         <p class="footer-desc">Tempat untuk mendapatkan berbagai akun premium favoritmu dengan garansi resmi dan proses cepat.</p>
       </div>
-
-      <div class="footer-right">
-        <div class="footer-social-title">Ikuti Sosial Media Kami</div>
-        <div class="social-icons-row">
-          <a href="#" target="_blank" class="social-icon-btn" title="Instagram">📷</a>
-          <a href="https://wa.me/6285196223649" target="_blank" class="social-icon-btn" title="WhatsApp">💬</a>
-          <a href="#" target="_blank" class="social-icon-btn" title="TikTok">🎵</a>
-          <a href="#" target="_blank" class="social-icon-btn" title="Facebook">📘</a>
+      <div class="footer-socials">
+        <h4>Ikuti Sosial Media Kami</h4>
+        <div class="social-icons-group">
+          <a href="https://www.instagram.com/nevfa_store" target="_blank" class="social-icon-link" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="https://wa.me/6285196223649" target="_blank" class="social-icon-link" title="WhatsApp"><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
+          <a href="https://www.tiktok.com/@nevfameahnwilee" target="_blank" class="social-icon-link" title="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z"/></svg></a>
+          <a href="https://www.facebook.com/nevfastore" target="_blank" class="social-icon-link" title="Facebook"><svg viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.376 14.5 5 15.5 5H18V0h-3.808C10.59 0 9 1.589 9 4.7V8z"/></svg></a>
         </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Nevfa Store. All rights reserved.</p>
-    </div>
+    <div class="footer-bottom"><p>&copy; 2026 Nevfa Store. All rights reserved.</p></div>
   </footer>
 
-  <div class="modal-backdrop" id="productModal">
-    <div class="modal-box">
+  <!-- MODAL -->
+  <div class="modal-backdrop" id="packageModal">
+    <div class="modal-box-split">
       <button class="btn-close" onclick="closeModal()">✕</button>
       <div class="modal-col-left">
         <div class="modal-tabs">
-          <button class="tab-btn active" onclick="switchTab('benefit', event)">Benefit</button>
-          <button class="tab-btn" onclick="switchTab('garansi', event)">Garansi</button>
-          <button class="tab-btn" onclick="switchTab('deskripsi', event)">Deskripsi</button>
+          <button class="tab-btn" onclick="switchTab('benefit')">Benefit</button>
+          <button class="tab-btn active" onclick="switchTab('garansi')">Garansi</button>
+          <button class="tab-btn" onclick="switchTab('deskripsi')">Deskripsi</button>
         </div>
-        <div class="tab-pane active" id="tab-benefit"><div id="modalBenefitText">-</div></div>
-        <div class="tab-pane" id="tab-garansi"><div id="modalGaransiText">-</div></div>
-        <div class="tab-pane" id="tab-deskripsi"><div id="modalDeskripsiText">-</div></div>
+        <div class="tab-content" id="tab-benefit"><div id="modalBenefitText">-</div></div>
+        <div class="tab-content active" id="tab-garansi"><div id="modalGaransiText">-</div></div>
+        <div class="tab-content" id="tab-deskripsi"><div id="modalDeskripsiText">-</div></div>
       </div>
       <div class="modal-col-right">
-        <h3 class="modal-title-main" id="modalTitle">Judul Produk</h3>
-        <p class="modal-subtitle-main">Pilih varian paket berlangganan:</p>
-        <div class="package-list" id="modalPackagesList"></div>
+        <h3 class="modal-title" id="modalTitle">Produk</h3>
+        <p class="modal-subtitle">Pilih paket yang kamu inginkan.</p>
+        <div class="package-container" id="modalPackages"></div>
       </div>
     </div>
   </div>
 
   <script>
-    const NOMOR_WA = "6285196223649";
-    
-    let defaultData = {
-      banners: ["banner1.jpg", "banner2.jpg", "banner3.jpg"],
-      products: [
-        {
-          id: "netflix",
-          title: "Netflix",
-          logo: "netflix.png",
-          startPrice: "Rp20.000",
-          desc: "Streaming film & series favorit kualitas Ultra HD 4K anti lemot.",
-          cardBg: "linear-gradient(135deg, rgba(229, 9, 20, 0.35) 0%, rgba(18, 12, 31, 0.95) 75%)",
-          benefit: "• Streaming Ultra HD 4K anti lemot\n• Support Smart TV, HP, & Laptop\n• Legal resmi dan aman anti hold",
-          garansi: "• Garansi penuh selama durasi berlangganan\n• Pergantian akun langsung jika terjadi kendala",
-          deskripsi: "Akun Netflix resmi berkualitas tinggi siap pakai untuk hiburan keluarga.",
-          packages: [
-            { nama: "Sharing 1 Bulan", harga: "Rp20.000" },
-            { nama: "Anti Limit 1 Bulan", harga: "Rp40.000" },
-            { nama: "Private 1 Bulan", harga: "Rp110.000" }
-          ]
-        },
-        {
-          id: "canva",
-          title: "Canva Pro",
-          logo: "canva.png",
-          startPrice: "Rp8.000",
-          desc: "Desain tanpa batas dengan semua fitur premium & template pro.",
-          cardBg: "linear-gradient(135deg, rgba(0, 196, 204, 0.35) 0%, rgba(18, 12, 31, 0.95) 75%)",
-          benefit: "• Akses semua template & elemen Pro\n• Fitur hapus latar belakang otomatis\n• Brand kit & penyimpanan besar",
-          garansi: "• Garansi invite ulang jika link tim bermasalah\n• Full support masa aktif",
-          deskripsi: "Akun Canva Pro via link invite resmi tim Edu/Enterprise anti ribet.",
-          packages: [
-            { nama: "Invite Member 1 Bulan", harga: "Rp8.000" },
-            { nama: "Invite Member 1 Tahun", harga: "Rp25.000" }
-          ]
-        },
-        {
-          id: "youtube",
-          title: "YouTube Premium",
-          logo: "youtube.png",
-          startPrice: "Rp25.000",
-          desc: "Nonton video tanpa iklan, background play, dan download offline.",
-          cardBg: "linear-gradient(135deg, rgba(255, 0, 0, 0.35) 0%, rgba(18, 12, 31, 0.95) 75%)",
-          benefit: "• Bebas iklan total di semua perangkat\n• Putar video di latar belakang / HP terkunci\n• Akses YouTube Music",
-          garansi: "• Garansi full 1 bulan anti putus di tengah jalan",
-          deskripsi: "YouTube Premium legal via invite keluarga atau akun baru.",
-          packages: [
-            { nama: "Famplan Invite 1 Bulan", harga: "Rp10.000" },
-            { nama: "Indplan 1 Bulan", harga: "Rp25.000" }
-          ]
-        }
-      ]
-    };
+    const NOMOR_WHATSAPP = "6285196223649";
 
-    function getStoreData() {
-      const saved = localStorage.getItem('nevfa_store_data');
-      if (saved) {
-        try { 
-          const parsed = JSON.parse(saved);
-          if (parsed && parsed.products && parsed.products.length > 0) {
-            return parsed;
-          }
-        } catch(e){}
-      }
-      return defaultData;
-    }
-
-    function renderApp() {
-      const data = getStoreData();
-
-      // Render Banners
-      const track = document.getElementById('bannerTrack');
-      if (track) {
-        track.innerHTML = '';
-        data.banners.forEach(b => {
-          track.innerHTML += `
-            <div class="banner-slide">
-              <img src="${b}" alt="Banner" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:#a1a1aa;font-weight:600;\'>${b} belum tersedia</div>'">
-            </div>
-          `;
-        });
-      }
-
-      // Render Exclusive Cards
-      const exGrid = document.getElementById('exclusiveGrid');
-      if (exGrid) {
-        exGrid.innerHTML = '';
-        data.products.forEach(prod => {
-          exGrid.innerHTML += `
-            <div class="ex-card" id="card-${prod.id}" style="background: ${prod.cardBg || 'var(--card-bg)'};" onclick="openModal('${prod.id}')">
-              <div class="ex-card-img"><img src="${prod.logo}" alt="${prod.title}" onerror="this.style.display='none'; this.parentElement.innerText='📦'"></div>
-              <div class="ex-card-info">
-                <div class="ex-card-title">${prod.title}</div>
-                <span class="ex-card-sub">${prod.desc || ''}</span>
-                <div class="ex-card-footer">
-                  <span class="badge-promo-tag">Promo</span>
-                  <span class="badge-discount">⚡ Hot</span>
-                </div>
-              </div>
-            </div>
-          `;
-        });
-      }
-
-      // Render Catalog
-      const catGrid = document.getElementById('catalogGrid');
-      if (catGrid) {
-        catGrid.innerHTML = '';
-        data.products.forEach(prod => {
-          catGrid.innerHTML += `
-            <div class="catalog-card" id="catalog-${prod.id}">
-              <div class="catalog-top">
-                <div class="catalog-logo"><img src="${prod.logo}" alt="${prod.title}" onerror="this.style.display='none'; this.parentElement.innerText='📦'"></div>
-                <div>
-                  <h3 class="catalog-title">${prod.title}</h3>
-                  <div class="catalog-price-label">Mulai dari</div>
-                  <div class="catalog-price-val">${prod.startPrice}</div>
-                </div>
-              </div>
-              <p class="catalog-desc">${prod.desc || ''}</p>
-              <button class="btn-detail-prod" onclick="openModal('${prod.id}')">Lihat Paket & Detail ❯</button>
-            </div>
-          `;
-        });
+    function toggleTheme() {
+      const html = document.documentElement;
+      const btn = document.getElementById('themeToggleBtn');
+      if (html.getAttribute('data-theme') === 'dark') {
+        html.removeAttribute('data-theme');
+        btn.innerHTML = '🌙';
+        localStorage.setItem('nevfa_theme', 'light');
+      } else {
+        html.setAttribute('data-theme', 'dark');
+        btn.innerHTML = '☀️';
+        localStorage.setItem('nevfa_theme', 'dark');
       }
     }
 
-    function triggerSearch() {
-      const input = document.getElementById('headerSearchInput');
-      const q = input.value.trim().toLowerCase();
-      if (!q) return;
+    if (localStorage.getItem('nevfa_theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.getElementById('themeToggleBtn').innerHTML = '☀️';
+    }
 
-      switchPage('beranda');
-      const data = getStoreData();
-      let found = false;
-
-      data.products.forEach(prod => {
-        const card = document.getElementById(`card-${prod.id}`);
-        if (!card) return;
-
-        if (prod.title.toLowerCase().includes(q)) {
-          found = true;
-          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          card.classList.add('highlight-pulse');
-          setTimeout(() => {
-            card.classList.remove('highlight-pulse');
-          }, 4000);
+    let products = [];
+    async function loadProductsOnline() {
+      try {
+        const response = await fetch('products.json?v=' + Date.now());
+        if (response.ok) {
+          products = await response.json();
+          renderCatalog();
+          renderFeaturedMarquee(); // <-- INI YANG KURANG SEBELUMNYA
         }
+      } catch (e) {
+        console.error("Gagal memuat produk online.");
+      }
+    }
+
+    function renderCatalog() {
+      const grid = document.getElementById('productGrid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      products.forEach((prod, index) => {
+        const isBest = index === 0 ? `<div class="badge-best">👑 BEST SELLER</div>` : '';
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          ${isBest}
+          <div class="card-top-row">
+            <div class="logo-container-horizontal"><img src="${prod.logo}" alt="${prod.title}" onerror="this.style.display='none'"></div>
+            <div class="card-info-right">
+              <h3 class="card-title">${prod.title}</h3>
+              <div class="card-price-label">Mulai dari</div>
+              <div class="card-price-value">${prod.startPrice}</div>
+            </div>
+          </div>
+          <p class="card-desc">${prod.desc}</p>
+          <div class="features-row">
+            <span class="feature-pill">✔ Ready</span>
+            <span class="feature-pill">⚡ Fast</span>
+          </div>
+          <div class="specs-row">
+            <span>🛡️ Garansi Full</span>
+            <span>🔒 Legal / Aman</span>
+          </div>
+          <div class="btn-group">
+            <button class="btn-purple" onclick="openProductModal('${prod.id}')">Lihat Paket ❯</button>
+            <a href="#" onclick="pesanWA('${prod.title}', 'Paket ${prod.title}')" class="btn-white">💬 Pesan via WhatsApp</a>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // FUNGSI UNTUK MERENDER SLIDER LOGO PRODUK UNGGULAN
+    function renderFeaturedMarquee() {
+      const track = document.getElementById('featuredMarqueeTrack');
+      if (!track) return;
+      
+      let htmlContent = '';
+      products.forEach(prod => {
+        htmlContent += `<div class="marquee-item"><img src="${prod.logo}" alt="${prod.title}" onerror="this.style.display='none'"></div>`;
+      });
+      // Duplikasi untuk looping mulus
+      products.forEach(prod => {
+        htmlContent += `<div class="marquee-item"><img src="${prod.logo}" alt="${prod.title}" onerror="this.style.display='none'"></div>`;
       });
 
-      if (!found) {
-        alert("Produk atau layanan "" + input.value + "" tidak ditemukan.");
-      }
+      track.innerHTML = htmlContent;
     }
 
-    function switchPage(pageId) {
-      document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
-      
-      const targetPage = document.getElementById('page-' + pageId);
-      if (targetPage) targetPage.classList.add('active');
-      const navEl = document.getElementById('nav-' + pageId);
-      if(navEl) navEl.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    function pesanWA(produk, paket, harga = "") {
+      let pesan = `Halo Nevfa Store, saya mau pesan:\n\nProduk: ${produk}\nPaket: ${paket}`;
+      if (harga) pesan += `\nHarga: ${harga}`;
+      window.open(`https://wa.me/${NOMOR_WHATSAPP}?text=${encodeURIComponent(pesan)}`, '_blank');
     }
 
-    function openModal(id) {
-      const data = getStoreData();
-      const prod = data.products.find(p => p.id === id);
-      if(!prod) return;
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+      event.target.classList.add('active');
+      document.getElementById('tab-' + tabName).classList.add('active');
+    }
+
+    function openProductModal(prodId) {
+      const prod = products.find(p => p.id === prodId);
+      if (!prod) return;
 
       document.getElementById('modalTitle').innerText = prod.title;
-      document.getElementById('modalBenefitText').innerText = (prod.benefit || '').replace(/\\n/g, '\n');
-      document.getElementById('modalGaransiText').innerText = (prod.garansi || '').replace(/\\n/g, '\n');
-      document.getElementById('modalDeskripsiText').innerText = (prod.deskripsi || '').replace(/\\n/g, '\n');
+      document.getElementById('modalBenefitText').innerText = prod.benefit || '-';
+      document.getElementById('modalGaransiText').innerText = prod.garansi || '-';
+      document.getElementById('modalDeskripsiText').innerText = prod.deskripsi || '-';
 
-      const pkgList = document.getElementById('modalPackagesList');
-      pkgList.innerHTML = '';
+      const listContainer = document.getElementById('modalPackages');
+      listContainer.innerHTML = '';
       if (prod.packages && prod.packages.length > 0) {
         prod.packages.forEach(pkg => {
-          pkgList.innerHTML += `
-            <div class="package-row">
-              <div class="pkg-info">
-                <h4>${pkg.nama}</h4>
-                <p>${pkg.harga}</p>
-              </div>
-              <a href="https://wa.me/${NOMOR_WA}?text=${encodeURIComponent('Halo Nevfa Store, saya mau order ' + prod.title + ' - ' + pkg.nama + ' (' + pkg.harga + ')')}" target="_blank" class="btn-wa-order">💬 Pesan</a>
-            </div>
+          const bersihNama = pkg.nama.replace(/[-–—]/g, '').trim();
+          const item = document.createElement('div');
+          item.className = 'package-row';
+          item.innerHTML = `
+            <div class="pkg-info"><h4>${bersihNama}</h4><p>${pkg.harga}</p></div>
+            <a href="#" class="btn-order-tag" onclick="pesanWA('${prod.title}', '${bersihNama}', '${pkg.harga}')">💬 Pesan</a>
           `;
+          listContainer.appendChild(item);
         });
+      } else {
+        listContainer.innerHTML = `<p style="text-align:center; color:var(--text-muted); padding: 20px;">Belum ada paket tersedia.</p>`;
       }
-      document.getElementById('productModal').style.display = 'flex';
+
+      document.getElementById('packageModal').style.display = 'flex';
     }
 
-    function closeModal() {
-      document.getElementById('productModal').style.display = 'none';
+    function closeModal() { document.getElementById('packageModal').style.display = 'none'; }
+    window.onclick = function(e) { if (e.target === document.getElementById('packageModal')) closeModal(); }
+
+    window.onload = loadProductsOnline;
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const track = document.getElementById('carouselTrack');
+    function moveCarousel(direction) {
+      if (!slides.length || !track) return;
+      currentSlide = (currentSlide + direction + slides.length) % slides.length;
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
-
-    function switchTab(tabName, event) {
-      document.querySelectorAll('.tab-pane'). terserah = '';
-      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      const targetTab = document.getElementById('tab-' + tabName);
-      if (targetTab) targetTab.classList.add('active');
-      if (event && event.target) event.target.classList.add('active');
-    }
-
-    window.onclick = function(e) {
-      const modal = document.getElementById('productModal');
-      if (e.target === modal) closeModal();
-    }
-
-    let slideIdx = 0;
-    setInterval(() => {
-      const slides = document.getElementsByClassName('banner-slide');
-      const track = document.getElementById('bannerTrack');
-      if(slides.length <= 1 || !track) return;
-      slideIdx = (slideIdx + 1) % slides.length;
-      track.style.transform = `translateX(-${slideIdx * 100}%)`;
-    }, 4500);
-
-    window.onload = renderApp;
+    setInterval(() => moveCarousel(1), 5000);
   </script>
 </body>
 </html>
