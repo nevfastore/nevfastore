@@ -9,10 +9,10 @@
   <link rel="icon" type="image/png" href="logo.png?v=2">
   <link rel="shortcut icon" type="image/png" href="logo.png?v=2">
 
-  <!-- GOOGLE FONTS MODERN -->
+  <!-- GOOGLE FONTS INTER & SPACE GROTESK -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
 
   <meta name="google-site-verification" content="m3NvNDjc7CSZtHrQy17T3SNQFjTKUJpsSWSN3NxQD2w" />
   
@@ -51,7 +51,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       scroll-behavior: smooth;
       transition: background-color 0.3s, color 0.3s, border-color 0.3s;
     }
@@ -134,7 +134,7 @@
       padding: 5px 12px;
       border-radius: 99px;
       font-size: 11.5px;
-      font-weight: 800;
+      font-weight: 600;
       color: #16a34a;
     }
 
@@ -180,7 +180,7 @@
       padding: 9px 22px;
       border-radius: 99px;
       font-size: 13.5px;
-      font-weight: 700;
+      font-weight: 600;
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -239,79 +239,85 @@
     .carousel-btn.prev { left: 14px; }
     .carousel-btn.next { right: 14px; }
 
-    /* PRODUK FAVORIT BUNDAR BERGESER */
-    .circular-marquee-section {
+    /* PRODUK UNGGULAN KOTAK BERGESER (GAYA FOTO KANAN) */
+    .featured-boxes-section {
       max-width: 1200px;
-      margin: 20px auto 35px;
+      margin: 20px auto 40px;
       padding: 0 20px;
-      overflow: hidden;
     }
 
-    .section-header-mini {
-      text-align: center;
-      margin-bottom: 12px;
+    .featured-container-box {
+      background: rgba(19, 19, 26, 0.7);
+      border: 1.5px solid #27272a;
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
     }
 
-    .section-header-mini span {
-      display: inline-block;
-      font-size: 13px;
-      font-weight: 800;
-      color: var(--primary);
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      background: rgba(139, 44, 245, 0.08);
-      padding: 4px 14px;
-      border-radius: 99px;
-      border: 1px solid rgba(139, 44, 245, 0.2);
-    }
-
-    .circular-track {
+    .featured-header-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #f4f4f5;
+      margin-bottom: 18px;
       display: flex;
-      gap: 22px;
-      width: max-content;
-      animation: scrollCircles 22s linear infinite;
-      padding: 8px 0;
+      align-items: center;
+      gap: 8px;
     }
 
-    .circular-track:hover { animation-play-state: paused; }
+    .featured-grid-slider {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
 
-    .circle-item {
-      width: 68px;
-      height: 68px;
-      border-radius: 50%;
-      background: var(--card-bg);
-      border: 2px solid var(--border-color);
+    .featured-mini-card {
+      background: #18181b;
+      border: 1.5px solid #3f3f46;
+      border-radius: 20px;
+      padding: 14px 10px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 15px rgba(139, 44, 245, 0.1);
+      transition: all 0.2s;
+    }
+
+    .featured-mini-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(139, 44, 245, 0.25);
+    }
+
+    .featured-mini-logo {
+      width: 54px;
+      height: 54px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 6px 18px rgba(139, 44, 245, 0.12);
+      background: #ffffff;
+      border-radius: 14px;
       overflow: hidden;
-      flex-shrink: 0;
-      transition: transform 0.2s, border-color 0.2s;
     }
 
-    .circle-item:hover {
-      transform: scale(1.12);
-      border-color: var(--primary);
-    }
-
-    .circle-item img {
-      width: 72%;
-      height: 72%;
+    .featured-mini-logo img {
+      width: 80%;
+      height: 80%;
       object-fit: contain;
-      border-radius: 50%;
     }
 
-    @keyframes scrollCircles {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+    .featured-mini-name {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #f4f4f5;
     }
 
     /* SECTION HEADINGS */
     .section-badge {
       color: var(--primary);
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 600;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       margin-bottom: 8px;
@@ -321,7 +327,7 @@
 
     .section-title {
       font-size: 32px;
-      font-weight: 900;
+      font-weight: 800;
       color: var(--text-main);
       letter-spacing: -0.8px;
       margin-bottom: 8px;
@@ -337,7 +343,7 @@
       text-align: center;
     }
 
-    /* KATALOG PRODUK GAYA HORIZONTAL (SESUAI GAMBAR REFERENSI) */
+    /* KATALOG PRODUK GAYA HORIZONTAL (LOGO LEBIH BESAR & FONT INTER SEMIBOLD) */
     .catalog-section {
       max-width: 1200px;
       margin: 15px auto 90px;
@@ -368,7 +374,6 @@
       border-color: var(--primary);
     }
 
-    /* BADGE BEST SELLER DI POJOK KIRI ATAS */
     .badge-best {
       position: absolute;
       top: 18px;
@@ -376,7 +381,7 @@
       background: linear-gradient(135deg, #f59e0b, #d97706);
       color: #ffffff;
       font-size: 11px;
-      font-weight: 800;
+      font-weight: 700;
       padding: 4px 12px;
       border-radius: 99px;
       display: inline-flex;
@@ -385,7 +390,6 @@
       box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
     }
 
-    /* BAGIAN ATAS KARTU: LOGO KIRI, TEKS KANAN */
     .card-top-row {
       display: flex;
       align-items: center;
@@ -393,10 +397,11 @@
       margin-bottom: 16px;
     }
 
+    /* LOGO DIPERBESAR */
     .logo-container-horizontal {
-      width: 80px;
-      height: 80px;
-      border-radius: 20px;
+      width: 92px;
+      height: 92px;
+      border-radius: 22px;
       background: rgba(139, 44, 245, 0.06);
       border: 1px solid var(--border-color);
       display: flex;
@@ -407,10 +412,10 @@
     }
 
     .logo-container-horizontal img {
-      width: 75%;
-      height: 75%;
+      width: 82%;
+      height: 82%;
       object-fit: contain;
-      border-radius: 14px;
+      border-radius: 16px;
     }
 
     .card-info-right {
@@ -419,37 +424,36 @@
     }
 
     .card-title {
-      font-size: 22px;
-      font-weight: 900;
+      font-size: 23px;
+      font-weight: 700;
       color: var(--text-main);
       letter-spacing: -0.5px;
       margin-bottom: 4px;
     }
 
     .card-price-label {
-      font-size: 12px;
+      font-size: 12.5px;
       color: var(--text-muted);
       font-weight: 600;
     }
 
     .card-price-value {
-      font-size: 26px;
-      font-weight: 900;
+      font-size: 27px;
+      font-weight: 800;
       background: var(--primary-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       line-height: 1.1;
     }
 
-    /* DESKRIPSI SINGKAT */
     .card-desc {
       font-size: 13.5px;
       color: var(--text-muted);
       line-height: 1.5;
       margin-bottom: 18px;
+      font-weight: 600;
     }
 
-    /* BADGE FITUR KECIL DI TENGAH */
     .features-row {
       display: flex;
       gap: 10px;
@@ -461,7 +465,7 @@
       border: 1px solid rgba(139, 44, 245, 0.15);
       color: var(--primary);
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 600;
       padding: 5px 14px;
       border-radius: 99px;
       display: inline-flex;
@@ -469,7 +473,6 @@
       gap: 6px;
     }
 
-    /* GARANSI & LEGAL */
     .specs-row {
       display: flex;
       gap: 18px;
@@ -479,13 +482,6 @@
       margin-bottom: 20px;
     }
 
-    .specs-row span {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    /* TOMBOL AKSI DI BAWAH */
     .btn-group {
       display: flex;
       flex-direction: column;
@@ -499,7 +495,7 @@
       border: none;
       padding: 14px 0;
       border-radius: 99px;
-      font-weight: 800;
+      font-weight: 700;
       font-size: 14.5px;
       cursor: pointer;
       width: 100%;
@@ -518,7 +514,7 @@
       border: 1.5px solid var(--border-color);
       padding: 13px 0;
       border-radius: 99px;
-      font-weight: 800;
+      font-weight: 700;
       font-size: 13.5px;
       cursor: pointer;
       width: 100%;
@@ -541,8 +537,8 @@
       color: #ffffff;
       box-shadow: 0 20px 50px rgba(139, 44, 245, 0.35);
     }
-    .cta-testi-box h2 { font-size: 34px; font-weight: 900; margin-bottom: 8px; }
-    .cta-testi-box p { font-size: 14.5px; opacity: 0.95; margin-bottom: 24px; }
+    .cta-testi-box h2 { font-size: 34px; font-weight: 800; margin-bottom: 8px; }
+    .cta-testi-box p { font-size: 14.5px; opacity: 0.95; margin-bottom: 24px; font-weight: 600; }
 
     .btn-testi {
       background: #0f172a;
@@ -551,7 +547,7 @@
       padding: 13px 32px;
       border-radius: 99px;
       font-size: 14px;
-      font-weight: 800;
+      font-weight: 700;
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -565,7 +561,7 @@
     .footer-brand-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
     .footer-logo-icon { width: 38px; height: 38px; border-radius: 10px; background: #121216; border: 1px solid #27272a; display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .footer-logo-icon img { width: 100%; height: 100%; object-fit: contain; }
-    .footer-brand-name { font-size: 18px; font-weight: 800; }
+    .footer-brand-name { font-size: 18px; font-weight: 700; }
     .footer-desc { font-size: 13.5px; color: #94a3b8; line-height: 1.6; }
 
     .footer-socials h4 { font-size: 15px; font-weight: 700; margin-bottom: 14px; color: #fff; }
@@ -603,7 +599,7 @@
     .tab-content { display: none; font-size: 13.5px; color: var(--text-muted); line-height: 1.65; overflow-y: auto; max-height: 380px; white-space: pre-line; }
     .tab-content.active { display: block; }
     .modal-col-right { flex: 1; display: flex; flex-direction: column; }
-    .modal-title { font-size: 26px; font-weight: 900; color: var(--text-main); }
+    .modal-title { font-size: 26px; font-weight: 800; color: var(--text-main); }
     .modal-subtitle { font-size: 13.5px; color: var(--text-muted); margin: 4px 0 20px; }
     .package-container { display: flex; flex-direction: column; gap: 12px; overflow-y: auto; max-height: 380px; }
     .package-row {
@@ -611,12 +607,13 @@
       background: var(--package-bg); padding: 16px 20px; border-radius: 20px;
     }
     .package-row:hover { border-color: var(--primary); }
-    .pkg-info h4 { font-size: 14.5px; font-weight: 800; color: var(--text-main); }
-    .pkg-info p { font-size: 14px; font-weight: 900; color: var(--primary); margin-top: 3px; }
-    .btn-order-tag { background: var(--primary); color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 99px; font-size: 13px; font-weight: 800; }
+    .pkg-info h4 { font-size: 14.5px; font-weight: 700; color: var(--text-main); }
+    .pkg-info p { font-size: 14px; font-weight: 800; color: var(--primary); margin-top: 3px; }
+    .btn-order-tag { background: var(--primary); color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 99px; font-size: 13px; font-weight: 700; }
 
     @media (max-width: 900px) {
       .product-grid { grid-template-columns: 1fr; }
+      .featured-grid-slider { grid-template-columns: repeat(3, 1fr); }
       .nav-links { display: none; }
       .footer-container { flex-direction: column; }
     }
@@ -664,33 +661,38 @@
     </div>
   </section>
 
-  <!-- PRODUK FAVORIT BUNDAR BERGESER -->
-  <section class="circular-marquee-section">
-    <div class="section-header-mini">
-      <span>⭐ Produk Favorit</span>
-    </div>
-    <div class="circular-track">
-      <div class="circle-item"><img src="netflix.png" alt="" onerror="this.style.display='none'"></div>
-      <div class="circle-item"><img src="vidio.png" alt="" onerror="this.style.display='none'"></div>
-      <div class="circle-item"><img src="disney.png" alt="" onerror="this.style.display='none'"></div>
-      <div class="circle-item"><img src="capcut.png" alt="" onerror="this.style.display='none'"></div>
-      <div class="circle-item"><img src="youtube.png" alt="" onerror="this.style.display='none'"></div>
-      <div class="circle-item"><img src="canva.png" alt="" onerror="this.style.display='none'"></div>
-      <div class="circle-item"><img src="wetv.png" alt="" onerror="this.style.display='none'"></div>
-      <div class="circle-item"><img src="viu.png" alt="" onerror="this.style.display='none'"></div>
-      <!-- Duplikasi untuk looping -->
-      <div class="circle-item"><img src="netflix.png" alt="" onerror="this.style.display='none'"></div>
-      <div class="circle-item"><img src="vidio.png" alt="" onerror="this.style.display='none'"></div>
-      <div class="circle-item"><img src="disney.png" alt="" onerror="this.style.display='none'"></div>
-      <div class="circle-item"><img src="capcut.png" alt="" onerror="this.style.display='none'"></div>
-      <div class="circle-item"><img src="youtube.png" alt="" onerror="this.style.display='none'"></div>
-      <div class="circle-item"><img src="canva.png" alt="" onerror="this.style.display='none'"></div>
-      <div class="circle-item"><img src="wetv.png" alt="" onerror="this.style.display='none'"></div>
-      <div class="circle-item"><img src="viu.png" alt="" onerror="this.style.display='none'"></div>
+  <!-- PRODUK UNGGULAN PILIHAN (5 KOTAK DENGAN OUTLINE ESTETIK) -->
+  <section class="featured-boxes-section">
+    <div class="featured-container-box">
+      <div class="featured-header-title">
+        <span>🔥</span> Produk Unggulan
+      </div>
+      <div class="featured-grid-slider">
+        <div class="featured-mini-card">
+          <div class="featured-mini-logo"><img src="netflix.png" alt="Netflix" onerror="this.style.display='none'"></div>
+          <div class="featured-mini-name">Netflix</div>
+        </div>
+        <div class="featured-mini-card">
+          <div class="featured-mini-logo"><img src="canva.png" alt="Canva" onerror="this.style.display='none'"></div>
+          <div class="featured-mini-name">Canva Pro</div>
+        </div>
+        <div class="featured-mini-card">
+          <div class="featured-mini-logo"><img src="capcut.png" alt="CapCut" onerror="this.style.display='none'"></div>
+          <div class="featured-mini-name">CapCut Pro</div>
+        </div>
+        <div class="featured-mini-card">
+          <div class="featured-mini-logo"><img src="youtube.png" alt="YouTube" onerror="this.style.display='none'"></div>
+          <div class="featured-mini-name">YouTube</div>
+        </div>
+        <div class="featured-mini-card">
+          <div class="featured-mini-logo"><img src="vidio.png" alt="Vidio" onerror="this.style.display='none'"></div>
+          <div class="featured-mini-name">Vidio Platinum</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- KATALOG UTAMA (MODEL HORIZONTAL SEPERTI REFERENSI) -->
+  <!-- KATALOG UTAMA (HORIZONTAL DENGAN LOGO BESAR & FONT INTER SEMIBOLD) -->
   <section class="catalog-section" id="katalog">
     <div style="text-align: center;">
       <span class="section-badge">PRODUK</span>
@@ -794,7 +796,6 @@
       if (!grid) return;
       grid.innerHTML = '';
       products.forEach((prod, index) => {
-        // Produk pertama/kedua bisa kita beri badge Best Seller biar makin keren
         const isBest = index === 0 ? `<div class="badge-best">👑 BEST SELLER</div>` : '';
         const card = document.createElement('div');
         card.className = 'card';
