@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel Admin Real-Time — Nevfa Store</title>
+  <title>Panel Admin Lengkap — Nevfa Store</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -151,13 +151,6 @@
       align-items: center;
     }
 
-    .banner-item {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 8px;
-      align-items: center;
-    }
-
     .product-box {
       background: rgba(255,255,255,0.02);
       border: 1px solid var(--border-color);
@@ -190,99 +183,73 @@
       </div>
     </div>
 
-    <div class="alert-box" id="alertBox">✅ Perubahan berhasil disimpan! File <b>products.json</b> otomatis ter-download. Masukkan ke folder project kamu.</div>
+    <div class="alert-box" id="alertBox">✅ Berhasil! File <b>products.json</b> otomatis ter-download. Masukkan ke folder project kamu.</div>
 
-    <!-- 1. KELOLA BANNER CAROUSEL -->
-    <div class="admin-card">
-      <h3>🖼️ Kelola Banner Carousel (Promo)</h3>
-      <p>Atur nama file gambar banner utama yang berjalan di beranda.</p>
-      <div id="bannerListContainer"></div>
-      <button class="btn-purple" onclick="addBanner()" style="padding: 6px 14px; font-size: 12px; margin-top: 8px;">+ Tambah Banner</button>
-    </div>
-
-    <!-- 2. KELOLA PRODUK -->
+    <!-- KELOLA PRODUK -->
     <div class="admin-card">
       <h3>
-        📦 Kelola Katalog Produk & Varian
+        📦 Kelola Katalog Produk, Benefit, Garansi & Varian
         <button class="btn-purple" onclick="addProduct()" style="padding: 6px 14px; font-size: 12px;">+ Tambah Produk Baru</button>
       </h3>
-      <p>Kelola informasi detail produk, foto logo, benefit, garansi, deskripsi, dan varian harga.</p>
+      <p>Edit nama, logo, harga mulai, deskripsi, benefit, garansi, deskripsi lengkap, dan paket varian secara bebas.</p>
       
       <div id="productListContainer"></div>
     </div>
   </div>
 
   <script>
-    let storeData = {
-      banners: ["banner1.jpg", "banner2.jpg", "banner3.jpg"],
-      products: [
-        {
-          id: "netflix",
-          title: "Netflix",
-          logo: "netflix.png",
-          startPrice: "Rp20.000",
-          desc: "Streaming film & series favorit dengan kualitas terbaik.",
-          benefit: "• Streaming Ultra HD 4K anti lemot\n• Support Smart TV, HP, & Laptop\n• Legal resmi dan aman anti hold",
-          garansi: "• Garansi penuh selama durasi berlangganan\n• Pergantian akun langsung jika terjadi kendala",
-          deskripsi: "Akun Netflix resmi berkualitas tinggi siap pakai untuk hiburan keluarga.",
-          packages: [
-            { nama: "Sharing 1 Bulan", harga: "Rp20.000" },
-            { nama: "Anti Limit 1 Bulan", harga: "Rp40.000" },
-            { nama: "Private 1 Bulan", harga: "Rp110.000" }
-          ]
-        },
-        {
-          id: "canva",
-          title: "Canva Pro",
-          logo: "canva.png",
-          startPrice: "Rp8.000",
-          desc: "Desain tanpa batas dengan semua fitur premium Canva.",
-          benefit: "• Akses semua template & elemen Pro\n• Fitur hapus latar belakang otomatis\n• Brand kit & penyimpanan besar",
-          garansi: "• Garansi invite ulang jika link tim bermasalah\n• Full support masa aktif",
-          deskripsi: "Akun Canva Pro via link invite resmi tim Edu/Enterprise anti ribet.",
-          packages: [
-            { nama: "Invite Member 1 Bulan", harga: "Rp8.000" },
-            { nama: "Invite Member 1 Tahun", harga: "Rp25.000" }
-          ]
-        }
-      ]
-    };
+    let currentProducts = [
+      {
+        id: "netflix",
+        title: "Netflix",
+        logo: "netflix.png",
+        startPrice: "Rp20.000",
+        desc: "Streaming film & series favorit dengan kualitas terbaik.",
+        benefit: "Streaming Ultra HD 4K anti lemot, support TV & HP, legal resmi.",
+        garansi: "Garansi full sesuai durasi berlangganan.",
+        deskripsi: "Akun Netflix resmi berkualitas tinggi anti hold.",
+        packages: [
+          { nama: "Sharing 1 Bulan", harga: "Rp20.000" },
+          { nama: "Anti Limit 1 Bulan", harga: "Rp40.000" },
+          { nama: "Private 1 Bulan", harga: "Rp110.000" }
+        ]
+      },
+      {
+        id: "canva",
+        title: "Canva Pro",
+        logo: "canva.png",
+        startPrice: "Rp8.000",
+        desc: "Desain tanpa batas dengan semua fitur premium Canva.",
+        benefit: "Akses semua template pro, elemen pro, hapus latar belakang otomatis, dan kit merek.",
+        garansi: "Garansi invite ulang jika link tim kendala selama masa aktif.",
+        deskripsi: "Akun Canva Pro via link invite resmi team edu/enterprise.",
+        packages: [
+          { nama: "Invite Member 1 Bulan", harga: "Rp8.000" },
+          { nama: "Invite Member 1 Tahun", harga: "Rp25.000" }
+        ]
+      }
+    ];
 
     async function loadAdminData() {
       try {
         const res = await fetch('products.json?v=' + Date.now());
         if (res.ok) {
           const data = await res.json();
-          if (Array.isArray(data)) {
-            storeData.products = data;
-          } else if (data && data.products) {
-            storeData = data;
+          if (Array.isArray(data) && data.length > 0) {
+            currentProducts = data;
           }
         }
       } catch (e) {
-        console.log("Menggunakan data default");
+        console.log("Memuat dari default/lokal");
       }
-      renderAdmin();
+      renderAdminList();
     }
 
-    function renderAdmin() {
-      // Render Banner
-      const bContainer = document.getElementById('bannerListContainer');
-      bContainer.innerHTML = '';
-      storeData.banners.forEach((b, bIdx) => {
-        bContainer.innerHTML += `
-          <div class="banner-item">
-            <input type="text" class="form-control" value="${b}" oninput="updateBanner(${bIdx}, this.value)" placeholder="Nama file banner (cth: banner1.jpg)">
-            <button class="btn-danger" onclick="removeBanner(${bIdx})">✕</button>
-          </div>
-        `;
-      });
-
-      // Render Produk
+    function renderAdminList() {
       const container = document.getElementById('productListContainer');
       container.innerHTML = '';
 
-      storeData.products.forEach((prod, pIdx) => {
+      currentProducts.forEach((prod, pIdx) => {
         let pkgHtml = '';
         if (prod.packages) {
           prod.packages.forEach((pkg, pkgIdx) => {
@@ -309,7 +276,7 @@
                 <input type="text" class="form-control" value="${prod.title || ''}" oninput="updateProd(${pIdx}, 'title', this.value)">
               </div>
               <div class="form-group">
-                <label>Nama File Foto/Logo (.png):</label>
+                <label>Nama File Logo (.png):</label>
                 <input type="text" class="form-control" value="${prod.logo || ''}" oninput="updateProd(${pIdx}, 'logo', this.value)">
               </div>
               <div class="form-group">
@@ -347,49 +314,53 @@
       });
     }
 
-    function updateBanner(idx, val) { storeData.banners[idx] = val; }
-    function addBanner() { storeData.banners.push("banner.jpg"); renderAdmin(); }
-    function removeBanner(idx) { storeData.banners.splice(idx, 1); renderAdmin(); }
-
-    function updateProd(pIdx, field, val) { storeData.products[pIdx][field] = val; }
+    function updateProd(pIdx, field, val) {
+      currentProducts[pIdx][field] = val;
+    }
 
     function addProduct() {
-      storeData.products.push({
+      currentProducts.push({
         id: "prod_" + Date.now(),
         title: "Produk Baru",
         logo: "logo.png",
         startPrice: "Rp10.000",
         desc: "Deskripsi singkat produk baru.",
-        benefit: "• Benefit 1\n• Benefit 2",
-        garansi: "• Garansi penuh selama masa aktif.",
-        deskripsi: "Deskripsi lengkap produk.",
+        benefit: "Fitur Pro dan legal.",
+        garansi: "Garansi penuh.",
+        deskripsi: "Deskripsi lengkap produk baru.",
         packages: [
           { nama: "Paket 1 Bulan", harga: "Rp10.000" }
         ]
       });
-      renderAdmin();
+      renderAdminList();
     }
 
     function removeProduct(pIdx) {
-      if (confirm("Yakin ingin menghapus produk ini?")) {
-        storeData.products.splice(pIdx, 1);
-        renderAdmin();
+      if (confirm("Yakin ingin menghapus produk ini dari katalog?")) {
+        currentProducts.splice(pIdx, 1);
+        renderAdminList();
       }
     }
 
-    function updatePkg(pIdx, pkgIdx, field, val) { storeData.products[pIdx].packages[pkgIdx][field] = val; }
-    function addPkg(pIdx) {
-      if (!storeData.products[pIdx].packages) storeData.products[pIdx].packages = [];
-      storeData.products[pIdx].packages.push({ nama: "Paket Baru", harga: "Rp15.000" });
-      renderAdmin();
+    function updatePkg(pIdx, pkgIdx, field, val) {
+      currentProducts[pIdx].packages[pkgIdx][field] = val;
     }
+
+    function addPkg(pIdx) {
+      if (!currentProducts[pIdx].packages) {
+        currentProducts[pIdx].packages = [];
+      }
+      currentProducts[pIdx].packages.push({ nama: "Paket Baru", harga: "Rp15.000" });
+      renderAdminList();
+    }
+
     function removePkg(pIdx, pkgIdx) {
-      storeData.products[pIdx].packages.splice(pkgIdx, 1);
-      renderAdmin();
+      currentProducts[pIdx].packages.splice(pkgIdx, 1);
+      renderAdminList();
     }
 
     function saveData() {
-      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(storeData.products, null, 2));
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(currentProducts, null, 2));
       const downloadAnchor = document.createElement('a');
       downloadAnchor.setAttribute("href", dataStr);
       downloadAnchor.setAttribute("download", "products.json");
