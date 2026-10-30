@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nevfa Store — Platform Digital Profesional</title>
   
-  <!-- GOOGLE FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
@@ -35,7 +34,6 @@
       overflow-x: hidden;
     }
 
-    /* NAVBAR */
     .navbar {
       width: 100%; border-bottom: 1px solid var(--border-color); background: var(--nav-bg);
       position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(14px);
@@ -75,10 +73,8 @@
     }
     .btn-login:hover { background: var(--primary-hover); }
 
-    /* MAIN CONTENT */
     .main-content { max-width: 1240px; margin: 24px auto; padding: 0 20px; min-height: 60vh; width: 100%; }
 
-    /* BANNER CAROUSEL */
     .banner-section { width: 100%; margin-bottom: 35px; }
     .banner-container {
       position: relative; width: 100%; border-radius: 20px; overflow: hidden;
@@ -89,13 +85,11 @@
     .banner-slide { min-width: 100%; height: 100%; position: relative; }
     .banner-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-    /* SECTION TITLE */
     .section-header-flex { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
     .section-title-main { font-size: 20px; font-weight: 800; letter-spacing: -0.3px; color: #fff; display: flex; align-items: center; gap: 8px; }
     .btn-see-more { background: rgba(255,255,255,0.06); border: 1px solid var(--border-color); color: var(--text-main); font-size: 12px; font-weight: 600; padding: 6px 16px; border-radius: 99px; cursor: pointer; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
     .btn-see-more:hover { background: rgba(139,44,245,0.15); border-color: var(--primary); }
 
-    /* PENAWARAN EKSKLUSIF */
     .exclusive-section { margin-bottom: 40px; }
     .exclusive-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; }
 
@@ -114,12 +108,8 @@
       outline: none !important;
       width: 100%;
     }
-    .ex-card:hover {
-      transform: translateY(-5px); 
-      box-shadow: 0 16px 40px rgba(0,0,0,0.7);
-    }
+    .ex-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,0.7); }
 
-    /* EFEK BERDENYUT (PULSE GLOW) */
     @keyframes pulseGlow {
       0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.9), 0 10px 30px rgba(0,0,0,0.5); }
       50% { transform: scale(1.04); box-shadow: 0 0 35px 12px rgba(168, 85, 247, 0.7), 0 18px 45px rgba(0,0,0,0.8); }
@@ -145,11 +135,9 @@
     .badge-promo-tag { background: rgba(34, 197, 94, 0.25); color: #22c55e; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 8px; }
     .badge-discount { color: #ffffff; font-size: 13px; font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,0.4); }
 
-    /* PAGES VIEW */
     .page-view { display: none; }
     .page-view.active { display: block; }
 
-    /* KATALOG */
     .catalog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; }
     .catalog-card {
       background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px;
@@ -169,7 +157,6 @@
     }
     .btn-detail-prod:hover { background: var(--primary-hover); }
 
-    /* TESTIMONI & KONTAK */
     .content-box-card {
       background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 30px; margin-bottom: 20px;
     }
@@ -180,7 +167,6 @@
     .testi-name { font-weight: 700; font-size: 13.5px; color: #c084fc; margin-bottom: 4px; }
     .testi-text { font-size: 13px; color: var(--text-muted); }
 
-    /* FOOTER */
     .footer {
       background: #060608; border-top: 1px solid var(--border-color); color: #fff; padding: 50px 20px 30px; margin-top: 60px; width: 100%;
     }
@@ -212,7 +198,6 @@
       text-align: center; font-size: 12px; color: var(--text-muted);
     }
 
-    /* MODAL */
     .modal-backdrop {
       position: fixed; inset: 0; background: rgba(5, 5, 7, 0.85); backdrop-filter: blur(8px);
       display: none; align-items: center; justify-content: center; z-index: 2000; padding: 16px;
@@ -245,7 +230,6 @@
     .btn-wa-order { background: var(--primary); color: #fff; text-decoration: none; padding: 7px 14px; border-radius: 99px; font-size: 12px; font-weight: 700; }
     .btn-wa-order:hover { background: var(--primary-hover); }
 
-    /* RESPONSIF MOBILE UTUH */
     @media (max-width: 900px) {
       .nav-container { padding: 10px 14px; gap: 10px; flex-wrap: wrap; }
       .nav-left { width: 100%; justify-content: space-between; gap: 15px; }
@@ -264,7 +248,6 @@
 </head>
 <body>
 
-  <!-- NAVBAR UTAMA -->
   <nav class="navbar">
     <div class="nav-container">
       <div class="nav-left">
@@ -291,18 +274,11 @@
     </div>
   </nav>
 
-  <!-- KONTEN UTAMA -->
   <div class="main-content">
-
-    <!-- 1. HALAMAN BERANDA -->
     <div id="page-beranda" class="page-view active">
       <section class="banner-section">
         <div class="banner-container">
-          <div class="banner-track" id="bannerTrack">
-            <div class="banner-slide"><img src="banner1.jpg" alt="Banner Promo 1" onerror="this.parentElement.innerHTML='<div style='display:flex;align-items:center;justify-content:center;height:100%;color:#a1a1aa;font-weight:600;'>banner1.jpg belum tersedia</div>'"></div>
-            <div class="banner-slide"><img src="banner2.jpg" alt="Banner Promo 2" onerror="this.parentElement.innerHTML='<div style='display:flex;align-items:center;justify-content:center;height:100%;color:#a1a1aa;font-weight:600;'>banner2.jpg belum tersedia</div>'"></div>
-            <div class="banner-slide"><img src="banner3.jpg" alt="Banner Promo 3" onerror="this.parentElement.innerHTML='<div style='display:flex;align-items:center;justify-content:center;height:100%;color:#a1a1aa;font-weight:600;'>banner3.jpg belum tersedia</div>'"></div>
-          </div>
+          <div class="banner-track" id="bannerTrack"></div>
         </div>
       </section>
 
@@ -315,7 +291,6 @@
       </section>
     </div>
 
-    <!-- 2. HALAMAN PRODUK -->
     <div id="page-produk" class="page-view">
       <div class="section-header-flex" style="margin-bottom: 24px;">
         <div>
@@ -326,7 +301,6 @@
       <div class="catalog-grid" id="catalogGrid"></div>
     </div>
 
-    <!-- 3. HALAMAN TESTIMONI -->
     <div id="page-testimoni" class="page-view">
       <div class="content-box-card">
         <h2>Apa Kata Pelanggan Kami?</h2>
@@ -348,7 +322,6 @@
       </div>
     </div>
 
-    <!-- 4. HALAMAN KONTAK -->
     <div id="page-kontak" class="page-view">
       <div class="content-box-card" style="text-align: center; max-width: 600px; margin: 40px auto;">
         <h2>Hubungi Nevfa Store</h2>
@@ -356,10 +329,8 @@
         <a href="https://wa.me/6285196223649?text=Halo%20Admin%20Nevfa%20Store" target="_blank" class="btn-login" style="padding: 12px 30px; font-size: 15px; display: inline-block;">💬 Chat WhatsApp Official</a>
       </div>
     </div>
-
   </div>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-left">
@@ -385,7 +356,6 @@
     </div>
   </footer>
 
-  <!-- MODAL DETAIL -->
   <div class="modal-backdrop" id="productModal">
     <div class="modal-box">
       <button class="btn-close" onclick="closeModal()">✕</button>
@@ -410,91 +380,129 @@
   <script>
     const NOMOR_WA = "6285196223649";
     
-    const productsData = [
-      {
-        id: "netflix",
-        title: "Netflix",
-        logo: "netflix.png",
-        startPrice: "Rp20.000",
-        desc: "Streaming film & series favorit kualitas Ultra HD 4K anti lemot.",
-        cardBg: "linear-gradient(135deg, rgba(229, 9, 20, 0.35) 0%, rgba(18, 12, 31, 0.95) 75%)",
-        benefit: "• Streaming Ultra HD 4K anti lemot\n• Support Smart TV, HP, & Laptop\n• Legal resmi dan aman anti hold",
-        garansi: "• Garansi penuh selama durasi berlangganan\n• Pergantian akun langsung jika terjadi kendala",
-        deskripsi: "Akun Netflix resmi berkualitas tinggi siap pakai untuk hiburan keluarga.",
-        packages: [
-          { nama: "Sharing 1 Bulan", harga: "Rp20.000" },
-          { nama: "Anti Limit 1 Bulan", harga: "Rp40.000" },
-          { nama: "Private 1 Bulan", harga: "Rp110.000" }
-        ]
-      },
-      {
-        id: "canva",
-        title: "Canva Pro",
-        logo: "canva.png",
-        startPrice: "Rp8.000",
-        desc: "Desain tanpa batas dengan semua fitur premium & template pro.",
-        cardBg: "linear-gradient(135deg, rgba(0, 196, 204, 0.35) 0%, rgba(18, 12, 31, 0.95) 75%)",
-        benefit: "• Akses semua template & elemen Pro\n• Fitur hapus latar belakang otomatis\n• Brand kit & penyimpanan besar",
-        garansi: "• Garansi invite ulang jika link tim bermasalah\n• Full support masa aktif",
-        deskripsi: "Akun Canva Pro via link invite resmi tim Edu/Enterprise anti ribet.",
-        packages: [
-          { nama: "Invite Member 1 Bulan", harga: "Rp8.000" },
-          { nama: "Invite Member 1 Tahun", harga: "Rp25.000" }
-        ]
-      },
-      {
-        id: "youtube",
-        title: "YouTube Premium",
-        logo: "youtube.png",
-        startPrice: "Rp25.000",
-        desc: "Nonton video tanpa iklan, background play, dan download offline.",
-        benefit: "• Bebas iklan total di semua perangkat\n• Putar video di latar belakang / HP terkunci\n• Akses YouTube Music",
-        garansi: "• Garansi full 1 bulan anti putus di tengah jalan",
-        deskripsi: "YouTube Premium legal via invite keluarga atau akun baru.",
-        packages: [
-          { nama: "Famplan Invite 1 Bulan", harga: "Rp10.000" },
-          { nama: "Indplan 1 Bulan", harga: "Rp25.000" }
-        ]
+    let defaultData = {
+      banners: ["banner1.jpg", "banner2.jpg", "banner3.jpg"],
+      products: [
+        {
+          id: "netflix",
+          title: "Netflix",
+          logo: "netflix.png",
+          startPrice: "Rp20.000",
+          desc: "Streaming film & series favorit kualitas Ultra HD 4K anti lemot.",
+          cardBg: "linear-gradient(135deg, rgba(229, 9, 20, 0.35) 0%, rgba(18, 12, 31, 0.95) 75%)",
+          benefit: "• Streaming Ultra HD 4K anti lemot\n• Support Smart TV, HP, & Laptop\n• Legal resmi dan aman anti hold",
+          garansi: "• Garansi penuh selama durasi berlangganan\n• Pergantian akun langsung jika terjadi kendala",
+          deskripsi: "Akun Netflix resmi berkualitas tinggi siap pakai untuk hiburan keluarga.",
+          packages: [
+            { nama: "Sharing 1 Bulan", harga: "Rp20.000" },
+            { nama: "Anti Limit 1 Bulan", harga: "Rp40.000" },
+            { nama: "Private 1 Bulan", harga: "Rp110.000" }
+          ]
+        },
+        {
+          id: "canva",
+          title: "Canva Pro",
+          logo: "canva.png",
+          startPrice: "Rp8.000",
+          desc: "Desain tanpa batas dengan semua fitur premium & template pro.",
+          cardBg: "linear-gradient(135deg, rgba(0, 196, 204, 0.35) 0%, rgba(18, 12, 31, 0.95) 75%)",
+          benefit: "• Akses semua template & elemen Pro\n• Fitur hapus latar belakang otomatis\n• Brand kit & penyimpanan besar",
+          garansi: "• Garansi invite ulang jika link tim bermasalah\n• Full support masa aktif",
+          deskripsi: "Akun Canva Pro via link invite resmi tim Edu/Enterprise anti ribet.",
+          packages: [
+            { nama: "Invite Member 1 Bulan", harga: "Rp8.000" },
+            { nama: "Invite Member 1 Tahun", harga: "Rp25.000" }
+          ]
+        },
+        {
+          id: "youtube",
+          title: "YouTube Premium",
+          logo: "youtube.png",
+          startPrice: "Rp25.000",
+          desc: "Nonton video tanpa iklan, background play, dan download offline.",
+          cardBg: "linear-gradient(135deg, rgba(255, 0, 0, 0.35) 0%, rgba(18, 12, 31, 0.95) 75%)",
+          benefit: "• Bebas iklan total di semua perangkat\n• Putar video di latar belakang / HP terkunci\n• Akses YouTube Music",
+          garansi: "• Garansi full 1 bulan anti putus di tengah jalan",
+          deskripsi: "YouTube Premium legal via invite keluarga atau akun baru.",
+          packages: [
+            { nama: "Famplan Invite 1 Bulan", harga: "Rp10.000" },
+            { nama: "Indplan 1 Bulan", harga: "Rp25.000" }
+          ]
+        }
+      ]
+    };
+
+    function getStoreData() {
+      const saved = localStorage.getItem('nevfa_store_data');
+      if (saved) {
+        try { 
+          const parsed = JSON.parse(saved);
+          if (parsed && parsed.products && parsed.products.length > 0) {
+            return parsed;
+          }
+        } catch(e){}
       }
-    ];
+      return defaultData;
+    }
 
     function renderApp() {
-      const exGrid = document.getElementById('exclusiveGrid');
-      exGrid.innerHTML = '';
-      productsData.forEach(prod => {
-        exGrid.innerHTML += `
-          <div class="ex-card" id="card-${prod.id}" style="background: ${prod.cardBg};" onclick="openModal('${prod.id}')">
-            <div class="ex-card-img"><img src="${prod.logo}" alt="${prod.title}" onerror="this.style.display='none'; this.parentElement.innerText='📦'"></div>
-            <div class="ex-card-info">
-              <div class="ex-card-title">${prod.title}</div>
-              <span class="ex-card-sub">Layanan Premium</span>
-              <div class="ex-card-footer">
-                <span class="badge-promo-tag">Promo</span>
-                <span class="badge-discount">⚡ Hot</span>
-              </div>
-            </div>
-          </div>
-        `;
-      });
+      const data = getStoreData();
 
-      const catGrid = document.getElementById('catalogGrid');
-      catGrid.innerHTML = '';
-      productsData.forEach(prod => {
-        catGrid.innerHTML += `
-          <div class="catalog-card" id="catalog-${prod.id}">
-            <div class="catalog-top">
-              <div class="catalog-logo"><img src="${prod.logo}" alt="${prod.title}" onerror="this.style.display='none'; this.parentElement.innerText='📦'"></div>
-              <div>
-                <h3 class="catalog-title">${prod.title}</h3>
-                <div class="catalog-price-label">Mulai dari</div>
-                <div class="catalog-price-val">${prod.startPrice}</div>
+      // Render Banners
+      const track = document.getElementById('bannerTrack');
+      if (track) {
+        track.innerHTML = '';
+        data.banners.forEach(b => {
+          track.innerHTML += `
+            <div class="banner-slide">
+              <img src="${b}" alt="Banner" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:#a1a1aa;font-weight:600;\'>${b} belum tersedia</div>'">
+            </div>
+          `;
+        });
+      }
+
+      // Render Exclusive Cards
+      const exGrid = document.getElementById('exclusiveGrid');
+      if (exGrid) {
+        exGrid.innerHTML = '';
+        data.products.forEach(prod => {
+          exGrid.innerHTML += `
+            <div class="ex-card" id="card-${prod.id}" style="background: ${prod.cardBg || 'var(--card-bg)'};" onclick="openModal('${prod.id}')">
+              <div class="ex-card-img"><img src="${prod.logo}" alt="${prod.title}" onerror="this.style.display='none'; this.parentElement.innerText='📦'"></div>
+              <div class="ex-card-info">
+                <div class="ex-card-title">${prod.title}</div>
+                <span class="ex-card-sub">${prod.desc || ''}</span>
+                <div class="ex-card-footer">
+                  <span class="badge-promo-tag">Promo</span>
+                  <span class="badge-discount">⚡ Hot</span>
+                </div>
               </div>
             </div>
-            <p class="catalog-desc">${prod.desc}</p>
-            <button class="btn-detail-prod" onclick="openModal('${prod.id}')">Lihat Paket & Detail ❯</button>
-          </div>
-        `;
-      });
+          `;
+        });
+      }
+
+      // Render Catalog
+      const catGrid = document.getElementById('catalogGrid');
+      if (catGrid) {
+        catGrid.innerHTML = '';
+        data.products.forEach(prod => {
+          catGrid.innerHTML += `
+            <div class="catalog-card" id="catalog-${prod.id}">
+              <div class="catalog-top">
+                <div class="catalog-logo"><img src="${prod.logo}" alt="${prod.title}" onerror="this.style.display='none'; this.parentElement.innerText='📦'"></div>
+                <div>
+                  <h3 class="catalog-title">${prod.title}</h3>
+                  <div class="catalog-price-label">Mulai dari</div>
+                  <div class="catalog-price-val">${prod.startPrice}</div>
+                </div>
+              </div>
+              <p class="catalog-desc">${prod.desc || ''}</p>
+              <button class="btn-detail-prod" onclick="openModal('${prod.id}')">Lihat Paket & Detail ❯</button>
+            </div>
+          `;
+        });
+      }
     }
 
     function triggerSearch() {
@@ -503,9 +511,10 @@
       if (!q) return;
 
       switchPage('beranda');
-
+      const data = getStoreData();
       let found = false;
-      productsData.forEach(prod => {
+
+      data.products.forEach(prod => {
         const card = document.getElementById(`card-${prod.id}`);
         if (!card) return;
 
@@ -528,43 +537,38 @@
       document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
       
-      document.getElementById('page-' + pageId).classList.add('active');
+      const targetPage = document.getElementById('page-' + pageId);
+      if (targetPage) targetPage.classList.add('active');
       const navEl = document.getElementById('nav-' + pageId);
       if(navEl) navEl.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function openModal(id) {
-      const prod = productsData.find(p => p.id === id);
+      const data = getStoreData();
+      const prod = data.products.find(p => p.id === id);
       if(!prod) return;
+
       document.getElementById('modalTitle').innerText = prod.title;
-      document.getElementById('modalBenefitText').innerText = prod.benefit;
-      document.getElementById('modalGaransiText').innerText = prod.garansi;
-      document.getElementById('modalDeskripsiText').innerText = prod.deskripsi;
+      document.getElementById('modalBenefitText').innerText = (prod.benefit || '').replace(/\\n/g, '\n');
+      document.getElementById('modalGaransiText').innerText = (prod.garansi || '').replace(/\\n/g, '\n');
+      document.getElementById('modalDeskripsiText').innerText = (prod.deskripsi || '').replace(/\\n/g, '\n');
 
       const pkgList = document.getElementById('modalPackagesList');
       pkgList.innerHTML = '';
-      prod.packages.packages ? prod.packages.forEach(pkg => {
-        pkgList.innerHTML += `
-          <div class="package-row">
-            <div class="pkg-info">
-              <h4>${pkg.nama}</h4>
-              <p>${pkg.harga}</p>
+      if (prod.packages && prod.packages.length > 0) {
+        prod.packages.forEach(pkg => {
+          pkgList.innerHTML += `
+            <div class="package-row">
+              <div class="pkg-info">
+                <h4>${pkg.nama}</h4>
+                <p>${pkg.harga}</p>
+              </div>
+              <a href="https://wa.me/${NOMOR_WA}?text=${encodeURIComponent('Halo Nevfa Store, saya mau order ' + prod.title + ' - ' + pkg.nama + ' (' + pkg.harga + ')')}" target="_blank" class="btn-wa-order">💬 Pesan</a>
             </div>
-            <a href="https://wa.me/${NOMOR_WA}?text=${encodeURIComponent('Halo Nevfa Store, saya mau order ' + prod.title + ' - ' + pkg.nama + ' (' + pkg.harga + ')')}" target="_blank" class="btn-wa-order">💬 Pesan</a>
-          </div>
-        `;
-      }) : prod.packages.forEach(pkg => {
-        pkgList.innerHTML += `
-          <div class="package-row">
-            <div class="pkg-info">
-              <h4>${pkg.nama}</h4>
-              <p>${pkg.harga}</p>
-            </div>
-            <a href="https://wa.me/${NOMOR_WA}?text=${encodeURIComponent('Halo Nevfa Store, saya mau order ' + prod.title + ' - ' + pkg.nama + ' (' + pkg.harga + ')')}" target="_blank" class="btn-wa-order">💬 Pesan</a>
-          </div>
-        `;
-      });
+          `;
+        });
+      }
       document.getElementById('productModal').style.display = 'flex';
     }
 
@@ -573,10 +577,12 @@
     }
 
     function switchTab(tabName, event) {
+      document.querySelectorAll('.tab-pane'). terserah = '';
       document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById('tab-' + tabName).classList.add('active');
-      event.target.classList.add('active');
+      const targetTab = document.getElementById('tab-' + tabName);
+      if (targetTab) targetTab.classList.add('active');
+      if (event && event.target) event.target.classList.add('active');
     }
 
     window.onclick = function(e) {
@@ -585,10 +591,10 @@
     }
 
     let slideIdx = 0;
-    const slides = document.getElementsByClassName('banner-slide');
-    const track = document.getElementById('bannerTrack');
     setInterval(() => {
-      if(slides.length <= 1) return;
+      const slides = document.getElementsByClassName('banner-slide');
+      const track = document.getElementById('bannerTrack');
+      if(slides.length <= 1 || !track) return;
       slideIdx = (slideIdx + 1) % slides.length;
       track.style.transform = `translateX(-${slideIdx * 100}%)`;
     }, 4500);
