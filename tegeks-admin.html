@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Panel Real-Time — Nevfa Store</title>
+  <title>Admin Panel Utama — Nevfa Store</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,7 @@
       padding: 30px 20px;
     }
 
-    .admin-container { max-width: 1100px; margin: 0 auto; }
+    .admin-container { max-width: 1000px; margin: 0 auto; }
 
     .admin-header {
       background: var(--card-bg);
@@ -151,20 +151,6 @@
       align-items: center;
     }
 
-    .banner-badge-item {
-      background: rgba(139,44,245,0.15);
-      border: 1px solid var(--border-color);
-      padding: 8px 14px;
-      border-radius: 10px;
-      font-size: 13px;
-      color: #c084fc;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-    .banner-badge-item span { cursor: pointer; color: #f43f5e; font-weight: 800; padding: 0 6px; }
-
     .product-box {
       background: rgba(255,255,255,0.02);
       border: 1px solid var(--border-color);
@@ -172,243 +158,238 @@
       padding: 20px;
       margin-bottom: 20px;
     }
+
+    .alert-box {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      color: #4ade80;
+      padding: 12px 18px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      font-size: 13.5px;
+      font-weight: 600;
+      display: none;
+    }
   </style>
 </head>
 <body>
 
   <div class="admin-container">
     <div class="admin-header">
-      <div class="admin-title">⚙️ Nevfa Store <span>Real-Time Admin</span></div>
+      <div class="admin-title">⚙️ Nevfa Store <span>Panel Admin</span></div>
       <div style="display: flex; gap: 10px;">
         <button class="btn-success" onclick="saveData()">💾 Simpan & Perbarui Web</button>
         <a href="index.html" target="_blank" class="btn-purple">🌐 Buka Web Toko</a>
       </div>
     </div>
 
-    <!-- 1. KELOLA BANNER -->
-    <div class="admin-card">
-      <h3>🖼️ Kelola Banner Promo (Slider)</h3>
-      <p>Tambah atau hapus nama file gambar banner (contoh: <code>banner1.jpg</code>) yang tampil di beranda.</p>
-      
-      <div id="bannerListContainer" style="margin-bottom: 14px;"></div>
+    <div class="alert-box" id="alertBox">✅ Perubahan berhasil disimpan secara real-time! Silakan cek web toko utama.</div>
 
-      <div style="display: flex; gap: 10px;">
-        <input type="text" id="newBannerInput" class="form-control" placeholder="Nama file banner (misal: banner4.jpg)">
-        <button class="btn-purple" onclick="addBanner()" style="white-space: nowrap;">+ Tambah Banner</button>
-      </div>
-    </div>
-
-    <!-- 2. KELOLA PRODUK & VARIAN -->
+    <!-- KELOLA PRODUK -->
     <div class="admin-card">
       <h3>
-        📦 Kelola Produk & Paket Varian
+        📦 Kelola Katalog Produk & Varian Paket
         <button class="btn-purple" onclick="addProduct()" style="padding: 6px 14px; font-size: 12px;">+ Tambah Produk Baru</button>
       </h3>
-      <p>Atur nama, logo, harga mulai dari, deskripsi singkat, benefit, garansi, dan varian paket harga secara instan.</p>
+      <p>Edit nama produk, logo, harga mulai, deskripsi, benefit, garansi, serta paket harganya di sini.</p>
       
       <div id="productListContainer"></div>
     </div>
   </div>
 
   <script>
-    let defaultData = {
-      banners: ["banner1.jpg", "banner2.jpg", "banner3.jpg"],
-      products: [
-        {
-          id: "netflix",
-          title: "Netflix",
-          logo: "netflix.png",
-          startPrice: "Rp20.000",
-          desc: "Streaming film & series favorit dengan kualitas terbaik.",
-          benefit: "• Streaming Ultra HD 4K anti lemot\n• Support Smart TV, HP, & Laptop\n• Legal resmi dan aman anti hold",
-          garansi: "• Garansi penuh selama durasi berlangganan\n• Pergantian akun langsung jika terjadi kendala",
-          deskripsi: "Akun Netflix resmi berkualitas tinggi siap pakai untuk hiburan keluarga.",
-          packages: [
-            { nama: "Sharing 1 Bulan", harga: "Rp20.000" },
-            { nama: "Anti Limit 1 Bulan", harga: "Rp40.000" },
-            { nama: "Private 1 Bulan", harga: "Rp110.000" }
-          ]
-        },
-        {
-          id: "canva",
-          title: "Canva Pro",
-          logo: "canva.png",
-          startPrice: "Rp8.000",
-          desc: "Desain tanpa batas dengan semua fitur premium Canva.",
-          benefit: "• Akses semua template & elemen Pro\n• Fitur hapus latar belakang otomatis\n• Brand kit & penyimpanan besar",
-          garansi: "• Garansi invite ulang jika link tim bermasalah\n• Full support masa aktif",
-          deskripsi: "Akun Canva Pro via link invite resmi tim Edu/Enterprise anti ribet.",
-          packages: [
-            { nama: "Invite Member 1 Bulan", harga: "Rp8.000" },
-            { nama: "Invite Member 1 Tahun", harga: "Rp25.000" }
-          ]
-        },
-        {
-          id: "capcut",
-          title: "CapCut Pro",
-          logo: "capcut.png",
-          startPrice: "Rp10.000",
-          desc: "Edit video profesional dengan efek dan template pro.",
-          benefit: "• Buka semua efek pro & transisi premium\n• Export video tanpa watermark",
-          garansi: "• Garansi penggantian akun baru jika terjadi kendala login",
-          deskripsi: "Akun CapCut Pro siap pakai untuk editing video sosmed.",
-          packages: [
-            { nama: "Sharing 1 Bulan", harga: "Rp10.000" },
-            { nama: "Private 1 Bulan", harga: "Rp35.000" }
-          ]
-        },
-        {
-          id: "youtube",
-          title: "YouTube Premium",
-          logo: "youtube.png",
-          startPrice: "Rp25.000",
-          desc: "Tanpa iklan, bisa background play dan download.",
-          benefit: "• Bebas iklan total di semua perangkat\n• Putar video di latar belakang / HP terkunci\n• Akses YouTube Music",
-          garansi: "• Garansi full 1 bulan anti putus di tengah jalan",
-          deskripsi: "YouTube Premium legal via invite keluarga atau akun baru.",
-          packages: [
-            { nama: "Famplan Invite 1 Bulan", harga: "Rp10.000" },
-            { nama: "Indplan 1 Bulan", harga: "Rp25.000" }
-          ]
-        },
-        {
-          id: "vidio",
-          title: "Vidio Platinum",
-          logo: "vidio.png",
-          startPrice: "Rp20.000",
-          desc: "Nonton liga, sinema, dan tayangan eksklusif Vidio.",
-          benefit: "• Streaming Liga Champions & Premier League\n• Sinema lokal & serial Korea pilihan",
-          garansi: "• Garansi full durasi sesuai paket",
-          deskripsi: "Akun Vidio Platinum resmi dan aman.",
-          packages: [
-            { nama: "Platinum Mobile 30 Hari", harga: "Rp35.000" },
-            { nama: "Platinum All Device 30 Hari", harga: "Rp45.000" }
-          ]
-        },
-        {
-          id: "wetv",
-          title: "WeTV VIP",
-          logo: "wetv.png",
-          startPrice: "Rp15.000",
-          desc: "Drama Asia terbaru tanpa iklan, kualitas HD.",
-          benefit: "• Nonton episode lebih awal tanpa iklan\n• Kualitas video jernih HD",
-          garansi: "• Garansi pergantian akun baru jika error",
-          deskripsi: "WeTV VIP legal anti limit.",
-          packages: [
-            { nama: "VIP Sharing 1 Bulan", harga: "Rp15.000" },
-            { nama: "VIP Private 1 Bulan", harga: "Rp35.000" }
-          ]
-        },
-        {
-          id: "iqiyi",
-          title: "iQIYI",
-          logo: "iqiyi.png",
-          startPrice: "Rp9.000",
-          desc: "Serial dan film Asia lengkap dengan subtitle Indonesia.",
-          benefit: "• Akses drama China & Korea eksklusif\n• Bebas iklan tanpa jeda",
-          garansi: "• Garansi full aman selama masa aktif",
-          deskripsi: "Akun iQIYI VIP resmi.",
-          packages: [
-            { nama: "VIP Standard 1 Bulan", harga: "Rp9.000" },
-            { nama: "VIP Premium 1 Bulan", harga: "Rp18.000" }
-          ]
-        },
-        {
-          id: "viu",
-          title: "VIU",
-          logo: "viu.png",
-          startPrice: "Rp5.000",
-          desc: "Drama Korea dan Asia dengan harga paling terjangkau.",
-          benefit: "• Download sepuasnya & bebas iklan\n• Update drama on-going tercepat",
-          garansi: "• Garansi penggantian akun jika kendala login",
-          deskripsi: "Akun Viu Premium private aman.",
-          packages: [
-            { nama: "Premium Private 1 Bulan", harga: "Rp5.000" },
-            { nama: "Premium Private 3 Bulan", harga: "Rp12.000" }
-          ]
-        },
-        {
-          id: "prime",
-          title: "Prime Video",
-          logo: "prime.png",
-          startPrice: "Rp15.000",
-          desc: "Streaming film blockbuster dan Amazon Originals.",
-          benefit: "• Kualitas HDR/4K dengan subtitle Indonesia lengkap\n• Akses ribet film eksklusif",
-          garansi: "• Garansi full sesuai durasi",
-          deskripsi: "Prime Video legal resmi.",
-          packages: [
-            { nama: "Sharing 1 Bulan", harga: "Rp15.000" },
-            { nama: "Private 1 Bulan", harga: "Rp30.000" }
-          ]
-        },
-        {
-          id: "loklok",
-          title: "Loklok",
-          logo: "loklok.png",
-          startPrice: "Rp15.000",
-          desc: "Nonton anime, drama, dan film tanpa batas dengan kualitas HD.",
-          benefit: "• Bebas iklan total\n• Akses semua anime dan film VIP terbaru",
-          garansi: "• Garansi penggantian akun baru jika bermasalah",
-          deskripsi: "Loklok VIP legal anti gangguan.",
-          packages: [
-            { nama: "VIP 1 Bulan", harga: "Rp15.000" },
-            { nama: "VIP 3 Bulan", harga: "Rp35.000" }
-          ]
-        },
-        {
-          id: "hbo",
-          title: "HBO GO",
-          logo: "hbo.png",
-          startPrice: "Rp25.000",
-          desc: "Tayangan sinema Hollywood, HBO Originals, dan DC Universe.",
-          benefit: "• Streaming film box office Hollywood terbaru\n• Kualitas video HD terbaik",
-          garansi: "• Garansi full durasi berlangganan",
-          deskripsi: "HBO GO resmi dan terpercaya.",
-          packages: [
-            { nama: "Sharing 1 Bulan", harga: "Rp25.000" },
-            { nama: "Private 1 Bulan", harga: "Rp50.000" }
-          ]
-        }
-      ]
-    };
-
-    let storeData = defaultData;
-
-    function loadData() {
-      const saved = localStorage.getItem('nevfa_store_data');
-      if (saved) {
-        try { storeData = JSON.parse(saved); } catch(e){}
+    const defaultProducts = [
+      {
+        id: "netflix",
+        title: "Netflix",
+        logo: "netflix.png",
+        startPrice: "Rp20.000",
+        desc: "Streaming film & series favorit dengan kualitas terbaik.",
+        benefit: "• Streaming Ultra HD 4K anti lemot\n• Support Smart TV, HP, & Laptop\n• Legal resmi dan aman anti hold",
+        garansi: "• Garansi penuh selama durasi berlangganan\n• Pergantian akun langsung jika terjadi kendala",
+        deskripsi: "Akun Netflix resmi berkualitas tinggi siap pakai untuk hiburan keluarga.",
+        packages: [
+          { nama: "Sharing 1 Bulan", harga: "Rp20.000" },
+          { nama: "Anti Limit 1 Bulan", harga: "Rp40.000" },
+          { nama: "Private 1 Bulan", harga: "Rp110.000" }
+        ]
+      },
+      {
+        id: "canva",
+        title: "Canva Pro",
+        logo: "canva.png",
+        startPrice: "Rp8.000",
+        desc: "Desain tanpa batas dengan semua fitur premium Canva.",
+        benefit: "• Akses semua template & elemen Pro\n• Fitur hapus latar belakang otomatis\n• Brand kit & penyimpanan besar",
+        garansi: "• Garansi invite ulang jika link tim bermasalah\n• Full support masa aktif",
+        deskripsi: "Akun Canva Pro via link invite resmi tim Edu/Enterprise anti ribet.",
+        packages: [
+          { nama: "Invite Member 1 Bulan", harga: "Rp8.000" },
+          { nama: "Invite Member 1 Tahun", harga: "Rp25.000" }
+        ]
+      },
+      {
+        id: "capcut",
+        title: "CapCut Pro",
+        logo: "capcut.png",
+        startPrice: "Rp10.000",
+        desc: "Edit video profesional dengan efek dan template pro.",
+        benefit: "• Buka semua efek pro & transisi premium\n• Export video tanpa watermark",
+        garansi: "• Garansi penggantian akun baru jika terjadi kendala login",
+        deskripsi: "Akun CapCut Pro siap pakai untuk editing video sosmed.",
+        packages: [
+          { nama: "Sharing 1 Bulan", harga: "Rp10.000" },
+          { nama: "Private 1 Bulan", harga: "Rp35.000" }
+        ]
+      },
+      {
+        id: "youtube",
+        title: "YouTube Premium",
+        logo: "youtube.png",
+        startPrice: "Rp25.000",
+        desc: "Tanpa iklan, bisa background play dan download.",
+        benefit: "• Bebas iklan total di semua perangkat\n• Putar video di latar belakang / HP terkunci\n• Akses YouTube Music",
+        garansi: "• Garansi full 1 bulan anti putus di tengah jalan",
+        deskripsi: "YouTube Premium legal via invite keluarga atau akun baru.",
+        packages: [
+          { nama: "Famplan Invite 1 Bulan", harga: "Rp10.000" },
+          { nama: "Indplan 1 Bulan", harga: "Rp25.000" }
+        ]
+      },
+      {
+        id: "vidio",
+        title: "Vidio Platinum",
+        logo: "vidio.png",
+        startPrice: "Rp20.000",
+        desc: "Nonton liga, sinema, dan tayangan eksklusif Vidio.",
+        benefit: "• Streaming Liga Champions & Premier League\n• Sinema lokal & serial Korea pilihan",
+        garansi: "• Garansi full durasi sesuai paket",
+        deskripsi: "Akun Vidio Platinum resmi dan aman.",
+        packages: [
+          { nama: "Platinum Mobile 30 Hari", harga: "Rp35.000" },
+          { nama: "Platinum All Device 30 Hari", harga: "Rp45.000" }
+        ]
+      },
+      {
+        id: "wetv",
+        title: "WeTV VIP",
+        logo: "wetv.png",
+        startPrice: "Rp15.000",
+        desc: "Drama Asia terbaru tanpa iklan, kualitas HD.",
+        benefit: "• Nonton episode lebih awal tanpa iklan\n• Kualitas video jernih HD",
+        garansi: "• Garansi pergantian akun baru jika error",
+        deskripsi: "WeTV VIP legal anti limit.",
+        packages: [
+          { nama: "VIP Sharing 1 Bulan", harga: "Rp15.000" },
+          { nama: "VIP Private 1 Bulan", harga: "Rp35.000" }
+        ]
+      },
+      {
+        id: "iqiyi",
+        title: "iQIYI",
+        logo: "iqiyi.png",
+        startPrice: "Rp9.000",
+        desc: "Serial dan film Asia lengkap dengan subtitle Indonesia.",
+        benefit: "• Akses drama China & Korea eksklusif\n• Bebas iklan tanpa jeda",
+        garansi: "• Garansi full aman selama masa aktif",
+        deskripsi: "Akun iQIYI VIP resmi.",
+        packages: [
+          { nama: "VIP Standard 1 Bulan", harga: "Rp9.000" },
+          { nama: "VIP Premium 1 Bulan", harga: "Rp18.000" }
+        ]
+      },
+      {
+        id: "viu",
+        title: "VIU",
+        logo: "viu.png",
+        startPrice: "Rp5.000",
+        desc: "Drama Korea dan Asia dengan harga paling terjangkau.",
+        benefit: "• Download sepuasnya & bebas iklan\n• Update drama on-going tercepat",
+        garansi: "• Garansi penggantian akun jika kendala login",
+        deskripsi: "Akun Viu Premium private aman.",
+        packages: [
+          { nama: "Premium Private 1 Bulan", harga: "Rp5.000" },
+          { nama: "Premium Private 3 Bulan", harga: "Rp12.000" }
+        ]
+      },
+      {
+        id: "prime",
+        title: "Prime Video",
+        logo: "prime.png",
+        startPrice: "Rp15.000",
+        desc: "Streaming film blockbuster dan Amazon Originals.",
+        benefit: "• Kualitas HDR/4K dengan subtitle Indonesia lengkap\n• Akses ribet film eksklusif",
+        garansi: "• Garansi full sesuai durasi",
+        deskripsi: "Prime Video legal resmi.",
+        packages: [
+          { nama: "Sharing 1 Bulan", harga: "Rp15.000" },
+          { nama: "Private 1 Bulan", harga: "Rp30.000" }
+        ]
+      },
+      {
+        id: "loklok",
+        title: "Loklok",
+        logo: "loklok.png",
+        startPrice: "Rp15.000",
+        desc: "Nonton anime, drama, dan film tanpa batas dengan kualitas HD.",
+        benefit: "• Bebas iklan total\n• Akses semua anime dan film VIP terbaru",
+        garansi: "• Garansi penggantian akun baru jika bermasalah",
+        deskripsi: "Loklok VIP legal anti gangguan.",
+        packages: [
+          { nama: "VIP 1 Bulan", harga: "Rp15.000" },
+          { nama: "VIP 3 Bulan", harga: "Rp35.000" }
+        ]
+      },
+      {
+        id: "hbo",
+        title: "HBO GO",
+        logo: "hbo.png",
+        startPrice: "Rp25.000",
+        desc: "Tayangan sinema Hollywood, HBO Originals, dan DC Universe.",
+        benefit: "• Streaming film box office Hollywood terbaru\n• Kualitas video HD terbaik",
+        garansi: "• Garansi full durasi berlangganan",
+        deskripsi: "HBO GO resmi dan terpercaya.",
+        packages: [
+          { nama: "Sharing 1 Bulan", harga: "Rp25.000" },
+          { nama: "Private 1 Bulan", harga: "Rp50.000" }
+        ]
       }
-      renderAdmin();
+    ];
+
+    let currentProducts = defaultProducts;
+
+    function loadAdminData() {
+      const saved = localStorage.getItem('nevfa_custom_products');
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            currentProducts = parsed;
+          }
+        } catch(e){}
+      }
+      renderAdminList();
     }
 
-    function renderAdmin() {
-      const bContainer = document.getElementById('bannerListContainer');
-      bContainer.innerHTML = '';
-      storeData.banners.forEach((b, idx) => {
-        bContainer.innerHTML += `
-          <div class="banner-badge-item">
-            <span>📷 ${b}</span>
-            <span onclick="removeBanner(${idx})" title="Hapus Banner">✕ Hapus</span>
-          </div>
-        `;
-      });
+    function renderAdminList() {
+      const container = document.getElementById('productListContainer');
+      container.innerHTML = '';
 
-      const pContainer = document.getElementById('productListContainer');
-      pContainer.innerHTML = '';
-      storeData.products.forEach((prod, pIdx) => {
+      currentProducts.forEach((prod, pIdx) => {
         let pkgHtml = '';
-        prod.packages.forEach((pkg, pkgIdx) => {
-          pkgHtml += `
-            <div class="variant-row">
-              <input type="text" class="form-control" value="${pkg.nama}" oninput="updatePkg(${pIdx}, ${pkgIdx}, 'nama', this.value)" placeholder="Nama Paket">
-              <input type="text" class="form-control" value="${pkg.harga}" oninput="updatePkg(${pIdx}, ${pkgIdx}, 'harga', this.value)" placeholder="Harga">
-              <button class="btn-danger" onclick="removePkg(${pIdx}, ${pkgIdx})">✕</button>
-            </div>
-          `;
-        });
+        if (prod.packages) {
+          prod.packages.forEach((pkg, pkgIdx) => {
+            pkgHtml += `
+              <div class="variant-row">
+                <input type="text" class="form-control" value="${pkg.nama}" oninput="updatePkg(${pIdx}, ${pkgIdx}, 'nama', this.value)" placeholder="Nama Paket (cth: 1 Bulan)">
+                <input type="text" class="form-control" value="${pkg.harga}" oninput="updatePkg(${pIdx}, ${pkgIdx}, 'harga', this.value)" placeholder="Harga (cth: Rp20.000)">
+                <button class="btn-danger" onclick="removePkg(${pIdx}, ${pkgIdx})">✕</button>
+              </div>
+            `;
+          });
+        }
 
-        pContainer.innerHTML += `
+        container.innerHTML += `
           <div class="product-box">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
               <h4 style="color:#c084fc; font-size:16px; font-weight:800;">📦 ${prod.title || 'Produk Baru'}</h4>
@@ -418,104 +399,110 @@
             <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
               <div class="form-group">
                 <label>Nama Produk:</label>
-                <input type="text" class="form-control" value="${prod.title}" oninput="updateProd(${pIdx}, 'title', this.value)">
+                <input type="text" class="form-control" value="${prod.title || ''}" oninput="updateProd(${pIdx}, 'title', this.value)">
               </div>
               <div class="form-group">
-                <label>File Logo (.png):</label>
-                <input type="text" class="form-control" value="${prod.logo}" oninput="updateProd(${pIdx}, 'logo', this.value)">
+                <label>Nama File Logo (.png):</label>
+                <input type="text" class="form-control" value="${prod.logo || ''}" oninput="updateProd(${pIdx}, 'logo', this.value)">
               </div>
               <div class="form-group">
                 <label>Harga Mulai Dari:</label>
-                <input type="text" class="form-control" value="${prod.startPrice}" oninput="updateProd(${pIdx}, 'startPrice', this.value)">
+                <input type="text" class="form-control" value="${prod.startPrice || ''}" oninput="updateProd(${pIdx}, 'startPrice', this.value)">
               </div>
               <div class="form-group">
-                <label>Deskripsi Singkat:</label>
+                <label>Deskripsi Singkat (Katalog):</label>
                 <input type="text" class="form-control" value="${prod.desc || ''}" oninput="updateProd(${pIdx}, 'desc', this.value)">
               </div>
             </div>
 
             <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:12px; margin-top:8px;">
               <div class="form-group">
-                <label>Benefit:</label>
-                <textarea class="form-control" oninput="updateProd(${pIdx}, 'benefit', this.value)">${prod.benefit}</textarea>
+                <label>Benefit (Gunakan baris baru):</label>
+                <textarea class="form-control" oninput="updateProd(${pIdx}, 'benefit', this.value)">${prod.benefit || ''}</textarea>
               </div>
               <div class="form-group">
                 <label>Garansi:</label>
-                <textarea class="form-control" oninput="updateProd(${pIdx}, 'garansi', this.value)">${prod.garansi}</textarea>
+                <textarea class="form-control" oninput="updateProd(${pIdx}, 'garansi', this.value)">${prod.garansi || ''}</textarea>
               </div>
               <div class="form-group">
                 <label>Deskripsi Lengkap:</label>
-                <textarea class="form-control" oninput="updateProd(${pIdx}, 'deskripsi', this.value)">${prod.deskripsi}</textarea>
+                <textarea class="form-control" oninput="updateProd(${pIdx}, 'deskripsi', this.value)">${prod.deskripsi || ''}</textarea>
               </div>
             </div>
 
             <div class="form-group" style="margin-top:10px;">
               <label style="color:#c084fc;">⚡ Varian Paket & Harga:</label>
               <div id="pkgs-${pIdx}">${pkgHtml}</div>
-              <button class="btn-purple" onclick="addPkg(${pIdx})" style="padding: 6px 14px; font-size:12px; margin-top:6px;">+ Tambah Varian</button>
+              <button class="btn-purple" onclick="addPkg(${pIdx})" style="padding: 6px 14px; font-size:12px; margin-top:6px;">+ Tambah Varian Paket</button>
             </div>
           </div>
         `;
       });
     }
 
-    function addBanner() {
-      const input = document.getElementById('newBannerInput');
-      const val = input.value.trim();
-      if (!val) return alert("Nama file banner kosong!");
-      storeData.banners.push(val);
-      input.value = '';
-      renderAdmin();
-    }
-    function removeBanner(idx) {
-      storeData.banners.splice(idx, 1);
-      renderAdmin();
+    function updateProd(pIdx, field, val) {
+      currentProducts[pIdx][field] = val;
     }
 
-    function updateProd(pIdx, field, val) {
-      storeData.products[pIdx][field] = val;
-    }
     function addProduct() {
-      storeData.products.push({
+      currentProducts.push({
         id: "prod_" + Date.now(),
         title: "Produk Baru",
         logo: "logo.png",
         startPrice: "Rp10.000",
         desc: "Deskripsi singkat produk baru.",
-        benefit: "• Benefit 1\n• Benefit 2",
-        garansi: "• Garansi resmi.",
-        deskripsi: "Deskripsi lengkap produk.",
+        benefit: "• Benefit utama 1
+• Benefit utama 2",
+        garansi: "• Garansi penuh selama masa aktif.",
+        deskripsi: "Deskripsi lengkap mengenai produk ini.",
         packages: [
           { nama: "Paket 1 Bulan", harga: "Rp10.000" }
         ]
       });
-      renderAdmin();
+      renderAdminList();
     }
+
     function removeProduct(pIdx) {
-      if (confirm("Yakin ingin menghapus produk ini?")) {
-        storeData.products.splice(pIdx, 1);
-        renderAdmin();
+      if (confirm("Yakin ingin menghapus produk ini dari katalog?")) {
+        currentProducts.splice(pIdx, 1);
+        renderAdminList();
       }
     }
 
     function updatePkg(pIdx, pkgIdx, field, val) {
-      storeData.products[pIdx].packages[pkgIdx][field] = val;
+      currentProducts[pIdx].packages[pkgIdx][field] = val;
     }
+
     function addPkg(pIdx) {
-      storeData.products[pIdx].packages.push({ nama: "Paket Baru", harga: "Rp15.000" });
-      renderAdmin();
+      if (!currentProducts[pIdx].packages) {
+        currentProducts[pIdx].packages = [];
+      }
+      currentProducts[pIdx].packages.push({ nama: "Paket Baru", harga: "Rp15.000" });
+      renderAdminList();
     }
+
     function removePkg(pIdx, pkgIdx) {
-      storeData.products[pIdx].packages.splice(pkgIdx, 1);
-      renderAdmin();
+      currentProducts[pIdx].packages.splice(pkgIdx, 1);
+      renderAdminList();
     }
 
     function saveData() {
-      localStorage.setItem('nevfa_store_data', JSON.stringify(storeData));
-      alert("✅ Berhasil Disimpan! Perubahan langsung aktif secara real-time di web toko utama.");
+      localStorage.setItem('nevfa_custom_products', JSON.stringify(currentProducts));
+      
+      // Sediakan juga struktur lengkap untuk index.html agar sinkron dengan key nevfa_store_data
+      const fullStoreData = {
+        banners: ["banner1.jpg", "banner2.jpg", "banner3.jpg"],
+        products: currentProducts
+      };
+      localStorage.setItem('nevfa_store_data', JSON.stringify(fullStoreData));
+
+      const alertBox = document.getElementById('alertBox');
+      alertBox.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => { alertBox.style.display = 'none'; }, 4000);
     }
 
-    window.onload = loadData;
+    window.onload = loadAdminData;
   </script>
 </body>
 </html>
