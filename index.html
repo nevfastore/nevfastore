@@ -239,7 +239,7 @@
     .carousel-btn.prev { left: 14px; }
     .carousel-btn.next { right: 14px; }
 
-    /* PRODUK UNGGULAN BERGESER BESAR */
+    /* PRODUK UNGGULAN BERGESER BESAR (TANPA OUTLINE PUTIH, FULL LOGO BERGESER MULUS) */
     .featured-marquee-section {
       max-width: 1200px;
       margin: 20px auto 35px;
@@ -255,6 +255,7 @@
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
     }
 
+    /* KOTAK JUDUL DENGAN WARNA ORANYE/KUNING & EMOJI API BERKOBAR */
     .featured-header-box {
       display: inline-flex;
       align-items: center;
@@ -295,6 +296,7 @@
 
     .marquee-track:hover { animation-play-state: paused; }
 
+    /* LOGO BESAR TANPA OUTLINE PUTIH */
     .marquee-item {
       width: 80px;
       height: 80px;
@@ -667,7 +669,7 @@
     </div>
   </section>
 
-  <!-- PRODUK UNGGULAN BERGESER BESAR (OTOMATIS DARI PRODUCTS.JSON) -->
+  <!-- PRODUK UNGGULAN BERGESER BESAR (TANPA OUTLINE PUTIH & EMOJI API BERKOBAR) -->
   <section class="featured-marquee-section">
     <div class="featured-wrapper-clean">
       <div class="featured-header-box">
@@ -675,7 +677,18 @@
       </div>
       <div class="marquee-container">
         <div class="marquee-track" id="featuredMarqueeTrack">
-          <!-- Otomatis diisi oleh JavaScript dari data products.json -->
+          <!-- Logo item yang bergeser otomatis tanpa background/outline putih -->
+          <div class="marquee-item"><img src="netflix.png" alt="Netflix" onerror="this.style.display='none'"></div>
+          <div class="marquee-item"><img src="canva.png" alt="Canva" onerror="this.style.display='none'"></div>
+          <div class="marquee-item"><img src="capcut.png" alt="CapCut" onerror="this.style.display='none'"></div>
+          <div class="marquee-item"><img src="youtube.png" alt="YouTube" onerror="this.style.display='none'"></div>
+          <div class="marquee-item"><img src="vidio.png" alt="Vidio" onerror="this.style.display='none'"></div>
+          <!-- Duplikasi persis untuk pergerakan looping seamless tanpa putus -->
+          <div class="marquee-item"><img src="netflix.png" alt="Netflix" onerror="this.style.display='none'"></div>
+          <div class="marquee-item"><img src="canva.png" alt="Canva" onerror="this.style.display='none'"></div>
+          <div class="marquee-item"><img src="capcut.png" alt="CapCut" onerror="this.style.display='none'"></div>
+          <div class="marquee-item"><img src="youtube.png" alt="YouTube" onerror="this.style.display='none'"></div>
+          <div class="marquee-item"><img src="vidio.png" alt="Vidio" onerror="this.style.display='none'"></div>
         </div>
       </div>
     </div>
@@ -767,16 +780,13 @@
       document.getElementById('themeToggleBtn').innerHTML = '☀️';
     }
 
-    // Variabel produk utama di-load secara dinamis dari file products.json
     let products = [];
-
     async function loadProductsOnline() {
       try {
         const response = await fetch('products.json?v=' + Date.now());
         if (response.ok) {
           products = await response.json();
           renderCatalog();
-          renderFeaturedMarquee();
         }
       } catch (e) {
         console.error("Gagal memuat produk online.");
@@ -817,24 +827,6 @@
         `;
         grid.appendChild(card);
       });
-    }
-
-    // FUNGSI UNTUK MERENDER LOGO PRODUK UNGGULAN SECARA OTOMATIS DAN BERGESER MULUS TANPA PUTUS
-    function renderFeaturedMarquee() {
-      const track = document.getElementById('featuredMarqueeTrack');
-      if (!track) return;
-      
-      let htmlContent = '';
-      // Set pertama dari data produk
-      products.forEach(prod => {
-        htmlContent += `<div class="marquee-item"><img src="${prod.logo}" alt="${prod.title}" onerror="this.style.display='none'"></div>`;
-      });
-      // Duplikasi persis untuk looping tanpa jeda (seamless)
-      products.forEach(prod => {
-        htmlContent += `<div class="marquee-item"><img src="${prod.logo}" alt="${prod.title}" onerror="this.style.display='none'"></div>`;
-      });
-
-      track.innerHTML = htmlContent;
     }
 
     function pesanWA(produk, paket, harga = "") {
