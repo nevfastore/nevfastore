@@ -239,7 +239,7 @@
     .carousel-btn.prev { left: 14px; }
     .carousel-btn.next { right: 14px; }
 
-    /* PRODUK UNGGULAN BERGESER BESAR (BERSIH TANPA KOTAK KECIL, HANYA LOGO BESAR BERGESER) */
+    /* PRODUK UNGGULAN BERGESER BESAR (TANPA OUTLINE PUTIH, FULL LOGO BERGESER MULUS) */
     .featured-marquee-section {
       max-width: 1200px;
       margin: 20px auto 35px;
@@ -251,18 +251,34 @@
       background: rgba(19, 19, 26, 0.7);
       border: 1.5px solid #27272a;
       border-radius: 24px;
-      padding: 18px 24px;
+      padding: 20px 24px;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
     }
 
-    .featured-header-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: #f4f4f5;
-      margin-bottom: 14px;
-      display: flex;
+    /* KOTAK JUDUL DENGAN WARNA ORANYE/KUNING & EMOJI API BERKOBAR */
+    .featured-header-box {
+      display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
+      background: linear-gradient(135deg, #f97316 0%, #eab308 100%);
+      color: #09090b;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 6px 16px;
+      border-radius: 99px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 15px rgba(249, 115, 22, 0.35);
+    }
+
+    .flame-icon {
+      display: inline-block;
+      animation: flameAnim 0.8s ease-in-out infinite alternate;
+      transform-origin: bottom center;
+    }
+
+    @keyframes flameAnim {
+      0% { transform: scale(1) rotate(-3deg); filter: drop-shadow(0 0 2px rgba(255,255,255,0.6)); }
+      100% { transform: scale(1.2) rotate(3deg); filter: drop-shadow(0 0 6px rgba(255,100,0,0.9)); }
     }
 
     .marquee-container {
@@ -273,34 +289,33 @@
 
     .marquee-track {
       display: flex;
-      gap: 24px;
+      gap: 32px;
       width: max-content;
-      animation: scrollFeatured 22s linear infinite;
+      animation: scrollFeatured 20s linear infinite;
     }
 
     .marquee-track:hover { animation-play-state: paused; }
 
+    /* LOGO BESAR TANPA OUTLINE PUTIH */
     .marquee-item {
-      width: 72px;
-      height: 72px;
-      background: #ffffff;
-      border-radius: 18px;
+      width: 80px;
+      height: 80px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 6px 20px rgba(139, 44, 245, 0.15);
       flex-shrink: 0;
-      padding: 8px;
       transition: transform 0.2s;
     }
 
-    .marquee-item:hover { transform: scale(1.1); }
+    .marquee-item:hover { transform: scale(1.12); }
 
     .marquee-item img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      border-radius: 12px;
+      border-radius: 20px;
+      background: transparent;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
     }
 
     @keyframes scrollFeatured {
@@ -338,7 +353,7 @@
       text-align: center;
     }
 
-    /* KATALOG PRODUK GAYA HORIZONTAL (LOGO LEBIH BESAR & FONT INTER SEMIBOLD) */
+    /* KATALOG PRODUK GAYA HORIZONTAL */
     .catalog-section {
       max-width: 1200px;
       margin: 15px auto 90px;
@@ -392,7 +407,6 @@
       margin-bottom: 16px;
     }
 
-    /* LOGO DIPERBESAR */
     .logo-container-horizontal {
       width: 92px;
       height: 92px;
@@ -655,21 +669,21 @@
     </div>
   </section>
 
-  <!-- PRODUK UNGGULAN BERGESER BESAR (HANYA LOGO TANPA KOTAK KECIL) -->
+  <!-- PRODUK UNGGULAN BERGESER BESAR (TANPA OUTLINE PUTIH & EMOJI API BERKOBAR) -->
   <section class="featured-marquee-section">
     <div class="featured-wrapper-clean">
-      <div class="featured-header-title">
-        <span>🔥</span> Produk Unggulan
+      <div class="featured-header-box">
+        <span class="flame-icon">🔥</span> Produk Unggulan
       </div>
       <div class="marquee-container">
         <div class="marquee-track" id="featuredMarqueeTrack">
-          <!-- Logo item yang bergeser otomatis -->
+          <!-- Logo item yang bergeser otomatis tanpa background/outline putih -->
           <div class="marquee-item"><img src="netflix.png" alt="Netflix" onerror="this.style.display='none'"></div>
           <div class="marquee-item"><img src="canva.png" alt="Canva" onerror="this.style.display='none'"></div>
           <div class="marquee-item"><img src="capcut.png" alt="CapCut" onerror="this.style.display='none'"></div>
           <div class="marquee-item"><img src="youtube.png" alt="YouTube" onerror="this.style.display='none'"></div>
           <div class="marquee-item"><img src="vidio.png" alt="Vidio" onerror="this.style.display='none'"></div>
-          <!-- Duplikasi untuk looping mulus -->
+          <!-- Duplikasi persis untuk pergerakan looping seamless tanpa putus -->
           <div class="marquee-item"><img src="netflix.png" alt="Netflix" onerror="this.style.display='none'"></div>
           <div class="marquee-item"><img src="canva.png" alt="Canva" onerror="this.style.display='none'"></div>
           <div class="marquee-item"><img src="capcut.png" alt="CapCut" onerror="this.style.display='none'"></div>
