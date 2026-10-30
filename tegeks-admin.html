@@ -212,7 +212,7 @@
   </div>
 
   <script>
-    let storeData = {
+    let defaultData = {
       banners: ["banner1.jpg", "banner2.jpg", "banner3.jpg"],
       products: [
         {
@@ -263,6 +263,8 @@
         }
       ]
     };
+
+    let storeData = defaultData;
 
     function loadData() {
       const saved = localStorage.getItem('nevfa_store_data');
