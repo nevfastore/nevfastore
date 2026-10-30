@@ -239,78 +239,75 @@
     .carousel-btn.prev { left: 14px; }
     .carousel-btn.next { right: 14px; }
 
-    /* PRODUK UNGGULAN KOTAK BERGESER (GAYA FOTO KANAN) */
-    .featured-boxes-section {
+    /* PRODUK UNGGULAN BERGESER BESAR (TANPA KOTAK KECIL) */
+    .featured-marquee-section {
       max-width: 1200px;
-      margin: 20px auto 40px;
+      margin: 20px auto 35px;
       padding: 0 20px;
+      overflow: hidden;
     }
 
-    .featured-container-box {
+    .featured-wrapper-clean {
       background: rgba(19, 19, 26, 0.7);
       border: 1.5px solid #27272a;
-      border-radius: 28px;
-      padding: 24px;
+      border-radius: 24px;
+      padding: 20px;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
     }
 
     .featured-header-title {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       color: #f4f4f5;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .featured-grid-slider {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
+    .marquee-container {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
     }
 
-    .featured-mini-card {
-      background: #18181b;
-      border: 1.5px solid #3f3f46;
-      border-radius: 20px;
-      padding: 14px 10px;
-      text-align: center;
+    .marquee-track {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 4px 15px rgba(139, 44, 245, 0.1);
-      transition: all 0.2s;
+      gap: 28px;
+      width: max-content;
+      animation: scrollFeatured 22s linear infinite;
     }
 
-    .featured-mini-card:hover {
-      border-color: var(--primary);
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(139, 44, 245, 0.25);
-    }
+    .marquee-track:hover { animation-play-state: paused; }
 
-    .featured-mini-logo {
-      width: 54px;
-      height: 54px;
+    .marquee-item {
+      width: 80px;
+      height: 80px;
+      background: #ffffff;
+      border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #ffffff;
-      border-radius: 14px;
-      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(139, 44, 245, 0.15);
+      flex-shrink: 0;
+      padding: 10px;
+      transition: transform 0.2s;
     }
 
-    .featured-mini-logo img {
-      width: 80%;
-      height: 80%;
+    .marquee-item:hover {
+      transform: scale(1.1);
+    }
+
+    .marquee-item img {
+      width: 100%;
+      height: 100%;
       object-fit: contain;
+      border-radius: 12px;
     }
 
-    .featured-mini-name {
-      font-size: 12.5px;
-      font-weight: 600;
-      color: #f4f4f5;
+    @keyframes scrollFeatured {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     /* SECTION HEADINGS */
@@ -613,7 +610,6 @@
 
     @media (max-width: 900px) {
       .product-grid { grid-template-columns: 1fr; }
-      .featured-grid-slider { grid-template-columns: repeat(3, 1fr); }
       .nav-links { display: none; }
       .footer-container { flex-direction: column; }
     }
@@ -661,38 +657,32 @@
     </div>
   </section>
 
-  <!-- PRODUK UNGGULAN PILIHAN (5 KOTAK DENGAN OUTLINE ESTETIK) -->
-  <section class="featured-boxes-section">
-    <div class="featured-container-box">
+  <!-- PRODUK UNGGULAN BERGESER BESAR (TANPA KOTAK KECIL DI DALAMNYA) -->
+  <section class="featured-marquee-section">
+    <div class="featured-wrapper-clean">
       <div class="featured-header-title">
         <span>🔥</span> Produk Unggulan
       </div>
-      <div class="featured-grid-slider">
-        <div class="featured-mini-card">
-          <div class="featured-mini-logo"><img src="netflix.png" alt="Netflix" onerror="this.style.display='none'"></div>
-          <div class="featured-mini-name">Netflix</div>
-        </div>
-        <div class="featured-mini-card">
-          <div class="featured-mini-logo"><img src="canva.png" alt="Canva" onerror="this.style.display='none'"></div>
-          <div class="featured-mini-name">Canva Pro</div>
-        </div>
-        <div class="featured-mini-card">
-          <div class="featured-mini-logo"><img src="capcut.png" alt="CapCut" onerror="this.style.display='none'"></div>
-          <div class="featured-mini-name">CapCut Pro</div>
-        </div>
-        <div class="featured-mini-card">
-          <div class="featured-mini-logo"><img src="youtube.png" alt="YouTube" onerror="this.style.display='none'"></div>
-          <div class="featured-mini-name">YouTube</div>
-        </div>
-        <div class="featured-mini-card">
-          <div class="featured-mini-logo"><img src="vidio.png" alt="Vidio" onerror="this.style.display='none'"></div>
-          <div class="featured-mini-name">Vidio Platinum</div>
+      <div class="marquee-container">
+        <div class="marquee-track" id="featuredMarqueeTrack">
+          <!-- Logo item yang bergeser otomatis -->
+          <div class="marquee-item"><img src="netflix.png" alt="Netflix" onerror="this.style.display='none'"></div>
+          <div class="marquee-item"><img src="canva.png" alt="Canva" onerror="this.style.display='none'"></div>
+          <div class="marquee-item"><img src="capcut.png" alt="CapCut" onerror="this.style.display='none'"></div>
+          <div class="marquee-item"><img src="youtube.png" alt="YouTube" onerror="this.style.display='none'"></div>
+          <div class="marquee-item"><img src="vidio.png" alt="Vidio" onerror="this.style.display='none'"></div>
+          <!-- Duplikasi untuk looping mulus -->
+          <div class="marquee-item"><img src="netflix.png" alt="Netflix" onerror="this.style.display='none'"></div>
+          <div class="marquee-item"><img src="canva.png" alt="Canva" onerror="this.style.display='none'"></div>
+          <div class="marquee-item"><img src="capcut.png" alt="CapCut" onerror="this.style.display='none'"></div>
+          <div class="marquee-item"><img src="youtube.png" alt="YouTube" onerror="this.style.display='none'"></div>
+          <div class="marquee-item"><img src="vidio.png" alt="Vidio" onerror="this.style.display='none'"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- KATALOG UTAMA (HORIZONTAL DENGAN LOGO BESAR & FONT INTER SEMIBOLD) -->
+  <!-- KATALOG UTAMA -->
   <section class="catalog-section" id="katalog">
     <div style="text-align: center;">
       <span class="section-badge">PRODUK</span>
@@ -700,7 +690,7 @@
       <p class="section-subtitle">Pilih layanan favoritmu, lihat pilihan paketnya, lalu pesan langsung via WhatsApp.</p>
     </div>
     <div class="product-grid" id="productGrid">
-      <!-- Produk otomatis dimuat dari products.json / online -->
+      <!-- Produk otomatis dimuat dari products.json -->
     </div>
   </section>
 
