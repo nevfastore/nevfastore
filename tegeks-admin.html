@@ -45,34 +45,91 @@
 
     <!-- DASHBOARD UTAMA -->
     <div id="admin-app" class="hidden min-h-screen flex flex-col md:flex-row">
-        <aside class="w-full md:w-64 bg-[#110C24] border-b md:border-r border-purple-500/20 p-5 flex flex-col justify-between">
+        <aside class="w-full md:w-64 bg-[#110C24] border-b md:border-r border-purple-500/20 p-5 flex flex-col justify-between flex-shrink-0">
             <div>
                 <div class="font-extrabold text-lg tracking-tight mb-6">NEVFA <span class="text-purple-400">ADMIN</span></div>
                 <nav class="space-y-2">
-                    <button onclick="switchTab('dashboard')" class="w-full text-left px-3 py-2 rounded-xl text-sm font-semibold bg-purple-600 text-white">📊 Dashboard</button>
-                    <button onclick="switchTab('products')" class="w-full text-left px-3 py-2 rounded-xl text-sm font-semibold text-gray-300 hover:bg-white/5">📦 Manajemen Produk</button>
-                    <button onclick="switchTab('banners')" class="w-full text-left px-3 py-2 rounded-xl text-sm font-semibold text-gray-300 hover:bg-white/5">🖼️ Manajemen Banner</button>
+                    <button onclick="switchTab('dashboard')" id="tab-btn-dashboard" class="tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-sm font-semibold bg-purple-600 text-white flex items-center gap-2"><span>📊</span> Dashboard</button>
+                    <button onclick="switchTab('products')" id="tab-btn-products" class="tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:bg-white/5 flex items-center gap-2"><span>📦</span> Manajemen Produk</button>
+                    <button onclick="switchTab('banners')" id="tab-btn-banners" class="tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:bg-white/5 flex items-center gap-2"><span>🖼️</span> Manajemen Banner</button>
                 </nav>
             </div>
             <button onclick="logoutAdmin()" class="mt-6 w-full py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 font-bold text-xs">🚪 Logout</button>
         </aside>
 
         <main class="flex-grow p-6 sm:p-10 max-w-5xl">
+            <!-- TAB DASHBOARD -->
             <section id="tab-dashboard" class="tab-content space-y-6">
                 <h2 class="text-2xl font-extrabold">Dashboard Statistik</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div class="panel-card rounded-2xl p-5">
-                        <div class="text-xs text-gray-400">Jumlah Produk</div>
+                        <div class="text-xs text-gray-400">Jumlah Produk di Database</div>
                         <div id="stat-products" class="text-2xl font-extrabold text-emerald-400 mt-1">0</div>
+                    </div>
+                    <div class="panel-card rounded-2xl p-5">
+                        <div class="text-xs text-gray-400">Banner Aktif</div>
+                        <div id="stat-banners" class="text-2xl font-extrabold text-pink-400 mt-1">0</div>
                     </div>
                 </div>
             </section>
+
+            <!-- TAB PRODUK -->
             <section id="tab-products" class="tab-content hidden space-y-6">
-                <h2 class="text-2xl font-extrabold">Manajemen Produk</h2>
-                <div id="admin-products-list" class="space-y-3"></div>
+                <h2 class="text-2xl font-extrabold">Manajemen Produk & Foto</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <form id="product-form" class="lg:col-span-5 panel-card rounded-2xl p-5 space-y-3.5 h-fit">
+                        <h3 id="product-form-title" class="font-bold text-base text-purple-300">Tambah Produk Baru</h3>
+                        <input type="hidden" id="prod-id">
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Nama Produk / Aplikasi</label>
+                            <input id="prod-name" type="text" required placeholder="Contoh: Netflix Premium" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Kategori</label>
+                                <input id="prod-category" type="text" required placeholder="Streaming" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Harga</label>
+                                <input id="prod-price" type="text" required placeholder="Rp 35.000" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">URL Gambar / Logo</label>
+                            <input id="prod-image-url" type="text" placeholder="https://..." class="w-full px-3.5 py-2 rounded-xl text-xs input-dark">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Deskripsi</label>
+                            <textarea id="prod-desc" rows="2" placeholder="Akun Sharing & Private..." class="w-full px-3.5 py-2 rounded-xl text-sm input-dark"></textarea>
+                        </div>
+                        <div class="flex gap-2 pt-2">
+                            <button type="submit" class="flex-1 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 font-bold text-xs text-white">💾 Simpan Produk</button>
+                            <button type="button" onclick="resetProductForm()" class="px-4 py-2.5 rounded-xl bg-white/10 text-xs font-semibold">Batal</button>
+                        </div>
+                    </form>
+                    <div class="lg:col-span-7 space-y-3" id="admin-products-list"></div>
+                </div>
             </section>
+
+            <!-- TAB BANNER -->
             <section id="tab-banners" class="tab-content hidden space-y-6">
                 <h2 class="text-2xl font-extrabold">Manajemen Banner</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <form id="banner-form" class="lg:col-span-5 panel-card rounded-2xl p-5 space-y-3.5 h-fit">
+                        <h3 class="font-bold text-base text-purple-300">Tambah Banner Baru</h3>
+                        <input type="hidden" id="ban-id">
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Judul Headline</label>
+                            <input id="ban-title" type="text" required placeholder="APLIKASI PREMIUM" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Sub Judul</label>
+                            <input id="ban-subtitle" type="text" placeholder="Garansi Aman..." class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                        </div>
+                        <button type="submit" class="w-full py-2.5 rounded-xl bg-emerald-500 font-bold text-xs text-white">💾 Simpan Banner</button>
+                    </form>
+                    <div class="lg:col-span-7 space-y-3" id="admin-banners-list"></div>
+                </div>
             </section>
         </main>
     </div>
@@ -81,6 +138,9 @@
         const SUPABASE_URL = 'https://eifrccuwxpgzmdsykarp.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_SonCpgUv68A-vKvOXwr4Zw_nr1nKK42';
         const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        let adminProducts = [];
+        let adminBanners = [];
 
         function showToast(msg, isError = false) {
             const t = document.getElementById('toast');
@@ -93,8 +153,11 @@
         window.switchTab = function(tabName) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('bg-purple-600', 'text-white'));
+            document.getElementById(`tab-btn-${tabName}`).classList.add('bg-purple-600', 'text-white');
         };
 
+        // Login Admin
         document.getElementById('login-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('login-email').value;
@@ -114,14 +177,137 @@
             if (session) {
                 document.getElementById('auth-screen').classList.add('hidden');
                 document.getElementById('admin-app').classList.remove('hidden');
-                loadStats();
+                loadAllAdminData();
             }
         }
 
-        async function loadStats() {
-            const { data } = await supabaseClient.from('products').select('*');
-            if (data) document.getElementById('stat-products').textContent = data.length;
+        // Ambil Data dari Supabase
+        async function loadAllAdminData() {
+            const [prodRes, banRes] = await Promise.all([
+                supabaseClient.from('products').select('*').order('sort_order', { ascending: true }),
+                supabaseClient.from('banners').select('*').order('sort_order', { ascending: true })
+            ]);
+
+            adminProducts = prodRes.data || [];
+            adminBanners = banRes.data || [];
+
+            document.getElementById('stat-products').textContent = adminProducts.length;
+            document.getElementById('stat-banners').textContent = adminBanners.filter(b => b.is_active !== false).length;
+
+            renderAdminProducts();
+            renderAdminBanners();
         }
+
+        function renderAdminProducts() {
+            const list = document.getElementById('admin-products-list');
+            if (adminProducts.length === 0) {
+                list.innerHTML = '<div class="panel-card p-4 rounded-xl text-xs text-gray-400">Belum ada produk di database.</div>';
+                return;
+            }
+            list.innerHTML = adminProducts.map(p => `
+                <div class="panel-card rounded-2xl p-4 flex items-center justify-between gap-4">
+                    <div class="flex items-center gap-3.5 min-w-0">
+                        <img src="${p.image_url || 'https://via.placeholder.com/48'}" class="w-12 h-12 rounded-xl object-contain bg-black/40 p-1 flex-shrink-0">
+                        <div class="min-w-0">
+                            <div class="font-bold text-sm truncate">${p.name} <span class="text-purple-400">(${p.price})</span></div>
+                            <div class="text-xs text-gray-400 truncate">${p.category} • ${p.warranty || 'Garansi Tersedia'}</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 flex-shrink-0">
+                        <button onclick="editProduct('${p.id}')" class="px-3 py-1.5 rounded-lg bg-purple-500/20 text-purple-300 text-xs font-bold">Edit</button>
+                        <button onclick="deleteProduct('${p.id}')" class="px-3 py-1.5 rounded-lg bg-rose-500/20 text-rose-300 text-xs font-bold">Hapus</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderAdminBanners() {
+            const list = document.getElementById('admin-banners-list');
+            if (adminBanners.length === 0) {
+                list.innerHTML = '<div class="panel-card p-4 rounded-xl text-xs text-gray-400">Belum ada banner di database.</div>';
+                return;
+            }
+            list.innerHTML = adminBanners.map(b => `
+                <div class="panel-card rounded-2xl p-4 flex items-center justify-between gap-4">
+                    <div class="min-w-0">
+                        <div class="font-bold text-sm truncate">${b.title}</div>
+                        <div class="text-xs text-gray-400 truncate">${b.subtitle || ''}</div>
+                    </div>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <button onclick="deleteBanner('${b.id}')" class="px-3 py-1.5 rounded-lg bg-rose-500/20 text-rose-300 text-xs font-bold">Hapus</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        window.editProduct = function(id) {
+            const p = adminProducts.find(x => x.id === id);
+            if (!p) return;
+            document.getElementById('product-form-title').textContent = 'Edit Produk: ' + p.name;
+            document.getElementById('prod-id').value = p.id;
+            document.getElementById('prod-name').value = p.name;
+            document.getElementById('prod-category').value = p.category || '';
+            document.getElementById('prod-price').value = p.price;
+            document.getElementById('prod-image-url').value = p.image_url || '';
+            document.getElementById('prod-desc').value = p.description || '';
+        };
+
+        window.resetProductForm = function() {
+            document.getElementById('product-form').reset();
+            document.getElementById('prod-id').value = '';
+            document.getElementById('product-form-title').textContent = 'Tambah Produk Baru';
+        };
+
+        // Simpan / Tambah Produk
+        document.getElementById('product-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const payload = {
+                name: document.getElementById('prod-name').value,
+                category: document.getElementById('prod-category').value,
+                price: document.getElementById('prod-price').value,
+                image_url: document.getElementById('prod-image-url').value,
+                description: document.getElementById('prod-desc').value,
+                is_active: true
+            };
+
+            const id = document.getElementById('prod-id').value;
+            const { error } = id
+                ? await supabaseClient.from('products').update(payload).eq('id', id)
+                : await supabaseClient.from('products').insert([payload]);
+
+            if (error) return showToast('Gagal menyimpan: ' + error.message, true);
+            resetProductForm();
+            loadAllAdminData();
+            showToast('Produk berhasil disimpan!');
+        });
+
+        window.deleteProduct = async function(id) {
+            if (!confirm('Hapus produk ini?')) return;
+            await supabaseClient.from('products').delete().eq('id', id);
+            loadAllAdminData();
+            showToast('Produk berhasil dihapus.');
+        };
+
+        document.getElementById('banner-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const payload = {
+                title: document.getElementById('ban-title').value,
+                subtitle: document.getElementById('ban-subtitle').value,
+                is_active: true
+            };
+            const { error } = await supabaseClient.from('banners').insert([payload]);
+            if (error) return showToast('Gagal simpan banner: ' + error.message, true);
+            document.getElementById('banner-form').reset();
+            loadAllAdminData();
+            showToast('Banner berhasil ditambah!');
+        });
+
+        window.deleteBanner = async function(id) {
+            if (!confirm('Hapus banner ini?')) return;
+            await supabaseClient.from('banners').delete().eq('id', id);
+            loadAllAdminData();
+            showToast('Banner dihapus.');
+        };
 
         checkSession();
     </script>
