@@ -1,380 +1,882 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel Admin Lengkap — Nevfa Store</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --primary: #8b2cf5;
-      --primary-hover: #7922db;
-      --primary-gradient: linear-gradient(135deg, #a855f7 0%, #8b2cf5 50%, #6d28d9 100%);
-      --bg: #09090b;
-      --card-bg: #121216;
-      --text-main: #f4f4f5;
-      --text-muted: #a1a1aa;
-      --border-color: #27272a;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-    
-    body {
-      background-color: var(--bg);
-      color: var(--text-main);
-      min-height: 100vh;
-      padding: 30px 20px;
-    }
-
-    .admin-container { max-width: 1000px; margin: 0 auto; }
-
-    .admin-header {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 24px;
-      padding: 24px 30px;
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-
-    .admin-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 24px;
-      font-weight: 800;
-      color: #fff;
-    }
-    .admin-title span { color: #c084fc; }
-
-    .admin-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 24px;
-      padding: 24px 30px;
-      margin-bottom: 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-    }
-
-    .admin-card h3 {
-      font-size: 18px;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .admin-card p {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-      line-height: 1.5;
-    }
-
-    .form-group { margin-bottom: 14px; }
-    .form-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 6px;
-    }
-
-    .form-control {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-color);
-      padding: 10px 16px;
-      border-radius: 12px;
-      color: #fff;
-      font-size: 13.5px;
-      outline: none;
-    }
-    .form-control:focus { border-color: var(--primary); }
-
-    textarea.form-control { height: 95px; resize: vertical; }
-
-    .btn-purple {
-      background: var(--primary-gradient);
-      color: #fff;
-      border: none;
-      padding: 11px 22px;
-      border-radius: 99px;
-      font-weight: 700;
-      font-size: 13.5px;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(139,44,245,0.3);
-      transition: all 0.2s;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .btn-purple:hover { transform: translateY(-2px); opacity: 0.9; }
-
-    .btn-danger {
-      background: rgba(239, 68, 68, 0.15);
-      color: #f87171;
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      padding: 6px 14px;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 12px;
-      cursor: pointer;
-    }
-    .btn-danger:hover { background: rgba(239, 68, 68, 0.3); }
-
-    .btn-success {
-      background: rgba(34, 197, 94, 0.15);
-      color: #4ade80;
-      border: 1px solid rgba(34, 197, 94, 0.3);
-      padding: 10px 20px;
-      border-radius: 99px;
-      font-weight: 700;
-      font-size: 13px;
-      cursor: pointer;
-    }
-
-    .variant-row {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 8px;
-      align-items: center;
-    }
-
-    .product-box {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--border-color);
-      border-radius: 18px;
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-
-    .alert-box {
-      background: rgba(34, 197, 94, 0.1);
-      border: 1px solid rgba(34, 197, 94, 0.3);
-      color: #4ade80;
-      padding: 12px 18px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      font-size: 13.5px;
-      font-weight: 600;
-      display: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel — NEVFA STORE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0B0719;
+            color: #FFFFFF;
+        }
+        .panel-card {
+            background-color: #16102C;
+            border: 1px solid rgba(168, 85, 247, 0.22);
+        }
+        .input-dark {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            color: #fff;
+        }
+        .input-dark:focus {
+            outline: none;
+            border-color: #A855F7;
+        }
+        .input-dark option { background-color: #16102C; color: #fff; }
+    </style>
 </head>
-<body>
+<body class="min-h-screen">
 
-  <div class="admin-container">
-    <div class="admin-header">
-      <div class="admin-title">⚙️ Nevfa Store <span>Panel Admin Pro</span></div>
-      <div style="display: flex; gap: 10px;">
-        <button class="btn-success" onclick="saveData()">💾 Simpan & Download JSON</button>
-        <a href="index.html" target="_blank" class="btn-purple">🌐 Buka Web Toko</a>
-      </div>
+    <!-- NOTIFIKASI TOAST -->
+    <div id="toast" class="fixed top-5 right-5 z-50 hidden px-5 py-3.5 rounded-xl font-bold text-sm shadow-2xl transition-all"></div>
+
+    <!-- ========================================== -->
+    <!-- HALAMAN LOGIN ADMIN (TERKUNCI AMAN) -->
+    <!-- ========================================== -->
+    <div id="auth-screen" class="min-h-screen flex items-center justify-center p-4">
+        <div class="panel-card rounded-3xl p-6 sm:p-8 w-full max-w-md shadow-2xl">
+            <div class="text-center mb-6">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-purple-600/20 border border-purple-500 text-2xl mb-3">🔐</div>
+                <h1 class="text-2xl font-extrabold">
+                    <span>NEVFA</span> <span class="text-purple-400">ADMIN</span>
+                </h1>
+                <p class="text-xs text-gray-400 mt-1">Khusus Pemilik Toko — Login dengan Akun Administrator</p>
+            </div>
+
+            <div id="config-warning" class="hidden mb-4 p-3.5 rounded-xl bg-amber-500/15 border border-amber-500/40 text-amber-200 text-xs leading-relaxed">
+                ⚠️ <strong>Perhatian:</strong> Anda belum mengisi <code>SUPABASE_URL</code> dan <code>SUPABASE_ANON_KEY</code> di dalam kode <code>admin.html</code>.
+            </div>
+
+            <form id="login-form" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1.5">Email Administrator</label>
+                    <input id="login-email" type="email" required placeholder="admin@nevfastore.com" class="w-full px-4 py-2.5 rounded-xl text-sm input-dark">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1.5">Password</label>
+                    <input id="login-password" type="password" required placeholder="••••••••" class="w-full px-4 py-2.5 rounded-xl text-sm input-dark">
+                </div>
+                <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-95 font-bold text-sm shadow-lg transition">
+                    Masuk ke Admin Panel
+                </button>
+            </form>
+            <div class="mt-6 text-center">
+                <a href="index.html" class="text-xs text-purple-300 hover:underline">← Kembali ke Website Utama</a>
+            </div>
+        </div>
     </div>
 
-    <div class="alert-box" id="alertBox">✅ Berhasil! File <b>products.json</b> otomatis ter-download. Masukkan ke folder project kamu.</div>
+    <!-- ========================================== -->
+    <!-- DASHBOARD ADMIN PANEL UTAMA -->
+    <!-- ========================================== -->
+    <div id="admin-app" class="hidden min-h-screen flex flex-col md:flex-row">
 
-    <!-- KELOLA PRODUK -->
-    <div class="admin-card">
-      <h3>
-        📦 Kelola Katalog Produk, Benefit, Garansi & Varian
-        <button class="btn-purple" onclick="addProduct()" style="padding: 6px 14px; font-size: 12px;">+ Tambah Produk Baru</button>
-      </h3>
-      <p>Edit nama, logo, harga mulai, deskripsi, benefit, garansi, deskripsi lengkap, dan paket varian secara bebas.</p>
-      
-      <div id="productListContainer"></div>
+        <!-- Sidebar Navigasi -->
+        <aside class="w-full md:w-64 bg-[#110C24] border-b md:border-b-0 md:border-r border-purple-500/20 flex-shrink-0">
+            <div class="p-5 flex items-center justify-between border-b border-purple-500/20">
+                <div class="font-extrabold text-lg tracking-tight">
+                    <span>NEVFA</span> <span class="text-purple-400">ADMIN</span>
+                </div>
+                <a href="index.html" target="_blank" class="text-xs px-2.5 py-1 rounded-lg bg-purple-500/20 text-purple-300 border border-purple-500/30 hover:bg-purple-500/30">
+                    Lihat Web ↗
+                </a>
+            </div>
+            <nav class="p-3 flex md:flex-col gap-1.5 overflow-x-auto">
+                <button onclick="switchTab('dashboard')" id="tab-btn-dashboard" class="tab-btn text-left px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-2.5 bg-purple-600 text-white">
+                    <span>📊</span> Dashboard
+                </button>
+                <button onclick="switchTab('products')" id="tab-btn-products" class="tab-btn text-left px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-2.5 text-gray-300 hover:bg-white/5">
+                    <span>📦</span> Manajemen Produk
+                </button>
+                <button onclick="switchTab('banners')" id="tab-btn-banners" class="tab-btn text-left px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-2.5 text-gray-300 hover:bg-white/5">
+                    <span>🖼️</span> Manajemen Banner
+                </button>
+                <button onclick="switchTab('appearance')" id="tab-btn-appearance" class="tab-btn text-left px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-2.5 text-gray-300 hover:bg-white/5">
+                    <span>🎨</span> Tampilan & Logo
+                </button>
+                <button onclick="switchTab('content')" id="tab-btn-content" class="tab-btn text-left px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-2.5 text-gray-300 hover:bg-white/5">
+                    <span>📝</span> Konten, WA & FAQ
+                </button>
+                <button onclick="switchTab('security')" id="tab-btn-security" class="tab-btn text-left px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-2.5 text-gray-300 hover:bg-white/5">
+                    <span>🛡️</span> Akun & Keamanan
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Area Konten Utama -->
+        <main class="flex-grow p-4 sm:p-8 max-w-6xl">
+
+            <!-- TAB A: DASHBOARD -->
+            <section id="tab-dashboard" class="tab-content space-y-6">
+                <div>
+                    <h2 class="text-2xl font-extrabold">Dashboard Statistik & Aktivitas</h2>
+                    <p class="text-xs text-gray-400">Ringkasan performa dan perubahan langsung pada website publik.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="panel-card rounded-2xl p-5">
+                        <div class="text-xs text-gray-400">Total Kunjungan Web</div>
+                        <div id="stat-visitors" class="text-2xl font-extrabold text-purple-400 mt-1">0</div>
+                    </div>
+                    <div class="panel-card rounded-2xl p-5">
+                        <div class="text-xs text-gray-400">Jumlah Produk</div>
+                        <div id="stat-products" class="text-2xl font-extrabold text-emerald-400 mt-1">0</div>
+                    </div>
+                    <div class="panel-card rounded-2xl p-5">
+                        <div class="text-xs text-gray-400">Banner Aktif</div>
+                        <div id="stat-banners" class="text-2xl font-extrabold text-pink-400 mt-1">0</div>
+                    </div>
+                    <div class="panel-card rounded-2xl p-5">
+                        <div class="text-xs text-gray-400">Terakhir Dipublikasikan</div>
+                        <div id="stat-updated" class="text-xs font-bold text-gray-200 mt-2">-</div>
+                    </div>
+                </div>
+
+                <div class="panel-card rounded-2xl p-5">
+                    <h3 class="font-bold text-sm mb-3">Riwayat Perubahan Terakhir</h3>
+                    <div id="activity-list" class="space-y-2 text-xs text-gray-300"></div>
+                </div>
+            </section>
+
+            <!-- TAB B: MANAJEMEN PRODUK -->
+            <section id="tab-products" class="tab-content hidden space-y-6">
+                <div>
+                    <h2 class="text-2xl font-extrabold">Manajemen Produk & Foto</h2>
+                    <p class="text-xs text-gray-400">Tambah, edit, ganti logo aplikasi, atur harga, garansi, dan status stok.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <!-- Form Tambah/Edit Produk -->
+                    <form id="product-form" class="lg:col-span-5 panel-card rounded-2xl p-5 space-y-3.5 h-fit">
+                        <h3 id="product-form-title" class="font-bold text-base text-purple-300">Tambah Produk Baru</h3>
+                        <input type="hidden" id="prod-id">
+
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Nama Produk / Aplikasi</label>
+                            <input id="prod-name" type="text" required placeholder="Contoh: Netflix Premium" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Kategori</label>
+                                <input id="prod-category" type="text" required placeholder="Streaming / Musik" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Harga</label>
+                                <input id="prod-price" type="text" required placeholder="Rp 35.000" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Upload Logo / Foto Produk</label>
+                            <input id="prod-file" type="file" accept="image/*" class="w-full text-xs text-gray-300 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:bg-purple-600 file:text-white file:font-semibold">
+                            <input id="prod-image-url" type="text" placeholder="Atau tempel URL gambar logo..." class="w-full mt-2 px-3.5 py-2 rounded-xl text-xs input-dark">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Deskripsi Produk</label>
+                            <textarea id="prod-desc" rows="2" placeholder="Akun Sharing & Private, 4K UHD..." class="w-full px-3.5 py-2 rounded-xl text-sm input-dark"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Informasi Garansi</label>
+                            <input id="prod-warranty" type="text" placeholder="Full Garansi 30 Hari" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-2.5">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Label</label>
+                                <select id="prod-badge" class="w-full px-2.5 py-2 rounded-xl text-xs input-dark">
+                                    <option value="">Tanpa Label</option>
+                                    <option value="Best Seller">Best Seller</option>
+                                    <option value="Promo">Promo</option>
+                                    <option value="Terbaru">Terbaru</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Urutan</label>
+                                <input id="prod-order" type="number" value="1" class="w-full px-3 py-2 rounded-xl text-xs input-dark">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Status Stok</label>
+                                <select id="prod-active" class="w-full px-2.5 py-2 rounded-xl text-xs input-dark">
+                                    <option value="true">Tersedia</option>
+                                    <option value="false">Stok Habis</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-2 pt-2">
+                            <button type="submit" class="flex-1 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-xs sm:text-sm transition">
+                                💾 Simpan & Publikasikan
+                            </button>
+                            <button type="button" onclick="resetProductForm()" class="px-4 py-2.5 rounded-xl bg-white/10 text-xs font-semibold">
+                                Batal
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Daftar Produk -->
+                    <div class="lg:col-span-7 space-y-3" id="admin-products-list"></div>
+                </div>
+            </section>
+
+            <!-- TAB C: MANAJEMEN BANNER -->
+            <section id="tab-banners" class="tab-content hidden space-y-6">
+                <div>
+                    <h2 class="text-2xl font-extrabold">Manajemen Banner & Slider</h2>
+                    <p class="text-xs text-gray-400">Kelola banner halaman utama, gambar promosi, tombol, dan urutan tampil.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <form id="banner-form" class="lg:col-span-5 panel-card rounded-2xl p-5 space-y-3.5 h-fit">
+                        <h3 id="banner-form-title" class="font-bold text-base text-purple-300">Tambah / Edit Banner</h3>
+                        <input type="hidden" id="ban-id">
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Judul Headline Banner</label>
+                            <input id="ban-title" type="text" required placeholder="APLIKASI PREMIUM & GARANSI AMAN" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Deskripsi Banner</label>
+                            <textarea id="ban-subtitle" rows="2" placeholder="Dapatkan akses resmi..." class="w-full px-3.5 py-2 rounded-xl text-sm input-dark"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Upload Gambar Banner (Opsional)</label>
+                            <input id="ban-file" type="file" accept="image/*" class="w-full text-xs text-gray-300 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:bg-purple-600 file:text-white file:font-semibold">
+                            <input id="ban-image-url" type="text" placeholder="Atau URL gambar banner..." class="w-full mt-2 px-3.5 py-2 rounded-xl text-xs input-dark">
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Teks Tombol</label>
+                                <input id="ban-btn-text" type="text" value="Lihat Produk" class="w-full px-3.5 py-2 rounded-xl text-xs input-dark">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Link Tujuan</label>
+                                <input id="ban-btn-link" type="text" value="#katalog" class="w-full px-3.5 py-2 rounded-xl text-xs input-dark">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Urutan</label>
+                                <input id="ban-order" type="number" value="1" class="w-full px-3.5 py-2 rounded-xl text-xs input-dark">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Status Tampil</label>
+                                <select id="ban-active" class="w-full px-3 py-2 rounded-xl text-xs input-dark">
+                                    <option value="true">Aktif</option>
+                                    <option value="false">Nonaktif</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 pt-2">
+                            <button type="submit" class="flex-1 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-xs sm:text-sm transition">
+                                💾 Simpan & Publikasikan
+                            </button>
+                            <button type="button" onclick="resetBannerForm()" class="px-4 py-2.5 rounded-xl bg-white/10 text-xs font-semibold">Batal</button>
+                        </div>
+                    </form>
+
+                    <div class="lg:col-span-7 space-y-3" id="admin-banners-list"></div>
+                </div>
+            </section>
+
+            <!-- TAB D: PENGATURAN TAMPILAN, LOGO & WARNA PUTIH-UNGU -->
+            <section id="tab-appearance" class="tab-content hidden space-y-6">
+                <div>
+                    <h2 class="text-2xl font-extrabold">Pengaturan Tampilan, Logo & Brand</h2>
+                    <p class="text-xs text-gray-400">Atur logo toko, warna teks NEVFA (Putih) & STORE (Ungu), warna tema, font, dan tata letak section.</p>
+                </div>
+
+                <form id="appearance-form" class="panel-card rounded-2xl p-6 space-y-6">
+                    <!-- Identitas Brand Putih & Ungu -->
+                    <div>
+                        <h3 class="font-bold text-sm text-purple-300 mb-3">1. Nama Toko & Kombinasi Warna (Putih & Ungu)</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Teks Kata Pertama</label>
+                                <input id="set-brand-first" type="text" value="NEVFA" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Warna Kata Pertama (Putih)</label>
+                                <input id="set-brand-first-color" type="color" value="#FFFFFF" class="w-full h-10 rounded-xl bg-transparent cursor-pointer">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Teks Kata Kedua</label>
+                                <input id="set-brand-second" type="text" value="STORE" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Warna Kata Kedua (Ungu)</label>
+                                <input id="set-brand-second-color" type="color" value="#A855F7" class="w-full h-10 rounded-xl bg-transparent cursor-pointer">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upload Logo Toko & Favicon -->
+                    <div class="border-t border-white/10 pt-5">
+                        <h3 class="font-bold text-sm text-purple-300 mb-3">2. Logo Toko & Favicon</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Upload Logo Toko (Navbar & Footer)</label>
+                                <input id="set-logo-file" type="file" accept="image/*" class="w-full text-xs text-gray-300 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:bg-purple-600 file:text-white">
+                                <input id="set-logo-url" type="text" placeholder="URL Logo Toko (kosongkan jika hanya teks)" class="w-full mt-2 px-3.5 py-2 rounded-xl text-xs input-dark">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Upload Favicon (Ikon Tab Browser)</label>
+                                <input id="set-favicon-file" type="file" accept="image/*" class="w-full text-xs text-gray-300 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:bg-purple-600 file:text-white">
+                                <input id="set-favicon-url" type="text" placeholder="URL Favicon" class="w-full mt-2 px-3.5 py-2 rounded-xl text-xs input-dark">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Warna Tema & Font -->
+                    <div class="border-t border-white/10 pt-5">
+                        <h3 class="font-bold text-sm text-purple-300 mb-3">3. Warna Website, Font & Jarak Elemen</h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Warna Utama (Ungu)</label>
+                                <input id="set-primary-color" type="color" value="#A855F7" class="w-full h-10 rounded-xl cursor-pointer">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Warna Aksen</label>
+                                <input id="set-accent-color" type="color" value="#EC4899" class="w-full h-10 rounded-xl cursor-pointer">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Warna Background</label>
+                                <input id="set-bg-color" type="color" value="#0B0719" class="w-full h-10 rounded-xl cursor-pointer">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Warna Card Produk</label>
+                                <input id="set-card-color" type="color" value="#16102C" class="w-full h-10 rounded-xl cursor-pointer">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Jenis Font</label>
+                                <select id="set-font-family" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                                    <option value="Plus Jakarta Sans">Plus Jakarta Sans</option>
+                                    <option value="Inter">Inter</option>
+                                    <option value="Poppins">Poppins</option>
+                                    <option value="Outfit">Outfit</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Ukuran Tulisan Dasar</label>
+                                <select id="set-font-size" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                                    <option value="15px">Kecil (15px)</option>
+                                    <option value="16px">Normal (16px)</option>
+                                    <option value="17px">Besar (17px)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Jarak Antar Section</label>
+                                <select id="set-spacing" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                                    <option value="40px">Rapat (40px)</option>
+                                    <option value="56px">Ideal (56px)</option>
+                                    <option value="72px">Lega (72px)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Urutan & Aktif/Nonaktif Section -->
+                    <div class="border-t border-white/10 pt-5">
+                        <h3 class="font-bold text-sm text-purple-300 mb-3">4. Tata Letak & Status Section</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Urutan Section Halaman Utama</label>
+                                <select id="set-section-order" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                                    <option value="banner,products,features,faq">Banner → Produk → Keunggulan → FAQ</option>
+                                    <option value="banner,features,products,faq">Banner → Keunggulan → Produk → FAQ</option>
+                                    <option value="products,banner,features,faq">Produk → Banner → Keunggulan → FAQ</option>
+                                </select>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-4 pt-5">
+                                <label class="flex items-center gap-2 text-xs font-semibold cursor-pointer">
+                                    <input id="set-show-banner" type="checkbox" checked class="accent-purple-500 w-4 h-4"> Tampilkan Banner
+                                </label>
+                                <label class="flex items-center gap-2 text-xs font-semibold cursor-pointer">
+                                    <input id="set-show-features" type="checkbox" checked class="accent-purple-500 w-4 h-4"> Tampilkan Keunggulan
+                                </label>
+                                <label class="flex items-center gap-2 text-xs font-semibold cursor-pointer">
+                                    <input id="set-show-faq" type="checkbox" checked class="accent-purple-500 w-4 h-4"> Tampilkan FAQ
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full sm:w-auto px-8 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-sm shadow-lg transition">
+                        💾 Simpan & Publikasikan Tampilan
+                    </button>
+                </form>
+            </section>
+
+            <!-- TAB E: MANAJEMEN KONTEN, KONTAK WA & FAQ -->
+            <section id="tab-content" class="tab-content hidden space-y-6">
+                <div>
+                    <h2 class="text-2xl font-extrabold">Manajemen Konten, WhatsApp & FAQ</h2>
+                    <p class="text-xs text-gray-400">Atur nomor WhatsApp tujuan checkout, link sosial media, deskripsi footer, dan daftar FAQ.</p>
+                </div>
+
+                <form id="content-form" class="panel-card rounded-2xl p-6 space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Nomor WhatsApp Admin (Awali 628...)</label>
+                            <input id="set-wa-number" type="text" required placeholder="6281234567890" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Deskripsi Singkat Toko (Footer)</label>
+                            <input id="set-footer-text" type="text" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Link Instagram</label>
+                            <input id="set-ig" type="text" placeholder="https://instagram.com/..." class="w-full px-3.5 py-2 rounded-xl text-xs input-dark">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Link Telegram</label>
+                            <input id="set-tele" type="text" placeholder="https://t.me/..." class="w-full px-3.5 py-2 rounded-xl text-xs input-dark">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Link TikTok</label>
+                            <input id="set-tiktok" type="text" placeholder="https://tiktok.com/@..." class="w-full px-3.5 py-2 rounded-xl text-xs input-dark">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="px-6 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-xs sm:text-sm transition">
+                        💾 Simpan Kontak & Sosial Media
+                    </button>
+                </form>
+
+                <!-- Kelola FAQ -->
+                <div class="panel-card rounded-2xl p-6 space-y-4">
+                    <h3 class="font-bold text-base text-purple-300">Tambah / Kelola Pertanyaan FAQ</h3>
+                    <form id="faq-form" class="grid grid-cols-1 sm:grid-cols-12 gap-3">
+                        <input id="faq-q" type="text" required placeholder="Pertanyaan..." class="sm:col-span-5 px-3.5 py-2 rounded-xl text-xs input-dark">
+                        <input id="faq-a" type="text" required placeholder="Jawaban..." class="sm:col-span-5 px-3.5 py-2 rounded-xl text-xs input-dark">
+                        <button type="submit" class="sm:col-span-2 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 font-bold text-xs">+ Tambah FAQ</button>
+                    </form>
+                    <div id="admin-faq-list" class="space-y-2 pt-2"></div>
+                </div>
+            </section>
+
+            <!-- TAB F: KEAMANAN & AKUN ADMIN -->
+            <section id="tab-security" class="tab-content hidden space-y-6">
+                <div>
+                    <h2 class="text-2xl font-extrabold">Pengaturan Akun & Keamanan</h2>
+                    <p class="text-xs text-gray-400">Kelola sesi login administrator dan ubah password keamanan.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <form id="password-form" class="panel-card rounded-2xl p-6 space-y-4">
+                        <h3 class="font-bold text-base text-purple-300">Ubah Password Admin</h3>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Password Baru (Minimal 6 Karakter)</label>
+                            <input id="new-password" type="password" required minlength="6" placeholder="••••••••" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                        </div>
+                        <button type="submit" class="px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 font-bold text-xs sm:text-sm">
+                            Perbarui Password
+                        </button>
+                    </form>
+
+                    <div class="panel-card rounded-2xl p-6 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-base text-rose-300 mb-1">Keluar dari Sesi Admin</h3>
+                            <p id="admin-user-email" class="text-xs text-gray-400 mb-4"></p>
+                        </div>
+                        <button onclick="logoutAdmin()" class="w-full py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 font-bold text-xs sm:text-sm">
+                            🚪 Logout Administrator
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
     </div>
-  </div>
 
-  <script>
-    let currentProducts = [
-      {
-        id: "netflix",
-        title: "Netflix",
-        logo: "netflix.png",
-        startPrice: "Rp20.000",
-        desc: "Streaming film & series favorit dengan kualitas terbaik.",
-        benefit: "Streaming Ultra HD 4K anti lemot, support TV & HP, legal resmi.",
-        garansi: "Garansi full sesuai durasi berlangganan.",
-        deskripsi: "Akun Netflix resmi berkualitas tinggi anti hold.",
-        packages: [
-          { nama: "Sharing 1 Bulan", harga: "Rp20.000" },
-          { nama: "Anti Limit 1 Bulan", harga: "Rp40.000" },
-          { nama: "Private 1 Bulan", harga: "Rp110.000" }
-        ]
-      },
-      {
-        id: "canva",
-        title: "Canva Pro",
-        logo: "canva.png",
-        startPrice: "Rp8.000",
-        desc: "Desain tanpa batas dengan semua fitur premium Canva.",
-        benefit: "Akses semua template pro, elemen pro, hapus latar belakang otomatis, dan kit merek.",
-        garansi: "Garansi invite ulang jika link tim kendala selama masa aktif.",
-        deskripsi: "Akun Canva Pro via link invite resmi team edu/enterprise.",
-        packages: [
-          { nama: "Invite Member 1 Bulan", harga: "Rp8.000" },
-          { nama: "Invite Member 1 Tahun", harga: "Rp25.000" }
-        ]
-      }
-    ];
+    <script>
+        // =========================================================================
+        // KONFIGURASI SUPABASE (GANTI DENGAN URL & ANON KEY DARI SUPABASE ANDA)
+        // =========================================================================
+        const SUPABASE_URL = 'https://eifrccuwxpgzmdsykarp.supabase.co'';
+        const SUPABASE_ANON_KEY = 'sb_publishable_SonCpgUv68A-vKvOXwr4Zw_nr1nKK42';
 
-    async function loadAdminData() {
-      try {
-        const res = await fetch('products.json?v=' + Date.now());
-        if (res.ok) {
-          const data = await res.json();
-          if (Array.isArray(data) && data.length > 0) {
-            currentProducts = data;
-          }
-        }
-      } catch (e) {
-        console.log("Memuat dari default/lokal");
-      }
-      renderAdminList();
-    }
+        const isConfigured = SUPABASE_URL.startsWith('https://') && !SUPABASE_URL.includes('ISI_DENGAN_');
+        const supabaseClient = isConfigured ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 
-    function renderAdminList() {
-      const container = document.getElementById('productListContainer');
-      container.innerHTML = '';
-
-      currentProducts.forEach((prod, pIdx) => {
-        let pkgHtml = '';
-        if (prod.packages) {
-          prod.packages.forEach((pkg, pkgIdx) => {
-            pkgHtml += `
-              <div class="variant-row">
-                <input type="text" class="form-control" value="${pkg.nama}" oninput="updatePkg(${pIdx}, ${pkgIdx}, 'nama', this.value)" placeholder="Nama Paket (cth: Sharing 1 Bulan)">
-                <input type="text" class="form-control" value="${pkg.harga}" oninput="updatePkg(${pIdx}, ${pkgIdx}, 'harga', this.value)" placeholder="Harga (cth: Rp20.000)">
-                <button class="btn-danger" onclick="removePkg(${pIdx}, ${pkgIdx})">✕</button>
-              </div>
-            `;
-          });
+        if (!isConfigured) {
+            document.getElementById('config-warning').classList.remove('hidden');
         }
 
-        container.innerHTML += `
-          <div class="product-box">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
-              <h4 style="color:#c084fc; font-size:16px; font-weight:800;">📦 ${prod.title || 'Produk Baru'}</h4>
-              <button class="btn-danger" onclick="removeProduct(${pIdx})">🗑️ Hapus Produk</button>
-            </div>
+        function showToast(msg, isError = false) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.className = `fixed top-5 right-5 z-50 px-5 py-3.5 rounded-xl font-bold text-sm shadow-2xl ${isError ? 'bg-rose-600 text-white' : 'bg-emerald-500 text-white'}`;
+            t.classList.remove('hidden');
+            setTimeout(() => t.classList.add('hidden'), 3200);
+        }
 
-            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
-              <div class="form-group">
-                <label>Nama Produk:</label>
-                <input type="text" class="form-control" value="${prod.title || ''}" oninput="updateProd(${pIdx}, 'title', this.value)">
-              </div>
-              <div class="form-group">
-                <label>Nama File Logo (.png):</label>
-                <input type="text" class="form-control" value="${prod.logo || ''}" oninput="updateProd(${pIdx}, 'logo', this.value)">
-              </div>
-              <div class="form-group">
-                <label>Harga Mulai Dari:</label>
-                <input type="text" class="form-control" value="${prod.startPrice || ''}" oninput="updateProd(${pIdx}, 'startPrice', this.value)">
-              </div>
-              <div class="form-group">
-                <label>Deskripsi Singkat (Katalog):</label>
-                <input type="text" class="form-control" value="${prod.desc || ''}" oninput="updateProd(${pIdx}, 'desc', this.value)">
-              </div>
-            </div>
+        window.switchTab = function(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-purple-600', 'text-white');
+                btn.classList.add('text-gray-300');
+            });
+            const activeBtn = document.getElementById(`tab-btn-${tabName}`);
+            activeBtn.classList.add('bg-purple-600', 'text-white');
+        };
 
-            <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:12px; margin-top:8px;">
-              <div class="form-group">
-                <label>Benefit:</label>
-                <textarea class="form-control" oninput="updateProd(${pIdx}, 'benefit', this.value)">${prod.benefit || ''}</textarea>
-              </div>
-              <div class="form-group">
-                <label>Garansi:</label>
-                <textarea class="form-control" oninput="updateProd(${pIdx}, 'garansi', this.value)">${prod.garansi || ''}</textarea>
-              </div>
-              <div class="form-group">
-                <label>Deskripsi Lengkap:</label>
-                <textarea class="form-control" oninput="updateProd(${pIdx}, 'deskripsi', this.value)">${prod.deskripsi || ''}</textarea>
-              </div>
-            </div>
+        // Fungsi Upload Gambar ke Supabase Storage (dengan fallback otomatis)
+        async function uploadImageFile(fileInput) {
+            if (!fileInput.files || fileInput.files.length === 0) return null;
+            const file = fileInput.files[0];
+            const ext = file.name.split('.').pop();
+            const fileName = `asset_${Date.now()}_${Math.random().toString(36).substring(2, 7)}.${ext}`;
 
-            <div class="form-group" style="margin-top:10px;">
-              <label style="color:#c084fc;">⚡ Varian Paket & Harga:</label>
-              <div id="pkgs-${pIdx}">${pkgHtml}</div>
-              <button class="btn-purple" onclick="addPkg(${pIdx})" style="padding: 6px 14px; font-size:12px; margin-top:6px;">+ Tambah Varian Paket</button>
-            </div>
-          </div>
-        `;
-      });
-    }
+            const { data, error } = await supabaseClient.storage.from('nevfa-assets').upload(fileName, file, { upsert: true });
+            if (!error && data) {
+                const { data: pubUrl } = supabaseClient.storage.from('nevfa-assets').getPublicUrl(fileName);
+                return pubUrl.publicUrl;
+            }
+            // Fallback ke Data URL jika storage belum disetup
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onloadend = () => resolve(reader.result);
+                reader.readAsDataURL(file);
+            });
+        }
 
-    function updateProd(pIdx, field, val) {
-      currentProducts[pIdx][field] = val;
-    }
+        async function logActivity(actionText) {
+            if (!supabaseClient) return;
+            await supabaseClient.from('activity_logs').insert([{ action: actionText }]);
+            await supabaseClient.from('site_settings').update({ updated_at: new Date().toISOString() }).eq('id', 1);
+        }
 
-    function addProduct() {
-      currentProducts.push({
-        id: "prod_" + Date.now(),
-        title: "Produk Baru",
-        logo: "logo.png",
-        startPrice: "Rp10.000",
-        desc: "Deskripsi singkat produk baru.",
-        benefit: "Fitur Pro dan legal.",
-        garansi: "Garansi penuh.",
-        deskripsi: "Deskripsi lengkap produk baru.",
-        packages: [
-          { nama: "Paket 1 Bulan", harga: "Rp10.000" }
-        ]
-      });
-      renderAdminList();
-    }
+        // Autentikasi Login Admin
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!supabaseClient) return showToast('Harap isi SUPABASE_URL & ANON_KEY terlebih dahulu!', true);
 
-    function removeProduct(pIdx) {
-      if (confirm("Yakin ingin menghapus produk ini dari katalog?")) {
-        currentProducts.splice(pIdx, 1);
-        renderAdminList();
-      }
-    }
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
 
-    function updatePkg(pIdx, pkgIdx, field, val) {
-      currentProducts[pIdx].packages[pkgIdx][field] = val;
-    }
+            if (error) return showToast('Login gagal: ' + error.message, true);
+            checkSession();
+        });
 
-    function addPkg(pIdx) {
-      if (!currentProducts[pIdx].packages) {
-        currentProducts[pIdx].packages = [];
-      }
-      currentProducts[pIdx].packages.push({ nama: "Paket Baru", harga: "Rp15.000" });
-      renderAdminList();
-    }
+        window.logoutAdmin = async function() {
+            if (supabaseClient) await supabaseClient.auth.signOut();
+            location.reload();
+        };
 
-    function removePkg(pIdx, pkgIdx) {
-      currentProducts[pIdx].packages.splice(pkgIdx, 1);
-      renderAdminList();
-    }
+        async function checkSession() {
+            if (!supabaseClient) return;
+            const { data: { session } } = await supabaseClient.auth.getSession();
+            if (session) {
+                document.getElementById('auth-screen').classList.add('hidden');
+                document.getElementById('admin-app').classList.remove('hidden');
+                document.getElementById('admin-user-email').textContent = `Login sebagai: ${session.user.email}`;
+                loadAllAdminData();
+            }
+        }
 
-    function saveData() {
-      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(currentProducts, null, 2));
-      const downloadAnchor = document.createElement('a');
-      downloadAnchor.setAttribute("href", dataStr);
-      downloadAnchor.setAttribute("download", "products.json");
-      document.body.appendChild(downloadAnchor);
-      downloadAnchor.click();
-      downloadAnchor.remove();
+        // Muat Seluruh Data ke Admin Panel
+        let adminProducts = [];
+        let adminBanners = [];
 
-      const alertBox = document.getElementById('alertBox');
-      alertBox.style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      setTimeout(() => { alertBox.style.display = 'none'; }, 5000);
-    }
+        async function loadAllAdminData() {
+            const [setRes, prodRes, banRes, faqRes, logRes] = await Promise.all([
+                supabaseClient.from('site_settings').select('*').eq('id', 1).single(),
+                supabaseClient.from('products').select('*').order('sort_order', { ascending: true }),
+                supabaseClient.from('banners').select('*').order('sort_order', { ascending: true }),
+                supabaseClient.from('faqs').select('*').order('sort_order', { ascending: true }),
+                supabaseClient.from('activity_logs').select('*').order('created_at', { ascending: false }).limit(8)
+            ]);
 
-    window.onload = loadAdminData;
-  </script>
+            if (setRes.data) {
+                const s = setRes.data;
+                document.getElementById('stat-visitors').textContent = s.visitor_count || 0;
+                document.getElementById('stat-updated').textContent = s.updated_at ? new Date(s.updated_at).toLocaleString('id-ID') : '-';
+
+                document.getElementById('set-brand-first').value = s.brand_first || 'NEVFA';
+                document.getElementById('set-brand-first-color').value = s.brand_first_color || '#FFFFFF';
+                document.getElementById('set-brand-second').value = s.brand_second || 'STORE';
+                document.getElementById('set-brand-second-color').value = s.brand_second_color || '#A855F7';
+                document.getElementById('set-logo-url').value = s.logo_url || '';
+                document.getElementById('set-favicon-url').value = s.favicon_url || '';
+                document.getElementById('set-primary-color').value = s.primary_color || '#A855F7';
+                document.getElementById('set-accent-color').value = s.accent_color || '#EC4899';
+                document.getElementById('set-bg-color').value = s.bg_color || '#0B0719';
+                document.getElementById('set-card-color').value = s.card_bg_color || '#16102C';
+                document.getElementById('set-font-family').value = s.font_family || 'Plus Jakarta Sans';
+                document.getElementById('set-font-size').value = s.font_size || '16px';
+                document.getElementById('set-spacing').value = s.section_spacing || '56px';
+                document.getElementById('set-show-banner').checked = s.show_banner !== false;
+                document.getElementById('set-show-features').checked = s.show_features !== false;
+                document.getElementById('set-show-faq').checked = s.show_faq !== false;
+
+                document.getElementById('set-wa-number').value = s.whatsapp_number || '';
+                document.getElementById('set-footer-text').value = s.footer_text || '';
+                document.getElementById('set-ig').value = s.social_ig || '';
+                document.getElementById('set-tele').value = s.social_tele || '';
+                document.getElementById('set-tiktok').value = s.social_tiktok || '';
+            }
+
+            adminProducts = prodRes.data || [];
+            adminBanners = banRes.data || [];
+            document.getElementById('stat-products').textContent = adminProducts.length;
+            document.getElementById('stat-banners').textContent = adminBanners.filter(b => b.is_active).length;
+
+            renderAdminProducts();
+            renderAdminBanners();
+            renderAdminFaqs(faqRes.data || []);
+
+            const logs = logRes.data || [];
+            document.getElementById('activity-list').innerHTML = logs.length
+                ? logs.map(l => `<div class="flex justify-between py-1.5 border-b border-white/5"><span>✅ ${l.action}</span><span class="text-gray-500">${new Date(l.created_at).toLocaleString('id-ID')}</span></div>`).join('')
+                : '<p class="text-gray-500">Belum ada riwayat perubahan.</p>';
+        }
+
+        // CRUD Produk
+        function renderAdminProducts() {
+            const list = document.getElementById('admin-products-list');
+            list.innerHTML = adminProducts.map(p => `
+                <div class="panel-card rounded-2xl p-4 flex items-center justify-between gap-4">
+                    <div class="flex items-center gap-3.5 min-w-0">
+                        <img src="${p.image_url || 'https://via.placeholder.com/48'}" class="w-12 h-12 rounded-xl object-contain bg-black/40 p-1.5 flex-shrink-0">
+                        <div class="min-w-0">
+                            <div class="font-bold text-sm truncate">${p.name} <span class="text-purple-400">(${p.price})</span></div>
+                            <div class="text-xs text-gray-400 truncate">${p.category} • ${p.warranty} • ${p.is_active ? '🟢 Tersedia' : '🔴 Habis'}</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 flex-shrink-0">
+                        <button onclick="editProduct('${p.id}')" class="px-3 py-1.5 rounded-lg bg-purple-500/20 text-purple-300 text-xs font-bold">Edit</button>
+                        <button onclick="deleteProduct('${p.id}')" class="px-3 py-1.5 rounded-lg bg-rose-500/20 text-rose-300 text-xs font-bold">Hapus</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        window.editProduct = function(id) {
+            const p = adminProducts.find(x => x.id === id);
+            if (!p) return;
+            document.getElementById('product-form-title').textContent = 'Edit Produk: ' + p.name;
+            document.getElementById('prod-id').value = p.id;
+            document.getElementById('prod-name').value = p.name;
+            document.getElementById('prod-category').value = p.category || '';
+            document.getElementById('prod-price').value = p.price;
+            document.getElementById('prod-image-url').value = p.image_url || '';
+            document.getElementById('prod-desc').value = p.description || '';
+            document.getElementById('prod-warranty').value = p.warranty || '';
+            document.getElementById('prod-badge').value = p.badge || '';
+            document.getElementById('prod-order').value = p.sort_order || 1;
+            document.getElementById('prod-active').value = String(p.is_active !== false);
+        };
+
+        window.resetProductForm = function() {
+            document.getElementById('product-form').reset();
+            document.getElementById('prod-id').value = '';
+            document.getElementById('product-form-title').textContent = 'Tambah Produk Baru';
+        };
+
+        document.getElementById('product-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            showToast('Menyimpan & mempublikasikan produk...');
+            const uploadedUrl = await uploadImageFile(document.getElementById('prod-file'));
+            const imageUrl = uploadedUrl || document.getElementById('prod-image-url').value;
+
+            const payload = {
+                name: document.getElementById('prod-name').value,
+                category: document.getElementById('prod-category').value,
+                price: document.getElementById('prod-price').value,
+                image_url: imageUrl,
+                description: document.getElementById('prod-desc').value,
+                warranty: document.getElementById('prod-warranty').value,
+                badge: document.getElementById('prod-badge').value,
+                sort_order: parseInt(document.getElementById('prod-order').value || '1', 10),
+                is_active: document.getElementById('prod-active').value === 'true'
+            };
+
+            const id = document.getElementById('prod-id').value;
+            const { error } = id
+                ? await supabaseClient.from('products').update(payload).eq('id', id)
+                : await supabaseClient.from('products').insert([payload]);
+
+            if (error) return showToast('Gagal menyimpan: ' + error.message, true);
+            await logActivity(`${id ? 'Mengubah' : 'Menambahkan'} produk "${payload.name}"`);
+            resetProductForm();
+            loadAllAdminData();
+            showToast('Produk berhasil dipublikasikan ke website utama!');
+        });
+
+        window.deleteProduct = async function(id) {
+            if (!confirm('Hapus produk ini dari katalog publik?')) return;
+            await supabaseClient.from('products').delete().eq('id', id);
+            await logActivity('Menghapus produk dari katalog');
+            loadAllAdminData();
+            showToast('Produk berhasil dihapus.');
+        };
+
+        // CRUD Banner
+        function renderAdminBanners() {
+            const list = document.getElementById('admin-banners-list');
+            list.innerHTML = adminBanners.map(b => `
+                <div class="panel-card rounded-2xl p-4 flex items-center justify-between gap-4">
+                    <div class="min-w-0">
+                        <div class="font-bold text-sm truncate">${b.title}</div>
+                        <div class="text-xs text-gray-400 truncate">${b.subtitle || ''} • ${b.is_active ? '🟢 Aktif' : '⚪ Nonaktif'}</div>
+                    </div>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <button onclick="editBanner('${b.id}')" class="px-3 py-1.5 rounded-lg bg-purple-500/20 text-purple-300 text-xs font-bold">Edit</button>
+                        <button onclick="deleteBanner('${b.id}')" class="px-3 py-1.5 rounded-lg bg-rose-500/20 text-rose-300 text-xs font-bold">Hapus</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        window.editBanner = function(id) {
+            const b = adminBanners.find(x => x.id === id);
+            if (!b) return;
+            document.getElementById('ban-id').value = b.id;
+            document.getElementById('ban-title').value = b.title;
+            document.getElementById('ban-subtitle').value = b.subtitle || '';
+            document.getElementById('ban-image-url').value = b.image_url || '';
+            document.getElementById('ban-btn-text').value = b.button_text || 'Lihat Produk';
+            document.getElementById('ban-btn-link').value = b.button_link || '#katalog';
+            document.getElementById('ban-order').value = b.sort_order || 1;
+            document.getElementById('ban-active').value = String(b.is_active !== false);
+        };
+
+        window.resetBannerForm = function() {
+            document.getElementById('banner-form').reset();
+            document.getElementById('ban-id').value = '';
+        };
+
+        document.getElementById('banner-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const uploadedUrl = await uploadImageFile(document.getElementById('ban-file'));
+            const payload = {
+                title: document.getElementById('ban-title').value,
+                subtitle: document.getElementById('ban-subtitle').value,
+                image_url: uploadedUrl || document.getElementById('ban-image-url').value,
+                button_text: document.getElementById('ban-btn-text').value,
+                button_link: document.getElementById('ban-btn-link').value,
+                sort_order: parseInt(document.getElementById('ban-order').value || '1', 10),
+                is_active: document.getElementById('ban-active').value === 'true'
+            };
+
+            const id = document.getElementById('ban-id').value;
+            const { error } = id
+                ? await supabaseClient.from('banners').update(payload).eq('id', id)
+                : await supabaseClient.from('banners').insert([payload]);
+
+            if (error) return showToast('Gagal menyimpan banner: ' + error.message, true);
+            await logActivity('Memperbarui banner utama website');
+            resetBannerForm();
+            loadAllAdminData();
+            showToast('Banner berhasil dipublikasikan!');
+        });
+
+        window.deleteBanner = async function(id) {
+            if (!confirm('Hapus banner ini?')) return;
+            await supabaseClient.from('banners').delete().eq('id', id);
+            loadAllAdminData();
+            showToast('Banner dihapus.');
+        };
+
+        // Simpan Pengaturan Tampilan & Warna Putih-Ungu
+        document.getElementById('appearance-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            showToast('Menyimpan tampilan website...');
+            const uploadedLogo = await uploadImageFile(document.getElementById('set-logo-file'));
+            const uploadedFavicon = await uploadImageFile(document.getElementById('set-favicon-file'));
+
+            const payload = {
+                brand_first: document.getElementById('set-brand-first').value,
+                brand_first_color: document.getElementById('set-brand-first-color').value,
+                brand_second: document.getElementById('set-brand-second').value,
+                brand_second_color: document.getElementById('set-brand-second-color').value,
+                logo_url: uploadedLogo || document.getElementById('set-logo-url').value,
+                favicon_url: uploadedFavicon || document.getElementById('set-favicon-url').value,
+                primary_color: document.getElementById('set-primary-color').value,
+                accent_color: document.getElementById('set-accent-color').value,
+                bg_color: document.getElementById('set-bg-color').value,
+                card_bg_color: document.getElementById('set-card-color').value,
+                font_family: document.getElementById('set-font-family').value,
+                font_size: document.getElementById('set-font-size').value,
+                section_spacing: document.getElementById('set-spacing').value,
+                section_order: document.getElementById('set-section-order').value.split(','),
+                show_banner: document.getElementById('set-show-banner').checked,
+                show_features: document.getElementById('set-show-features').checked,
+                show_faq: document.getElementById('set-show-faq').checked
+            };
+
+            const { error } = await supabaseClient.from('site_settings').update(payload).eq('id', 1);
+            if (error) return showToast('Gagal menyimpan: ' + error.message, true);
+            await logActivity('Mengubah pengaturan desain, logo & warna website');
+            loadAllAdminData();
+            showToast('Desain & warna website berhasil dipublikasikan!');
+        });
+
+        // Simpan Kontak & FAQ
+        document.getElementById('content-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const payload = {
+                whatsapp_number: document.getElementById('set-wa-number').value,
+                footer_text: document.getElementById('set-footer-text').value,
+                social_ig: document.getElementById('set-ig').value,
+                social_tele: document.getElementById('set-tele').value,
+                social_tiktok: document.getElementById('set-tiktok').value
+            };
+            const { error } = await supabaseClient.from('site_settings').update(payload).eq('id', 1);
+            if (error) return showToast('Gagal menyimpan kontak: ' + error.message, true);
+            await logActivity('Memperbarui nomor WhatsApp & sosial media');
+            showToast('Kontak & sosial media berhasil diperbarui!');
+        });
+
+        function renderAdminFaqs(faqs) {
+            document.getElementById('admin-faq-list').innerHTML = faqs.map(f => `
+                <div class="flex items-center justify-between p-3 rounded-xl bg-white/5 text-xs">
+                    <div><strong>${f.question}</strong> — ${f.answer}</div>
+                    <button onclick="deleteFaq('${f.id}')" class="text-rose-400 font-bold ml-3">Hapus</button>
+                </div>
+            `).join('');
+        }
+
+        document.getElementById('faq-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            await supabaseClient.from('faqs').insert([{
+                question: document.getElementById('faq-q').value,
+                answer: document.getElementById('faq-a').value
+            }]);
+            document.getElementById('faq-form').reset();
+            loadAllAdminData();
+            showToast('FAQ ditambahkan!');
+        });
+
+        window.deleteFaq = async function(id) {
+            await supabaseClient.from('faqs').delete().eq('id', id);
+            loadAllAdminData();
+        };
+
+        // Ubah Password Admin
+        document.getElementById('password-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const newPassword = document.getElementById('new-password').value;
+            const { error } = await supabaseClient.auth.updateUser({ password: newPassword });
+            if (error) return showToast('Gagal ubah password: ' + error.message, true);
+            document.getElementById('password-form').reset();
+            showToast('Password administrator berhasil diperbarui!');
+        });
+
+        checkSession();
+    </script>
 </body>
 </html>
