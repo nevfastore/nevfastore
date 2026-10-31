@@ -8,61 +8,34 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #0B0719;
-            color: #FFFFFF;
-        }
-        .panel-card {
-            background-color: #16102C;
-            border: 1px solid rgba(168, 85, 247, 0.22);
-        }
-        .input-dark {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(168, 85, 247, 0.3);
-            color: #fff;
-        }
-        .input-dark:focus {
-            outline: none;
-            border-color: #A855F7;
-        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0B0719; color: #FFFFFF; }
+        .panel-card { background-color: #16102C; border: 1px solid rgba(168, 85, 247, 0.22); }
+        .input-dark { background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(168, 85, 247, 0.3); color: #fff; }
+        .input-dark:focus { outline: none; border-color: #A855F7; }
         .input-dark option { background-color: #16102C; color: #fff; }
     </style>
 </head>
 <body class="min-h-screen">
-
-    <!-- NOTIFIKASI TOAST -->
     <div id="toast" class="fixed top-5 right-5 z-50 hidden px-5 py-3.5 rounded-xl font-bold text-sm shadow-2xl transition-all"></div>
 
-    <!-- ========================================== -->
-    <!-- HALAMAN LOGIN ADMIN -->
-    <!-- ========================================== -->
+    <!-- HALAMAN LOGIN -->
     <div id="auth-screen" class="min-h-screen flex items-center justify-center p-4">
         <div class="panel-card rounded-3xl p-6 sm:p-8 w-full max-w-md shadow-2xl">
             <div class="text-center mb-6">
-                <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-purple-600/20 border border-purple-500 text-2xl mb-3">🔐</div>
-                <h1 class="text-2xl font-extrabold">
-                    <span>NEVFA</span> <span class="text-purple-400">ADMIN</span>
-                </h1>
-                <p class="text-xs text-gray-400 mt-1">Khusus Pemilik Toko — Login dengan Akun Administrator</p>
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-purple-600/25 border border-purple-500 text-2xl mb-3">🔐</div>
+                <h1 class="text-2xl font-extrabold">NEVFA <span class="text-purple-400">ADMIN</span></h1>
+                <p class="text-xs text-gray-400 mt-1">Khusus Pemilik Toko — Login Administrator</p>
             </div>
-
-            <div id="config-warning" class="hidden mb-4 p-3.5 rounded-xl bg-amber-500/15 border border-amber-500/40 text-amber-200 text-xs leading-relaxed">
-                ⚠️ <strong>Perhatian:</strong> Konfigurasi Supabase belum lengkap.
-            </div>
-
             <form id="login-form" class="space-y-4">
                 <div>
                     <label class="block text-xs font-semibold text-gray-300 mb-1.5">Email Administrator</label>
-                    <input id="login-email" type="email" required placeholder="admin@nevfastore.com" class="w-full px-4 py-2.5 rounded-xl text-sm input-dark">
+                    <input id="login-email" type="email" required placeholder="dwi089201@gmail.com" class="w-full px-4 py-2.5 rounded-xl text-sm input-dark">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-gray-300 mb-1.5">Password</label>
                     <input id="login-password" type="password" required placeholder="••••••••" class="w-full px-4 py-2.5 rounded-xl text-sm input-dark">
                 </div>
-                <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-95 font-bold text-sm shadow-lg transition">
-                    Masuk ke Admin Panel
-                </button>
+                <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 font-bold text-sm shadow-lg">Masuk ke Admin Panel</button>
             </form>
             <div class="mt-6 text-center">
                 <a href="index.html" class="text-xs text-purple-300 hover:underline">← Kembali ke Website Utama</a>
@@ -70,132 +43,44 @@
         </div>
     </div>
 
-    <!-- ========================================== -->
-    <!-- DASHBOARD ADMIN PANEL UTAMA -->
-    <!-- ========================================== -->
+    <!-- DASHBOARD UTAMA -->
     <div id="admin-app" class="hidden min-h-screen flex flex-col md:flex-row">
-        <aside class="w-full md:w-64 bg-[#110C24] border-b md:border-b-0 md:border-r border-purple-500/20 flex-shrink-0">
-            <div class="p-5 flex items-center justify-between border-b border-purple-500/20">
-                <div class="font-extrabold text-lg tracking-tight">
-                    <span>NEVFA</span> <span class="text-purple-400">ADMIN</span>
-                </div>
-                <a href="index.html" target="_blank" class="text-xs px-2.5 py-1 rounded-lg bg-purple-500/20 text-purple-300 border border-purple-500/30 hover:bg-purple-500/30">
-                    Lihat Web ↗
-                </a>
+        <aside class="w-full md:w-64 bg-[#110C24] border-b md:border-r border-purple-500/20 p-5 flex flex-col justify-between">
+            <div>
+                <div class="font-extrabold text-lg tracking-tight mb-6">NEVFA <span class="text-purple-400">ADMIN</span></div>
+                <nav class="space-y-2">
+                    <button onclick="switchTab('dashboard')" class="w-full text-left px-3 py-2 rounded-xl text-sm font-semibold bg-purple-600 text-white">📊 Dashboard</button>
+                    <button onclick="switchTab('products')" class="w-full text-left px-3 py-2 rounded-xl text-sm font-semibold text-gray-300 hover:bg-white/5">📦 Manajemen Produk</button>
+                    <button onclick="switchTab('banners')" class="w-full text-left px-3 py-2 rounded-xl text-sm font-semibold text-gray-300 hover:bg-white/5">🖼️ Manajemen Banner</button>
+                </nav>
             </div>
-            <nav class="p-3 flex md:flex-col gap-1.5 overflow-x-auto">
-                <button onclick="switchTab('dashboard')" id="tab-btn-dashboard" class="tab-btn text-left px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-2.5 bg-purple-600 text-white">
-                    <span>📊</span> Dashboard
-                </button>
-                <button onclick="switchTab('products')" id="tab-btn-products" class="tab-btn text-left px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-2.5 text-gray-300 hover:bg-white/5">
-                    <span>📦</span> Manajemen Produk
-                </button>
-                <button onclick="switchTab('banners')" id="tab-btn-banners" class="tab-btn text-left px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-2.5 text-gray-300 hover:bg-white/5">
-                    <span>🖼️</span> Manajemen Banner
-                </button>
-                <button onclick="switchTab('appearance')" id="tab-btn-appearance" class="tab-btn text-left px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-2.5 text-gray-300 hover:bg-white/5">
-                    <span>🎨</span> Tampilan & Logo
-                </button>
-                <button onclick="switchTab('content')" id="tab-btn-content" class="tab-btn text-left px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-2.5 text-gray-300 hover:bg-white/5">
-                    <span>📝</span> Konten, WA & FAQ
-                </button>
-                <button onclick="switchTab('security')" id="tab-btn-security" class="tab-btn text-left px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-2.5 text-gray-300 hover:bg-white/5">
-                    <span>🛡️</span> Akun & Keamanan
-                </button>
-            </nav>
+            <button onclick="logoutAdmin()" class="mt-6 w-full py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 font-bold text-xs">🚪 Logout</button>
         </aside>
 
-        <main class="flex-grow p-4 sm:p-8 max-w-6xl">
+        <main class="flex-grow p-6 sm:p-10 max-w-5xl">
             <section id="tab-dashboard" class="tab-content space-y-6">
-                <div>
-                    <h2 class="text-2xl font-extrabold">Dashboard Statistik & Aktivitas</h2>
-                    <p class="text-xs text-gray-400">Ringkasan performa dan perubahan langsung pada website publik.</p>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div class="panel-card rounded-2xl p-5">
-                        <div class="text-xs text-gray-400">Total Kunjungan Web</div>
-                        <div id="stat-visitors" class="text-2xl font-extrabold text-purple-400 mt-1">0</div>
-                    </div>
+                <h2 class="text-2xl font-extrabold">Dashboard Statistik</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div class="panel-card rounded-2xl p-5">
                         <div class="text-xs text-gray-400">Jumlah Produk</div>
                         <div id="stat-products" class="text-2xl font-extrabold text-emerald-400 mt-1">0</div>
                     </div>
-                    <div class="panel-card rounded-2xl p-5">
-                        <div class="text-xs text-gray-400">Banner Aktif</div>
-                        <div id="stat-banners" class="text-2xl font-extrabold text-pink-400 mt-1">0</div>
-                    </div>
-                    <div class="panel-card rounded-2xl p-5">
-                        <div class="text-xs text-gray-400">Terakhir Dipublikasikan</div>
-                        <div id="stat-updated" class="text-xs font-bold text-gray-200 mt-2">-</div>
-                    </div>
                 </div>
             </section>
-
             <section id="tab-products" class="tab-content hidden space-y-6">
-                <div>
-                    <h2 class="text-2xl font-extrabold">Manajemen Produk & Foto</h2>
-                </div>
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                    <form id="product-form" class="lg:col-span-5 panel-card rounded-2xl p-5 space-y-3.5 h-fit">
-                        <h3 id="product-form-title" class="font-bold text-base text-purple-300">Tambah Produk Baru</h3>
-                        <input type="hidden" id="prod-id">
-                        <div>
-                            <label class="block text-xs font-semibold mb-1">Nama Produk / Aplikasi</label>
-                            <input id="prod-name" type="text" required class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
-                        </div>
-                        <div class="grid grid-cols-2 gap-3">
-                            <div>
-                                <label class="block text-xs font-semibold mb-1">Kategori</label>
-                                <input id="prod-category" type="text" required class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold mb-1">Harga</label>
-                                <input id="prod-price" type="text" required class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold mb-1">URL Gambar / Logo</label>
-                            <input id="prod-image-url" type="text" class="w-full px-3.5 py-2 rounded-xl text-xs input-dark">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold mb-1">Deskripsi</label>
-                            <textarea id="prod-desc" rows="2" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark"></textarea>
-                        </div>
-                        <button type="submit" class="w-full py-2.5 rounded-xl bg-emerald-500 font-bold text-xs text-white">Simpan Produk</button>
-                    </form>
-                    <div class="lg:col-span-7 space-y-3" id="admin-products-list"></div>
-                </div>
+                <h2 class="text-2xl font-extrabold">Manajemen Produk</h2>
+                <div id="admin-products-list" class="space-y-3"></div>
             </section>
-
             <section id="tab-banners" class="tab-content hidden space-y-6">
-                <div><h2 class="text-2xl font-extrabold">Manajemen Banner</h2></div>
-            </section>
-            <section id="tab-appearance" class="tab-content hidden space-y-6">
-                <div><h2 class="text-2xl font-extrabold">Tampilan & Logo</h2></div>
-            </section>
-            <section id="tab-content" class="tab-content hidden space-y-6">
-                <div><h2 class="text-2xl font-extrabold">Konten & WA</h2></div>
-            </section>
-            <section id="tab-security" class="tab-content hidden space-y-6">
-                <div>
-                    <h2 class="text-2xl font-extrabold">Keamanan</h2>
-                    <button onclick="logoutAdmin()" class="mt-4 px-5 py-2.5 rounded-xl bg-rose-600 font-bold text-xs">Logout Administrator</button>
-                </div>
+                <h2 class="text-2xl font-extrabold">Manajemen Banner</h2>
             </section>
         </main>
     </div>
 
     <script>
-        // KONFIGURASI SUPABASE YANG SUDAH DIPERBAIKI (TANPA KUTIP GANDA BERLEBIH)
         const SUPABASE_URL = 'https://eifrccuwxpgzmdsykarp.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_SonCpgUv68A-vKvOXwr4Zw_nr1nKK42';
-
-        const isConfigured = SUPABASE_URL.startsWith('https://') && !SUPABASE_URL.includes('ISI_DENGAN_');
-        const supabaseClient = isConfigured ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
-
-        if (!isConfigured) {
-            document.getElementById('config-warning').classList.remove('hidden');
-        }
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         function showToast(msg, isError = false) {
             const t = document.getElementById('toast');
@@ -208,38 +93,34 @@
         window.switchTab = function(tabName) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.getElementById(`tab-${tabName}`).classList.remove('hidden');
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('bg-purple-600', 'text-white');
-                btn.classList.add('text-gray-300');
-            });
-            document.getElementById(`tab-btn-${tabName}`).classList.add('bg-purple-600', 'text-white');
         };
 
-        // Login Admin
         document.getElementById('login-form').addEventListener('submit', async (e) => {
             e.preventDefault();
-            if (!supabaseClient) return showToast('Konfigurasi Supabase belum benar!', true);
-
             const email = document.getElementById('login-email').value;
             const password = document.getElementById('login-password').value;
-            const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
-
+            const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
             if (error) return showToast('Login gagal: ' + error.message, true);
             checkSession();
         });
 
         window.logoutAdmin = async function() {
-            if (supabaseClient) await supabaseClient.auth.signOut();
+            await supabaseClient.auth.signOut();
             location.reload();
         };
 
         async function checkSession() {
-            if (!supabaseClient) return;
             const { data: { session } } = await supabaseClient.auth.getSession();
             if (session) {
                 document.getElementById('auth-screen').classList.add('hidden');
                 document.getElementById('admin-app').classList.remove('hidden');
+                loadStats();
             }
+        }
+
+        async function loadStats() {
+            const { data } = await supabaseClient.from('products').select('*');
+            if (data) document.getElementById('stat-products').textContent = data.length;
         }
 
         checkSession();
