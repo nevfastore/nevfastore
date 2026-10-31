@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title id="page-title">NEVFA STORE — Aplikasi Premium & Garansi Aman</title>
-    <link id="page-favicon" rel="icon" type="image/png" href="">
+    <link id="page-favicon" rel="icon" type="image/png" href="logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -72,9 +72,9 @@
     <!-- NAVBAR RESPONSIVE -->
     <header class="sticky top-0 z-50 backdrop-blur-xl bg-[#0B0719]/85 border-b border-purple-500/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-3">
-            <!-- Brand / Logo -->
+            <!-- Brand / Logo dengan logo.png di sebelah kiri -->
             <a href="#" class="flex items-center gap-3 min-w-0">
-                <img id="nav-logo" src="" alt="Logo" class="h-9 w-9 sm:h-10 sm:w-10 object-contain rounded-lg hidden">
+                <img id="nav-logo" src="logo.png" alt="Logo" class="h-9 w-9 sm:h-10 sm:w-10 object-contain rounded-lg">
                 <div class="font-extrabold text-xl sm:text-2xl tracking-tight truncate">
                     <span id="brand-first" style="color: #FFFFFF;">NEVFA</span>
                     <span id="brand-second" style="color: #A855F7;">STORE</span>
@@ -118,17 +118,25 @@
         </div>
     </header>
 
-    <!-- CONTAINER UTAMA DINAMIS (Bisa Diatur Urutan Section dari Admin) -->
+    <!-- CONTAINER UTAMA DINAMIS -->
     <main id="main-sections-container" class="flex-grow cosmic-glow">
 
-        <!-- SECTION: BANNER UTAMA / SLIDER -->
+        <!-- SECTION: BANNER UTAMA / HERO SLIDER -->
         <section id="section-banner" data-section="banner" class="dynamic-section px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div id="beranda" class="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-purple-500/30 bg-gradient-to-br from-[#1B113A] via-[#120B29] to-[#0B0719] p-6 sm:p-10 md:p-14 shadow-2xl">
+                <!-- Tombol Navigasi Slider Kiri & Kanan -->
+                <button onclick="prevSlide()" aria-label="Sebelumnya" class="absolute left-3 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-black/40 hover:bg-black/70 border border-white/15 text-white transition hidden sm:flex items-center justify-center">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <button onclick="nextSlide()" aria-label="Berikutnya" class="absolute right-3 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-black/40 hover:bg-black/70 border border-white/15 text-white transition hidden sm:flex items-center justify-center">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </button>
+
                 <div id="banner-slider-container" class="relative z-10">
                     <!-- Diisi otomatis dari database -->
                 </div>
-                <!-- Navigasi Slider jika banner > 1 -->
-                <div id="banner-dots" class="flex justify-center gap-2 mt-6 hidden"></div>
+                <!-- Indikator Dots Slider -->
+                <div id="banner-dots" class="flex justify-center gap-2 mt-6"></div>
             </div>
         </section>
 
@@ -190,12 +198,22 @@
 
     </main>
 
-    <!-- FOOTER & SOSIAL MEDIA -->
+    <!-- MODAL POPUP DETAIL PRODUK & VARIAN -->
+    <div id="product-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="card-surface rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl border border-purple-500/40 max-h-[90vh] overflow-y-auto">
+            <button onclick="closeProductModal()" class="absolute top-5 right-5 text-gray-400 hover:text-white p-2 rounded-xl bg-white/5 hover:bg-white/10 transition">✕</button>
+            <div id="modal-content">
+                <!-- Diisi dinamis saat tombol Lihat Detail diklik -->
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER & SOSIAL MEDIA DENGAN BRAND ICON RESMI -->
     <footer id="kontak" class="border-t border-purple-500/20 bg-[#080512] pt-12 pb-24 md:pb-10 px-4 sm:px-6 lg:px-8 mt-12">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
                 <div class="flex items-center gap-3 mb-3">
-                    <img id="footer-logo" src="" alt="Logo" class="h-8 w-8 object-contain rounded-lg hidden">
+                    <img id="footer-logo" src="logo.png" alt="Logo" class="h-8 w-8 object-contain rounded-lg">
                     <div class="font-extrabold text-xl">
                         <span id="footer-brand-first">NEVFA</span>
                         <span id="footer-brand-second" style="color: #A855F7;">STORE</span>
@@ -215,26 +233,34 @@
                 </ul>
             </div>
             <div>
-                <h3 class="font-bold text-sm uppercase tracking-wider text-purple-300 mb-3">Hubungi Kami & Sosial Media</h3>
+                <h3 class="font-bold text-sm uppercase tracking-wider text-purple-300 mb-3">Hubungi Kami & Sosial Media Resmi</h3>
                 <div class="flex flex-wrap items-center gap-3">
-                    <a id="social-ig" href="#" target="_blank" class="px-3.5 py-2 rounded-xl bg-white/5 hover:bg-purple-500/20 border border-white/10 text-xs font-semibold flex items-center gap-2 transition">
-                        <span>📸</span> Instagram
+                    <!-- Facebook Official Icon -->
+                    <a id="social-fb" href="#" target="_blank" class="px-3.5 py-2 rounded-xl bg-white/5 hover:bg-blue-600/20 border border-white/10 text-xs font-semibold flex items-center gap-2 transition text-gray-200">
+                        <svg class="w-4 h-4 fill-current text-blue-500" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        <span>Facebook</span>
                     </a>
-                    <a id="social-tele" href="#" target="_blank" class="px-3.5 py-2 rounded-xl bg-white/5 hover:bg-purple-500/20 border border-white/10 text-xs font-semibold flex items-center gap-2 transition">
-                        <span>✈️</span> Telegram
+                    <!-- Instagram Official Icon -->
+                    <a id="social-ig" href="#" target="_blank" class="px-3.5 py-2 rounded-xl bg-white/5 hover:bg-pink-600/20 border border-white/10 text-xs font-semibold flex items-center gap-2 transition text-gray-200">
+                        <svg class="w-4 h-4 fill-current text-pink-400" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        <span>Instagram</span>
                     </a>
-                    <a id="social-tiktok" href="#" target="_blank" class="px-3.5 py-2 rounded-xl bg-white/5 hover:bg-purple-500/20 border border-white/10 text-xs font-semibold flex items-center gap-2 transition">
-                        <span>🎵</span> TikTok
+                    <!-- TikTok Official Icon -->
+                    <a id="social-tiktok" href="#" target="_blank" class="px-3.5 py-2 rounded-xl bg-white/5 hover:bg-gray-800/40 border border-white/10 text-xs font-semibold flex items-center gap-2 transition text-gray-200">
+                        <svg class="w-4 h-4 fill-current text-white" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.5.18-1.92 1.12-3.7 2.58-4.95 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.6-.18 1.28.07 1.86.32.75.97 1.33 1.73 1.58.91.3 1.94.21 2.78-.34.75-.49 1.25-1.32 1.35-2.21.09-1.92.03-3.84.04-5.76.01-4.38 0-8.77.01-13.15z"/></svg>
+                        <span>TikTok</span>
                     </a>
+                    <!-- WhatsApp Official Icon -->
                     <a id="social-wa" href="#" target="_blank" class="px-3.5 py-2 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/40 text-emerald-300 text-xs font-semibold flex items-center gap-2 transition">
-                        <span>💬</span> WhatsApp
+                        <svg class="w-4 h-4 fill-current text-emerald-400" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.124-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        <span>WhatsApp</span>
                     </a>
                 </div>
             </div>
         </div>
         <div class="max-w-7xl mx-auto border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-2">
             <p>© <span id="year-now"></span> <span id="copyright-brand">NEVFA STORE</span>. Seluruh hak cipta dilindungi.</p>
-            <p>Sistem Katalog & Garansi Resmi</p>
+            <p>Sistem Katalog, Varian & Garansi Resmi</p>
         </div>
     </footer>
 
@@ -255,14 +281,14 @@
         const isSupabaseConfigured = SUPABASE_URL.startsWith('https://') && !SUPABASE_URL.includes('ISI_DENGAN_');
         const supabaseClient = isSupabaseConfigured ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 
-        // Data Cadangan Otomatis (Jika Supabase belum diisi, web tetap tampil rapi)
+        // Data Default Toko
         let siteSettings = {
             brand_first: 'NEVFA',
             brand_first_color: '#FFFFFF',
             brand_second: 'STORE',
             brand_second_color: '#A855F7',
-            logo_url: '',
-            favicon_url: '',
+            logo_url: 'logo.png',
+            favicon_url: 'logo.png',
             primary_color: '#A855F7',
             accent_color: '#EC4899',
             bg_color: '#0B0719',
@@ -275,13 +301,14 @@
             show_features: true,
             show_faq: true,
             whatsapp_number: '6281234567890',
-            wa_template: 'Halo Admin *NEVFA STORE*, saya ingin memesan:%0A%0A📦 *Produk:* {produk}%0A🏷️ *Kategori:* {kategori}%0A💰 *Harga:* {harga}%0A🛡️ *Garansi:* {garansi}%0A%0AMohon info pembayaran yang tersedia. Terima kasih!',
+            wa_template: 'Halo Admin *NEVFA STORE*, saya ingin memesan:%0A%0A📦 *Produk:* {produk}%0A✨ *Varian:* {varian}%0A⏱️ *Durasi:* {durasi}%0A💰 *Harga:* {harga}%0A🛡️ *Garansi:* {garansi}%0A%0AMohon info pembayaran selanjutnya. Terima kasih!',
             features_list: [
                 { icon: '⚡', title: 'Proses Cepat & Instan', desc: 'Pesanan langsung diproses begitu pembayaran terkonfirmasi.' },
                 { icon: '🛡️', title: 'Garansi Full Durasi', desc: 'Jaminan garansi penuh selama masa langganan aktif.' },
                 { icon: '💎', title: 'Akun Resmi & Legal', desc: '100% akun premium legal, aman, dan anti-hold.' },
                 { icon: '💬', title: 'Support Admin Responsif', desc: 'Siap membantu kendala login dan klaim garansi via WhatsApp.' }
             ],
+            social_fb: 'https://facebook.com/',
             social_ig: 'https://instagram.com/',
             social_tele: 'https://t.me/',
             social_tiktok: 'https://tiktok.com/',
@@ -309,7 +336,11 @@
                 warranty: 'Full Garansi 30 Hari',
                 image_url: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg',
                 badge: 'Best Seller',
-                is_active: true
+                is_active: true,
+                variants: [
+                    { name: 'Sharing 1 User', type: 'Sharing', duration: '30 Hari', price: 'Rp 35.000' },
+                    { name: 'Private Account', type: 'Private', duration: '30 Hari', price: 'Rp 120.000' }
+                ]
             },
             {
                 id: '2',
@@ -320,7 +351,11 @@
                 warranty: 'Garansi Penuh Selama Aktif',
                 image_url: 'https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg',
                 badge: 'Best Seller',
-                is_active: true
+                is_active: true,
+                variants: [
+                    { name: 'Individual Plan', type: 'Individual', duration: '1 Bulan', price: 'Rp 20.000' },
+                    { name: 'Family Plan', type: 'Family', duration: '1 Bulan', price: 'Rp 45.000' }
+                ]
             },
             {
                 id: '3',
@@ -331,7 +366,10 @@
                 warranty: 'Garansi Aktif & Aman',
                 image_url: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Canva_icon_2021.svg',
                 badge: 'Promo',
-                is_active: true
+                is_active: true,
+                variants: [
+                    { name: 'Invite Email Pribadi', type: 'Invite', duration: '1 Tahun', price: 'Rp 15.000' }
+                ]
             },
             {
                 id: '4',
@@ -342,30 +380,32 @@
                 warranty: 'Full Garansi 30 Hari',
                 image_url: 'https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg',
                 badge: 'Terbaru',
-                is_active: true
+                is_active: true,
+                variants: [
+                    { name: 'Individual Plan', type: 'Individual', duration: '1 Bulan', price: 'Rp 18.000' }
+                ]
             }
         ];
 
         let faqsData = [
-            { question: 'Bagaimana cara memesan aplikasi di Nevfa Store?', answer: 'Pilih produk yang Anda inginkan pada katalog di atas, lalu klik tombol "Beli via WhatsApp". Pesanan Anda akan otomatis terformat ke nomor WhatsApp Admin kami.' },
-            { question: 'Apakah semua produk mendapatkan garansi?', answer: 'Ya, seluruh produk dilengkapi garansi penuh sesuai keterangan pada masing-masing kartu produk.' },
-            { question: 'Metode pembayaran apa saja yang bisa digunakan?', answer: 'Kami melayani pembayaran via QRIS (Semua E-Wallet & Mobile Banking), DANA, OVO, GoPay, ShopeePay, dan Transfer Bank.' }
+            { question: 'Bagaimana cara memesan aplikasi di Nevfa Store?', answer: 'Pilih produk yang Anda inginkan pada katalog, klik tombol "Lihat Detail" untuk memilih varian, lalu klik "Pesan via WhatsApp".' },
+            { question: 'Apakah semua produk mendapatkan garansi?', answer: 'Ya, seluruh produk dilengkapi garansi penuh sesuai keterangan pada masing-masing produk.' },
+            { question: 'Metode pembayaran apa saja yang bisa digunakan?', answer: 'Kami melayani pembayaran via QRIS (Semua E-Wallet & Mobile Banking), DANA, OVO, GoPay, dan Transfer Bank.' }
         ];
 
         let activeCategory = 'Semua';
         let currentSlide = 0;
+        let slideInterval;
 
-        // Menu Mobile Toggle
+        // Mobile Menu
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        mobileBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
         document.querySelectorAll('.mobile-link').forEach(link => {
             link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
         });
 
-        // Terapkan Tema & Pengaturan Visual ke Website
+        // Terapkan Tema & Pengaturan
         function applyThemeAndSettings() {
             const root = document.documentElement;
             root.style.setProperty('--primary', siteSettings.primary_color || '#A855F7');
@@ -376,7 +416,6 @@
             root.style.setProperty('--font-size-base', siteSettings.font_size || '16px');
             root.style.setProperty('--section-gap', siteSettings.section_spacing || '56px');
 
-            // Nama Toko & Warna Putih-Ungu
             const bFirst = siteSettings.brand_first || 'NEVFA';
             const bSecond = siteSettings.brand_second || 'STORE';
             document.getElementById('brand-first').textContent = bFirst;
@@ -391,23 +430,13 @@
             document.getElementById('copyright-brand').textContent = `${bFirst} ${bSecond}`;
             document.getElementById('page-title').textContent = `${bFirst} ${bSecond} — Aplikasi Premium & Garansi Aman`;
 
-            // Logo & Favicon
-            const navLogo = document.getElementById('nav-logo');
-            const footerLogo = document.getElementById('footer-logo');
-            if (siteSettings.logo_url) {
-                navLogo.src = siteSettings.logo_url;
-                navLogo.classList.remove('hidden');
-                footerLogo.src = siteSettings.logo_url;
-                footerLogo.classList.remove('hidden');
-            } else {
-                navLogo.classList.add('hidden');
-                footerLogo.classList.add('hidden');
-            }
+            const logoSrc = siteSettings.logo_url || 'logo.png';
+            document.getElementById('nav-logo').src = logoSrc;
+            document.getElementById('footer-logo').src = logoSrc;
             if (siteSettings.favicon_url) {
                 document.getElementById('page-favicon').href = siteSettings.favicon_url;
             }
 
-            // Kontak WA & Sosial Media
             const waClean = (siteSettings.whatsapp_number || '6281234567890').replace(/[^0-9]/g, '');
             const defaultChatUrl = `https://wa.me/${waClean}?text=${encodeURIComponent(`Halo Admin ${bFirst} ${bSecond}, saya ingin bertanya mengenai produk aplikasi premium.`)}`;
             document.getElementById('nav-chat-btn').href = defaultChatUrl;
@@ -415,13 +444,13 @@
             document.getElementById('floating-wa-btn').href = defaultChatUrl;
             document.getElementById('social-wa').href = defaultChatUrl;
 
+            document.getElementById('social-fb').href = siteSettings.social_fb || '#';
             document.getElementById('social-ig').href = siteSettings.social_ig || '#';
             document.getElementById('social-tele').href = siteSettings.social_tele || '#';
             document.getElementById('social-tiktok').href = siteSettings.social_tiktok || '#';
             document.getElementById('footer-desc').textContent = siteSettings.footer_text || '';
             document.getElementById('year-now').textContent = new Date().getFullYear();
 
-            // Visibilitas & Urutan Section
             const secBanner = document.getElementById('section-banner');
             const secFeatures = document.getElementById('section-features');
             const secFaq = document.getElementById('section-faq');
@@ -437,7 +466,7 @@
             });
         }
 
-        // Render Banner / Slider
+        // --- RENDER & SLIDER BANNER ---
         function renderBanners() {
             const activeBanners = bannersData.filter(b => b.is_active !== false);
             const container = document.getElementById('banner-slider-container');
@@ -449,6 +478,7 @@
             }
 
             if (currentSlide >= activeBanners.length) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = activeBanners.length - 1;
             const b = activeBanners[currentSlide];
             const waClean = (siteSettings.whatsapp_number || '6281234567890').replace(/[^0-9]/g, '');
 
@@ -456,7 +486,7 @@
                 <div class="grid grid-cols-1 ${b.image_url ? 'lg:grid-cols-12 items-center gap-8' : 'text-center max-w-3xl mx-auto'}">
                     <div class="${b.image_url ? 'lg:col-span-7 text-left' : ''}">
                         <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold badge-primary mb-4">
-                            ✨ Official Digital Store
+                            ✨ Official Digital Store (Slide ${currentSlide + 1}/${activeBanners.length})
                         </span>
                         <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight mb-4">
                             ${b.title}
@@ -488,6 +518,8 @@
             } else {
                 dotsContainer.classList.add('hidden');
             }
+
+            resetSlideTimer();
         }
 
         window.changeSlide = function(idx) {
@@ -495,15 +527,36 @@
             renderBanners();
         };
 
-        // Render Kategori & Produk
+        window.nextSlide = function() {
+            const activeBanners = bannersData.filter(b => b.is_active !== false);
+            currentSlide = (currentSlide + 1) % activeBanners.length;
+            renderBanners();
+        };
+
+        window.prevSlide = function() {
+            const activeBanners = bannersData.filter(b => b.is_active !== false);
+            currentSlide = (currentSlide - 1 + activeBanners.length) % activeBanners.length;
+            renderBanners();
+        };
+
+        function resetSlideTimer() {
+            if (slideInterval) clearInterval(slideInterval);
+            slideInterval = setInterval(() => {
+                const activeBanners = bannersData.filter(b => b.is_active !== false);
+                if (activeBanners.length > 1) {
+                    currentSlide = (currentSlide + 1) % activeBanners.length;
+                    renderBanners();
+                }
+            }, 6000);
+        }
+
+        // --- RENDER KATEGORI & PRODUK ---
         function renderCategories() {
             const categories = ['Semua', ...new Set(productsData.map(p => p.category || 'Lainnya'))];
             const container = document.getElementById('category-filters');
             container.innerHTML = categories.map(cat => `
                 <button onclick="setCategory('${cat}')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition ${
-                    activeCategory === cat
-                        ? 'btn-primary shadow-md'
-                        : 'bg-white/5 text-gray-300 hover:bg-white/10 border border-white/10'
+                    activeCategory === cat ? 'btn-primary shadow-md' : 'bg-white/5 text-gray-300 hover:bg-white/10 border border-white/10'
                 }">
                     ${cat}
                 </button>
@@ -551,7 +604,6 @@
                 return `
                 <div class="card-surface rounded-2xl p-5 flex flex-col justify-between relative overflow-hidden">
                     <div>
-                        <!-- Header Badge & Status Stok -->
                         <div class="flex items-center justify-between gap-2 mb-4">
                             ${p.badge ? `<span class="px-2.5 py-1 rounded-lg text-[11px] font-bold badge-primary">${p.badge}</span>` : `<span></span>`}
                             <span class="px-2.5 py-1 rounded-lg text-[11px] font-semibold ${isAvailable ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30' : 'bg-rose-500/15 text-rose-300 border border-rose-500/30'}">
@@ -559,7 +611,6 @@
                             </span>
                         </div>
 
-                        <!-- Bingkai Logo Produk Auto-Fit -->
                         <div class="w-full h-28 rounded-xl bg-black/30 border border-white/5 flex items-center justify-center p-4 mb-4">
                             ${p.image_url
                                 ? `<img src="${p.image_url}" alt="${p.name}" class="max-h-20 max-w-[140px] w-auto h-auto object-contain mx-auto transition-transform duration-300 hover:scale-105">`
@@ -567,12 +618,10 @@
                             }
                         </div>
 
-                        <!-- Nama & Harga -->
                         <div class="text-xs text-purple-300 font-semibold mb-1">${p.category || 'Aplikasi Premium'}</div>
                         <h3 class="text-lg font-extrabold text-white leading-snug mb-1">${p.name}</h3>
                         <div class="text-base font-extrabold text-purple-400 mb-3">Mulai ${p.price}</div>
 
-                        <!-- Deskripsi & Informasi Garansi -->
                         <div class="space-y-2 text-xs text-gray-300 border-t border-white/10 pt-3 mb-5">
                             <p class="leading-relaxed"><strong class="text-white">Deskripsi:</strong> ${p.description || '-'}</p>
                             <p class="flex items-center gap-1.5 text-emerald-300 font-medium">
@@ -581,8 +630,11 @@
                         </div>
                     </div>
 
-                    <!-- Tombol Checkout Direct WhatsApp -->
-                    <div>
+                    <!-- Tombol Aksi: Lihat Detail & Beli WhatsApp -->
+                    <div class="space-y-2">
+                        <button onclick="openProductDetail('${p.id}')" class="w-full py-2 px-4 rounded-xl bg-purple-600/20 hover:bg-purple-600/30 border border-purple-500/40 text-purple-200 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition">
+                            <span>🔍 Lihat Detail & Varian</span>
+                        </button>
                         ${isAvailable ? `
                         <a href="${waLink}" target="_blank" class="w-full py-2.5 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md shadow-emerald-500/20 transition">
                             <span>Beli via WhatsApp</span>
@@ -599,7 +651,120 @@
             }).join('');
         }
 
-        // Render Keunggulan Toko & FAQ
+        // --- POPUP DETAIL & PILIHAN VARIAN ---
+        window.openProductDetail = function(productId) {
+            const p = productsData.find(item => item.id == productId);
+            if (!p) return;
+
+            const modal = document.getElementById('product-modal');
+            const content = document.getElementById('modal-content');
+            const waClean = (siteSettings.whatsapp_number || '6281234567890').replace(/[^0-9]/g, '');
+
+            let variantsHtml = '';
+            if (p.variants && p.variants.length > 0) {
+                variantsHtml = `
+                    <div class="space-y-3 mb-5">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-purple-300">Pilih Varian / Durasi:</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                            ${p.variants.map((v, idx) => `
+                                <div onclick="selectVariant('${p.id}', ${idx})" id="variant-card-${p.id}-${idx}" class="variant-card cursor-pointer p-3.5 rounded-xl border ${idx === 0 ? 'border-purple-500 bg-purple-500/20' : 'border-white/10 bg-white/5'} transition flex flex-col justify-between">
+                                    <div class="font-bold text-sm text-white">${v.name || 'Varian'}</div>
+                                    <div class="text-xs text-gray-300 mt-1">${v.type || '-'} • ${v.duration || '-'}</div>
+                                    <div class="text-sm font-extrabold text-purple-400 mt-2">${v.price || p.price}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            } else {
+                variantsHtml = `<div class="text-xs text-gray-400 mb-5">Varian standar: <strong>${p.name}</strong> (${p.price})</div>`;
+            }
+
+            content.innerHTML = `
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="w-16 h-16 rounded-2xl bg-black/40 border border-white/10 flex items-center justify-center p-2 flex-shrink-0">
+                        <img src="${p.image_url || ''}" class="max-h-12 max-w-12 object-contain">
+                    </div>
+                    <div>
+                        <span class="text-xs text-purple-300 font-semibold">${p.category || 'Premium'}</span>
+                        <h3 class="text-xl font-extrabold text-white">${p.name}</h3>
+                        <div class="text-sm font-extrabold text-purple-400" id="modal-selected-price">${p.price}</div>
+                    </div>
+                </div>
+                <div class="space-y-3 text-xs text-gray-300 border-t border-white/10 pt-4 mb-5">
+                    <p class="leading-relaxed"><strong class="text-white">Deskripsi:</strong> ${p.description || '-'}</p>
+                    <p class="flex items-center gap-1.5 text-emerald-300 font-medium">
+                        <span>🛡️</span> <span><strong>Garansi:</strong> ${p.warranty || 'Full Garansi'}</span>
+                    </p>
+                </div>
+                ${variantsHtml}
+                <div class="space-y-2">
+                    <a id="modal-buy-btn" href="#" target="_blank" class="w-full py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg transition">
+                        <span>Pesan Varian Ini via WhatsApp</span>
+                        <span>💬</span>
+                    </a>
+                </div>
+            `;
+
+            window.currentSelectedProduct = p;
+            window.currentSelectedVariantIndex = 0;
+            updateModalWhatsAppLink();
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        };
+
+        window.selectVariant = function(productId, variantIdx) {
+            const p = productsData.find(item => item.id == productId);
+            if (!p || !p.variants) return;
+
+            window.currentSelectedVariantIndex = variantIdx;
+            const v = p.variants[variantIdx];
+
+            p.variants.forEach((_, idx) => {
+                const card = document.getElementById(`variant-card-${productId}-${idx}`);
+                if (card) {
+                    if (idx === variantIdx) {
+                        card.className = 'variant-card cursor-pointer p-3.5 rounded-xl border border-purple-500 bg-purple-500/20 transition flex flex-col justify-between';
+                    } else {
+                        card.className = 'variant-card cursor-pointer p-3.5 rounded-xl border border-white/10 bg-white/5 transition flex flex-col justify-between';
+                    }
+                }
+            });
+
+            document.getElementById('modal-selected-price').textContent = v.price || p.price;
+            updateModalWhatsAppLink();
+        };
+
+        function updateModalWhatsAppLink() {
+            const p = window.currentSelectedProduct;
+            if (!p) return;
+            const waClean = (siteSettings.whatsapp_number || '6281234567890').replace(/[^0-9]/g, '');
+            const v = (p.variants && p.variants.length > 0) ? p.variants[window.currentSelectedVariantIndex] : null;
+
+            const vName = v ? (v.name || 'Standar') : 'Standar';
+            const vDuration = v ? (v.duration || '-') : '-';
+            const vPrice = v ? (v.price || p.price) : p.price;
+
+            const rawTemplate = siteSettings.wa_template || 'Halo Admin, saya ingin beli *{produk}* - Varian: {varian} ({durasi}) - Harga: {harga}';
+            const msg = rawTemplate
+                .replace(/\{produk\}/g, encodeURIComponent(p.name))
+                .replace(/\{varian\}/g, encodeURIComponent(vName))
+                .replace(/\{durasi\}/g, encodeURIComponent(vDuration))
+                .replace(/\{harga\}/g, encodeURIComponent(vPrice))
+                .replace(/\{kategori\}/g, encodeURIComponent(p.category || '-'))
+                .replace(/\{garansi\}/g, encodeURIComponent(p.warranty || 'Garansi Resmi'));
+
+            document.getElementById('modal-buy-btn').href = `https://wa.me/${waClean}?text=${msg}`;
+        }
+
+        window.closeProductModal = function() {
+            const modal = document.getElementById('product-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        };
+
+        // --- RENDER KEUNGGULAN & FAQ ---
         function renderFeaturesAndFaq() {
             const features = Array.isArray(siteSettings.features_list) ? siteSettings.features_list : [];
             document.getElementById('features-grid').innerHTML = features.map(f => `
@@ -627,11 +792,10 @@
 
         document.getElementById('search-input').addEventListener('input', renderProducts);
 
-        // Muat Semua Data dari Database Supabase
+        // --- MUAT DATA SUPABASE ---
         async function loadStoreData() {
             if (supabaseClient) {
                 try {
-                    // Catat kunjungan pengunjung
                     supabaseClient.rpc('increment_visitor').then(() => {});
 
                     const [settingsRes, bannersRes, productsRes, faqsRes] = await Promise.all([
