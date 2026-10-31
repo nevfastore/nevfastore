@@ -1,897 +1,882 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nevfa Store — Toko Akun Premium Terpercaya</title>
-  
-  <!-- FAVICON RESMI -->
-  <link rel="icon" type="image/png" href="logo.png?v=2">
-  <link rel="shortcut icon" type="image/png" href="logo.png?v=2">
-
-  <!-- GOOGLE FONTS INTER & SPACE GROTESK -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
-
-  <meta name="google-site-verification" content="m3NvNDjc7CSZtHrQy17T3SNQFjTKUJpsSWSN3NxQD2w" />
-  
-  <style>
-    :root {
-      --primary: #8b2cf5;
-      --primary-hover: #7922db;
-      --primary-gradient: linear-gradient(135deg, #a855f7 0%, #8b2cf5 50%, #6d28d9 100%);
-      --bg: #ffffff;
-      --card-bg: #ffffff;
-      --text-main: #09090b;
-      --text-muted: #71717a;
-      --border-color: #f1f5f9;
-      --nav-bg: rgba(255, 255, 255, 0.95);
-      --modal-bg: #ffffff;
-      --modal-left-bg: #fafafa;
-      --package-bg: #fafafa;
-    }
-
-    [data-theme="dark"] {
-      --primary: #a855f7;
-      --primary-hover: #9333ea;
-      --primary-gradient: linear-gradient(135deg, #c084fc 0%, #a855f7 50%, #7e22ce 100%);
-      --bg: #09090b;
-      --card-bg: #13131a;
-      --text-main: #f4f4f5;
-      --text-muted: #a1a1aa;
-      --border-color: #27272a;
-      --nav-bg: rgba(9, 9, 11, 0.95);
-      --modal-bg: #121216;
-      --modal-left-bg: #18181b;
-      --package-bg: #18181b;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      scroll-behavior: smooth;
-      transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    }
-
-    body {
-      background-color: var(--bg);
-      color: var(--text-main);
-      overflow-x: hidden;
-      padding-bottom: 70px;
-    }
-
-    /* NAVBAR */
-    .navbar {
-      width: 100%;
-      border-bottom: 1px solid var(--border-color);
-      background: var(--nav-bg);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(8px);
-    }
-
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand-left {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .brand-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
-    .brand-text-custom {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 800;
-      font-size: 21px;
-      letter-spacing: -0.5px;
-    }
-
-    .brand-nevfa { color: var(--text-main); }
-    .brand-store {
-      background: linear-gradient(135deg, #c084fc 0%, #8B3DFF 50%, #6d28d9 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 900;
-    }
-
-    .brand-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-    .brand-icon img { width: 100%; height: 100%; object-fit: contain; }
-
-    .store-open-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
-      padding: 5px 12px;
-      border-radius: 99px;
-      font-size: 11.5px;
-      font-weight: 600;
-      color: #16a34a;
-    }
-
-    .status-dot-green {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #22c55e;
-      display: inline-block;
-      animation: pulseGreenDot 1.8s infinite ease-in-out;
-    }
-
-    @keyframes pulseGreenDot {
-      0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.65); }
-      70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
-      100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
-    }
-
-    .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
-    .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 14px; font-weight: 600; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--primary); }
-
-    .nav-right-actions { display: flex; align-items: center; gap: 12px; }
-    .theme-toggle-btn {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 18px;
-      color: var(--text-main);
-    }
-    .theme-toggle-btn:hover { transform: scale(1.08); }
-
-    .btn-nav-wa {
-      background: var(--primary);
-      color: #ffffff;
-      text-decoration: none;
-      padding: 9px 22px;
-      border-radius: 99px;
-      font-size: 13.5px;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 4px 14px rgba(139, 44, 245, 0.25);
-    }
-    .btn-nav-wa:hover { background: var(--primary-hover); }
-
-    /* BANNER CAROUSEL UTAMA */
-    .carousel-section {
-      max-width: 1200px;
-      margin: 25px auto 10px;
-      padding: 0 20px;
-      position: relative;
-    }
-
-    .carousel-container {
-      position: relative;
-      width: 100%;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(139, 44, 245, 0.12);
-      border: 1.5px solid var(--border-color);
-      aspect-ratio: 21 / 7;
-      background: #0f172a;
-    }
-
-    .carousel-track {
-      display: flex;
-      width: 100%;
-      height: 100%;
-      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-
-    .carousel-slide { min-width: 100%; height: 100%; position: relative; }
-    .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-    .carousel-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      color: #0f172a;
-      font-size: 16px;
-      font-weight: 800;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
-    }
-    .carousel-btn.prev { left: 14px; }
-    .carousel-btn.next { right: 14px; }
-
-    /* PRODUK UNGGULAN BERGESER BESAR (TANPA OUTLINE PUTIH, FULL LOGO BERGESER MULUS) */
-    .featured-marquee-section {
-      max-width: 1200px;
-      margin: 20px auto 35px;
-      padding: 0 20px;
-      overflow: hidden;
-    }
-
-    .featured-wrapper-clean {
-      background: rgba(19, 19, 26, 0.7);
-      border: 1.5px solid #27272a;
-      border-radius: 24px;
-      padding: 20px 24px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    /* KOTAK JUDUL DENGAN WARNA ORANYE/KUNING & EMOJI API BERKOBAR */
-    .featured-header-box {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: linear-gradient(135deg, #f97316 0%, #eab308 100%);
-      color: #09090b;
-      font-size: 13px;
-      font-weight: 800;
-      padding: 6px 16px;
-      border-radius: 99px;
-      margin-bottom: 16px;
-      box-shadow: 0 4px 15px rgba(249, 115, 22, 0.35);
-    }
-
-    .flame-icon {
-      display: inline-block;
-      animation: flameAnim 0.8s ease-in-out infinite alternate;
-      transform-origin: bottom center;
-    }
-
-    @keyframes flameAnim {
-      0% { transform: scale(1) rotate(-3deg); filter: drop-shadow(0 0 2px rgba(255,255,255,0.6)); }
-      100% { transform: scale(1.2) rotate(3deg); filter: drop-shadow(0 0 6px rgba(255,100,0,0.9)); }
-    }
-
-    .marquee-container {
-      overflow: hidden;
-      width: 100%;
-      position: relative;
-    }
-
-    .marquee-track {
-      display: flex;
-      gap: 32px;
-      width: max-content;
-      animation: scrollFeatured 20s linear infinite;
-    }
-
-    .marquee-track:hover { animation-play-state: paused; }
-
-    /* LOGO BESAR TANPA OUTLINE PUTIH */
-    .marquee-item {
-      width: 80px;
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: transform 0.2s;
-    }
-
-    .marquee-item:hover { transform: scale(1.12); }
-
-    .marquee-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-radius: 20px;
-      background: transparent;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-    }
-
-    @keyframes scrollFeatured {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* SECTION HEADINGS */
-    .section-badge {
-      color: var(--primary);
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-      display: inline-block;
-      text-align: center;
-    }
-
-    .section-title {
-      font-size: 32px;
-      font-weight: 800;
-      color: var(--text-main);
-      letter-spacing: -0.8px;
-      margin-bottom: 8px;
-      text-align: center;
-    }
-
-    .section-subtitle {
-      color: var(--text-muted);
-      font-size: 14.5px;
-      max-width: 580px;
-      margin: 0 auto 35px;
-      line-height: 1.5;
-      text-align: center;
-    }
-
-    /* KATALOG PRODUK GAYA HORIZONTAL */
-    .catalog-section {
-      max-width: 1200px;
-      margin: 15px auto 90px;
-      padding: 0 20px;
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border: 1.5px solid var(--border-color);
-      border-radius: 28px;
-      padding: 24px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.04);
-      transition: all 0.25s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 35px rgba(139, 44, 245, 0.12);
-      border-color: var(--primary);
-    }
-
-    .badge-best {
-      position: absolute;
-      top: 18px;
-      right: 20px;
-      background: linear-gradient(135deg, #f59e0b, #d97706);
-      color: #ffffff;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 99px;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
-    }
-
-    .card-top-row {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 16px;
-    }
-
-    .logo-container-horizontal {
-      width: 92px;
-      height: 92px;
-      border-radius: 22px;
-      background: rgba(139, 44, 245, 0.06);
-      border: 1px solid var(--border-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      overflow: hidden;
-    }
-
-    .logo-container-horizontal img {
-      width: 82%;
-      height: 82%;
-      object-fit: contain;
-      border-radius: 16px;
-    }
-
-    .card-info-right {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .card-title {
-      font-size: 23px;
-      font-weight: 700;
-      color: var(--text-main);
-      letter-spacing: -0.5px;
-      margin-bottom: 4px;
-    }
-
-    .card-price-label {
-      font-size: 12.5px;
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-
-    .card-price-value {
-      font-size: 27px;
-      font-weight: 800;
-      background: var(--primary-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      line-height: 1.1;
-    }
-
-    .card-desc {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      line-height: 1.5;
-      margin-bottom: 18px;
-      font-weight: 600;
-    }
-
-    .features-row {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-
-    .feature-pill {
-      background: rgba(139, 44, 245, 0.08);
-      border: 1px solid rgba(139, 44, 245, 0.15);
-      color: var(--primary);
-      font-size: 12px;
-      font-weight: 600;
-      padding: 5px 14px;
-      border-radius: 99px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .specs-row {
-      display: flex;
-      gap: 18px;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-    }
-
-    .btn-group {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: auto;
-    }
-
-    .btn-purple {
-      background: var(--primary-gradient);
-      color: #ffffff;
-      border: none;
-      padding: 14px 0;
-      border-radius: 99px;
-      font-weight: 700;
-      font-size: 14.5px;
-      cursor: pointer;
-      width: 100%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      box-shadow: 0 6px 20px rgba(139, 44, 245, 0.3);
-      transition: all 0.2s;
-    }
-    .btn-purple:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(139, 44, 245, 0.4); }
-
-    .btn-white {
-      background: transparent;
-      color: var(--text-main);
-      border: 1.5px solid var(--border-color);
-      padding: 13px 0;
-      border-radius: 99px;
-      font-weight: 700;
-      font-size: 13.5px;
-      cursor: pointer;
-      width: 100%;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: all 0.2s;
-    }
-    .btn-white:hover { border-color: var(--primary); background: rgba(139,44,245,0.05); }
-
-    /* TESTIMONI CTA BANNER */
-    .cta-testi-section { max-width: 900px; margin: 80px auto; padding: 0 20px; }
-    .cta-testi-box {
-      background: var(--primary-gradient);
-      border-radius: 36px;
-      padding: 50px 30px;
-      text-align: center;
-      color: #ffffff;
-      box-shadow: 0 20px 50px rgba(139, 44, 245, 0.35);
-    }
-    .cta-testi-box h2 { font-size: 34px; font-weight: 800; margin-bottom: 8px; }
-    .cta-testi-box p { font-size: 14.5px; opacity: 0.95; margin-bottom: 24px; font-weight: 600; }
-
-    .btn-testi {
-      background: #0f172a;
-      color: #ffffff;
-      text-decoration: none;
-      padding: 13px 32px;
-      border-radius: 99px;
-      font-size: 14px;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .btn-testi:hover { background: #000000; }
-
-    /* FOOTER */
-    .footer { background: #0d0b14; color: #ffffff; padding: 60px 20px 40px; margin-top: 90px; }
-    .footer-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
-    .footer-brand { max-width: 420px; }
-    .footer-brand-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-    .footer-logo-icon { width: 38px; height: 38px; border-radius: 10px; background: #121216; border: 1px solid #27272a; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .footer-logo-icon img { width: 100%; height: 100%; object-fit: contain; }
-    .footer-brand-name { font-size: 18px; font-weight: 700; }
-    .footer-desc { font-size: 13.5px; color: #94a3b8; line-height: 1.6; }
-
-    .footer-socials h4 { font-size: 15px; font-weight: 700; margin-bottom: 14px; color: #fff; }
-    .social-icons-group { display: flex; gap: 12px; }
-    .social-icon-link {
-      width: 44px; height: 44px; border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      display: flex; align-items: center; justify-content: center;
-      color: #fff; text-decoration: none; transition: all 0.2s;
-    }
-    .social-icon-link svg { width: 20px; height: 20px; fill: currentColor; }
-    .social-icon-link:hover { background: var(--primary); border-color: var(--primary); }
-    .footer-bottom { max-width: 1200px; margin: 30px auto 0; text-align: center; font-size: 12.5px; color: #64748b; }
-
-    /* MODAL */
-    .modal-backdrop {
-      position: fixed; inset: 0; background: rgba(9, 9, 11, 0.65);
-      backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; z-index: 999; padding: 20px;
-    }
-    .modal-box-split {
-      background: var(--modal-bg); color: var(--text-main); width: 100%; max-width: 880px; max-height: 90vh;
-      border-radius: 32px; padding: 32px; position: relative; box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3);
-      display: flex; gap: 28px; overflow-y: auto; border: 1px solid var(--border-color);
-    }
-    .btn-close {
-      position: absolute; top: 20px; right: 20px; width: 36px; height: 36px; border-radius: 50%;
-      background: var(--border-color); border: none; cursor: pointer; font-size: 16px; color: var(--text-main);
-      display: flex; align-items: center; justify-content: center; z-index: 10;
-    }
-    .modal-col-left { flex: 1.1; border: 1px solid var(--border-color); border-radius: 22px; padding: 22px 24px; background: var(--modal-left-bg); display: flex; flex-direction: column; }
-    .modal-tabs { display: flex; gap: 8px; border-bottom: 2px solid var(--border-color); padding-bottom: 12px; margin-bottom: 20px; }
-    .tab-btn { background: none; border: none; font-size: 14px; font-weight: 700; color: var(--text-muted); cursor: pointer; padding: 6px 14px; border-radius: 99px; }
-    .tab-btn.active { color: var(--primary); background: rgba(139, 44, 245, 0.1); }
-    .tab-content { display: none; font-size: 13.5px; color: var(--text-muted); line-height: 1.65; overflow-y: auto; max-height: 380px; white-space: pre-line; }
-    .tab-content.active { display: block; }
-    .modal-col-right { flex: 1; display: flex; flex-direction: column; }
-    .modal-title { font-size: 26px; font-weight: 800; color: var(--text-main); }
-    .modal-subtitle { font-size: 13.5px; color: var(--text-muted); margin: 4px 0 20px; }
-    .package-container { display: flex; flex-direction: column; gap: 12px; overflow-y: auto; max-height: 380px; }
-    .package-row {
-      display: flex; align-items: center; justify-content: space-between; border: 1.5px solid var(--border-color);
-      background: var(--package-bg); padding: 16px 20px; border-radius: 20px;
-    }
-    .package-row:hover { border-color: var(--primary); }
-    .pkg-info h4 { font-size: 14.5px; font-weight: 700; color: var(--text-main); }
-    .pkg-info p { font-size: 14px; font-weight: 800; color: var(--primary); margin-top: 3px; }
-    .btn-order-tag { background: var(--primary); color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 99px; font-size: 13px; font-weight: 700; }
-
-    @media (max-width: 900px) {
-      .product-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .footer-container { flex-direction: column; }
-    }
-  </style>
-</head>
-<body>
-
-  <nav class="navbar">
-    <div class="nav-container">
-      <div class="brand-left">
-        <a href="#" class="brand-logo">
-          <div class="brand-icon">
-            <img src="logo.png" alt="Logo Nevfa" onerror="this.style.display='none'">
-          </div>
-          <span class="brand-text-custom"><span class="brand-nevfa">Nevfa</span> <span class="brand-store">Store</span></span>
-        </a>
-        <div class="store-open-badge">
-          <span class="status-dot-green"></span>
-          <span>OPEN</span>
-        </div>
-      </div>
-      <ul class="nav-links">
-        <li><a href="#">Beranda</a></li>
-        <li><a href="#katalog">Produk</a></li>
-        <li><a href="https://nevfatestimoni.netlify.app" target="_blank">Testimoni</a></li>
-        <li><a href="#kontak">Kontak</a></li>
-      </ul>
-      <div class="nav-right-actions">
-        <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Ganti Mode">🌙</button>
-        <a href="https://wa.me/6285196223649?text=Halo%20Nevfa%20Store" target="_blank" class="btn-nav-wa">💬 WhatsApp</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- BANNER CAROUSEL UTAMA -->
-  <section class="carousel-section">
-    <div class="carousel-container">
-      <div class="carousel-track" id="carouselTrack">
-        <div class="carousel-slide"><img src="banner1.jpg" alt="Promo 1" onerror="this.style.display='none'"></div>
-        <div class="carousel-slide"><img src="banner2.jpg" alt="Promo 2" onerror="this.style.display='none'"></div>
-        <div class="carousel-slide"><img src="banner3.jpg" alt="Promo 3" onerror="this.style.display='none'"></div>
-      </div>
-      <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
-      <button class="carousel-btn next" onclick="moveCarousel(1)">&#10095;</button>
-    </div>
-  </section>
-
-  <!-- PRODUK UNGGULAN BERGESER BESAR (OTOMATIS DARI PRODUCTS.JSON) -->
-  <section class="featured-marquee-section">
-    <div class="featured-wrapper-clean">
-      <div class="featured-header-box">
-        <span class="flame-icon">🔥</span> Produk Unggulan
-      </div>
-      <div class="marquee-container">
-        <div class="marquee-track" id="featuredMarqueeTrack">
-          <!-- Otomatis diisi oleh JavaScript dari data products.json -->
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- KATALOG UTAMA -->
-  <section class="catalog-section" id="katalog">
-    <div style="text-align: center;">
-      <span class="section-badge">PRODUK</span>
-      <h2 class="section-title">Katalog Akun Premium</h2>
-      <p class="section-subtitle">Pilih layanan favoritmu, lihat pilihan paketnya, lalu pesan langsung via WhatsApp.</p>
-    </div>
-    <div class="product-grid" id="productGrid">
-      <!-- Produk otomatis dimuat dari products.json -->
-    </div>
-  </section>
-
-  <section class="cta-testi-section" id="testimoni">
-    <div class="cta-testi-box">
-      <h2>Apa Kata Pelanggan Kami?</h2>
-      <p>Lihat ulasan dan testimoni pelanggan Nevfa Store.</p>
-      <a href="https://nevfatestimoni.netlify.app" target="_blank" class="btn-testi">📢 Lihat Testimoni</a>
-    </div>
-  </section>
-
-  <footer class="footer" id="kontak">
-    <div class="footer-container">
-      <div class="footer-brand">
-        <div class="footer-brand-header">
-          <div class="footer-logo-icon"><img src="logo.png" alt="" onerror="this.style.display='none'"></div>
-          <h3 class="footer-brand-name">Nevfa Store</h3>
-        </div>
-        <p class="footer-desc">Tempat untuk mendapatkan berbagai akun premium favoritmu dengan garansi resmi dan proses cepat.</p>
-      </div>
-      <div class="footer-socials">
-        <h4>Ikuti Sosial Media Kami</h4>
-        <div class="social-icons-group">
-          <a href="https://www.instagram.com/nevfa_store" target="_blank" class="social-icon-link" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-          <a href="https://wa.me/6285196223649" target="_blank" class="social-icon-link" title="WhatsApp"><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
-          <a href="https://www.tiktok.com/@nevfameahnwilee" target="_blank" class="social-icon-link" title="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z"/></svg></a>
-          <a href="https://www.facebook.com/nevfastore" target="_blank" class="social-icon-link" title="Facebook"><svg viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.376 14.5 5 15.5 5H18V0h-3.808C10.59 0 9 1.589 9 4.7V8z"/></svg></a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom"><p>&copy; 2026 Nevfa Store. All rights reserved.</p></div>
-  </footer>
-
-  <!-- MODAL -->
-  <div class="modal-backdrop" id="packageModal">
-    <div class="modal-box-split">
-      <button class="btn-close" onclick="closeModal()">✕</button>
-      <div class="modal-col-left">
-        <div class="modal-tabs">
-          <button class="tab-btn" onclick="switchTab('benefit')">Benefit</button>
-          <button class="tab-btn active" onclick="switchTab('garansi')">Garansi</button>
-          <button class="tab-btn" onclick="switchTab('deskripsi')">Deskripsi</button>
-        </div>
-        <div class="tab-content" id="tab-benefit"><div id="modalBenefitText">-</div></div>
-        <div class="tab-content active" id="tab-garansi"><div id="modalGaransiText">-</div></div>
-        <div class="tab-content" id="tab-deskripsi"><div id="modalDeskripsiText">-</div></div>
-      </div>
-      <div class="modal-col-right">
-        <h3 class="modal-title" id="modalTitle">Produk</h3>
-        <p class="modal-subtitle">Pilih paket yang kamu inginkan.</p>
-        <div class="package-container" id="modalPackages"></div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const NOMOR_WHATSAPP = "6285196223649";
-
-    function toggleTheme() {
-      const html = document.documentElement;
-      const btn = document.getElementById('themeToggleBtn');
-      if (html.getAttribute('data-theme') === 'dark') {
-        html.removeAttribute('data-theme');
-        btn.innerHTML = '🌙';
-        localStorage.setItem('nevfa_theme', 'light');
-      } else {
-        html.setAttribute('data-theme', 'dark');
-        btn.innerHTML = '☀️';
-        localStorage.setItem('nevfa_theme', 'dark');
-      }
-    }
-
-    if (localStorage.getItem('nevfa_theme') === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      document.getElementById('themeToggleBtn').innerHTML = '☀️';
-    }
-
-    let products = [];
-    async function loadProductsOnline() {
-      try {
-        const response = await fetch('products.json?v=' + Date.now());
-        if (response.ok) {
-          products = await response.json();
-          renderCatalog();
-          renderFeaturedMarquee(); // <-- INI YANG KURANG SEBELUMNYA
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel — NEVFA STORE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0B0719;
+            color: #FFFFFF;
         }
-      } catch (e) {
-        console.error("Gagal memuat produk online.");
-      }
-    }
+        .panel-card {
+            background-color: #16102C;
+            border: 1px solid rgba(168, 85, 247, 0.22);
+        }
+        .input-dark {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            color: #fff;
+        }
+        .input-dark:focus {
+            outline: none;
+            border-color: #A855F7;
+        }
+        .input-dark option { background-color: #16102C; color: #fff; }
+    </style>
+</head>
+<body class="min-h-screen">
 
-    function renderCatalog() {
-      const grid = document.getElementById('productGrid');
-      if (!grid) return;
-      grid.innerHTML = '';
-      products.forEach((prod, index) => {
-        const isBest = index === 0 ? `<div class="badge-best">👑 BEST SELLER</div>` : '';
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `
-          ${isBest}
-          <div class="card-top-row">
-            <div class="logo-container-horizontal"><img src="${prod.logo}" alt="${prod.title}" onerror="this.style.display='none'"></div>
-            <div class="card-info-right">
-              <h3 class="card-title">${prod.title}</h3>
-              <div class="card-price-label">Mulai dari</div>
-              <div class="card-price-value">${prod.startPrice}</div>
+    <!-- NOTIFIKASI TOAST -->
+    <div id="toast" class="fixed top-5 right-5 z-50 hidden px-5 py-3.5 rounded-xl font-bold text-sm shadow-2xl transition-all"></div>
+
+    <!-- ========================================== -->
+    <!-- HALAMAN LOGIN ADMIN (TERKUNCI AMAN) -->
+    <!-- ========================================== -->
+    <div id="auth-screen" class="min-h-screen flex items-center justify-center p-4">
+        <div class="panel-card rounded-3xl p-6 sm:p-8 w-full max-w-md shadow-2xl">
+            <div class="text-center mb-6">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-purple-600/20 border border-purple-500 text-2xl mb-3">🔐</div>
+                <h1 class="text-2xl font-extrabold">
+                    <span>NEVFA</span> <span class="text-purple-400">ADMIN</span>
+                </h1>
+                <p class="text-xs text-gray-400 mt-1">Khusus Pemilik Toko — Login dengan Akun Administrator</p>
             </div>
-          </div>
-          <p class="card-desc">${prod.desc}</p>
-          <div class="features-row">
-            <span class="feature-pill">✔ Ready</span>
-            <span class="feature-pill">⚡ Fast</span>
-          </div>
-          <div class="specs-row">
-            <span>🛡️ Garansi Full</span>
-            <span>🔒 Legal / Aman</span>
-          </div>
-          <div class="btn-group">
-            <button class="btn-purple" onclick="openProductModal('${prod.id}')">Lihat Paket ❯</button>
-            <a href="#" onclick="pesanWA('${prod.title}', 'Paket ${prod.title}')" class="btn-white">💬 Pesan via WhatsApp</a>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-    }
 
-    // FUNGSI UNTUK MERENDER SLIDER LOGO PRODUK UNGGULAN
-    function renderFeaturedMarquee() {
-      const track = document.getElementById('featuredMarqueeTrack');
-      if (!track) return;
-      
-      let htmlContent = '';
-      products.forEach(prod => {
-        htmlContent += `<div class="marquee-item"><img src="${prod.logo}" alt="${prod.title}" onerror="this.style.display='none'"></div>`;
-      });
-      // Duplikasi untuk looping mulus
-      products.forEach(prod => {
-        htmlContent += `<div class="marquee-item"><img src="${prod.logo}" alt="${prod.title}" onerror="this.style.display='none'"></div>`;
-      });
+            <div id="config-warning" class="hidden mb-4 p-3.5 rounded-xl bg-amber-500/15 border border-amber-500/40 text-amber-200 text-xs leading-relaxed">
+                ⚠️ <strong>Perhatian:</strong> Anda belum mengisi <code>SUPABASE_URL</code> dan <code>SUPABASE_ANON_KEY</code> di dalam kode <code>admin.html</code>.
+            </div>
 
-      track.innerHTML = htmlContent;
-    }
+            <form id="login-form" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1.5">Email Administrator</label>
+                    <input id="login-email" type="email" required placeholder="admin@nevfastore.com" class="w-full px-4 py-2.5 rounded-xl text-sm input-dark">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1.5">Password</label>
+                    <input id="login-password" type="password" required placeholder="••••••••" class="w-full px-4 py-2.5 rounded-xl text-sm input-dark">
+                </div>
+                <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-95 font-bold text-sm shadow-lg transition">
+                    Masuk ke Admin Panel
+                </button>
+            </form>
+            <div class="mt-6 text-center">
+                <a href="index.html" class="text-xs text-purple-300 hover:underline">← Kembali ke Website Utama</a>
+            </div>
+        </div>
+    </div>
 
-    function pesanWA(produk, paket, harga = "") {
-      let pesan = `Halo Nevfa Store, saya mau pesan:\n\nProduk: ${produk}\nPaket: ${paket}`;
-      if (harga) pesan += `\nHarga: ${harga}`;
-      window.open(`https://wa.me/${NOMOR_WHATSAPP}?text=${encodeURIComponent(pesan)}`, '_blank');
-    }
+    <!-- ========================================== -->
+    <!-- DASHBOARD ADMIN PANEL UTAMA -->
+    <!-- ========================================== -->
+    <div id="admin-app" class="hidden min-h-screen flex flex-col md:flex-row">
 
-    function switchTab(tabName) {
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-      event.target.classList.add('active');
-      document.getElementById('tab-' + tabName).classList.add('active');
-    }
+        <!-- Sidebar Navigasi -->
+        <aside class="w-full md:w-64 bg-[#110C24] border-b md:border-b-0 md:border-r border-purple-500/20 flex-shrink-0">
+            <div class="p-5 flex items-center justify-between border-b border-purple-500/20">
+                <div class="font-extrabold text-lg tracking-tight">
+                    <span>NEVFA</span> <span class="text-purple-400">ADMIN</span>
+                </div>
+                <a href="index.html" target="_blank" class="text-xs px-2.5 py-1 rounded-lg bg-purple-500/20 text-purple-300 border border-purple-500/30 hover:bg-purple-500/30">
+                    Lihat Web ↗
+                </a>
+            </div>
+            <nav class="p-3 flex md:flex-col gap-1.5 overflow-x-auto">
+                <button onclick="switchTab('dashboard')" id="tab-btn-dashboard" class="tab-btn text-left px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-2.5 bg-purple-600 text-white">
+                    <span>📊</span> Dashboard
+                </button>
+                <button onclick="switchTab('products')" id="tab-btn-products" class="tab-btn text-left px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-2.5 text-gray-300 hover:bg-white/5">
+                    <span>📦</span> Manajemen Produk
+                </button>
+                <button onclick="switchTab('banners')" id="tab-btn-banners" class="tab-btn text-left px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-2.5 text-gray-300 hover:bg-white/5">
+                    <span>🖼️</span> Manajemen Banner
+                </button>
+                <button onclick="switchTab('appearance')" id="tab-btn-appearance" class="tab-btn text-left px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-2.5 text-gray-300 hover:bg-white/5">
+                    <span>🎨</span> Tampilan & Logo
+                </button>
+                <button onclick="switchTab('content')" id="tab-btn-content" class="tab-btn text-left px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-2.5 text-gray-300 hover:bg-white/5">
+                    <span>📝</span> Konten, WA & FAQ
+                </button>
+                <button onclick="switchTab('security')" id="tab-btn-security" class="tab-btn text-left px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-2.5 text-gray-300 hover:bg-white/5">
+                    <span>🛡️</span> Akun & Keamanan
+                </button>
+            </nav>
+        </aside>
 
-    function openProductModal(prodId) {
-      const prod = products.find(p => p.id === prodId);
-      if (!prod) return;
+        <!-- Area Konten Utama -->
+        <main class="flex-grow p-4 sm:p-8 max-w-6xl">
 
-      document.getElementById('modalTitle').innerText = prod.title;
-      document.getElementById('modalBenefitText').innerText = prod.benefit || '-';
-      document.getElementById('modalGaransiText').innerText = prod.garansi || '-';
-      document.getElementById('modalDeskripsiText').innerText = prod.deskripsi || '-';
+            <!-- TAB A: DASHBOARD -->
+            <section id="tab-dashboard" class="tab-content space-y-6">
+                <div>
+                    <h2 class="text-2xl font-extrabold">Dashboard Statistik & Aktivitas</h2>
+                    <p class="text-xs text-gray-400">Ringkasan performa dan perubahan langsung pada website publik.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="panel-card rounded-2xl p-5">
+                        <div class="text-xs text-gray-400">Total Kunjungan Web</div>
+                        <div id="stat-visitors" class="text-2xl font-extrabold text-purple-400 mt-1">0</div>
+                    </div>
+                    <div class="panel-card rounded-2xl p-5">
+                        <div class="text-xs text-gray-400">Jumlah Produk</div>
+                        <div id="stat-products" class="text-2xl font-extrabold text-emerald-400 mt-1">0</div>
+                    </div>
+                    <div class="panel-card rounded-2xl p-5">
+                        <div class="text-xs text-gray-400">Banner Aktif</div>
+                        <div id="stat-banners" class="text-2xl font-extrabold text-pink-400 mt-1">0</div>
+                    </div>
+                    <div class="panel-card rounded-2xl p-5">
+                        <div class="text-xs text-gray-400">Terakhir Dipublikasikan</div>
+                        <div id="stat-updated" class="text-xs font-bold text-gray-200 mt-2">-</div>
+                    </div>
+                </div>
 
-      const listContainer = document.getElementById('modalPackages');
-      listContainer.innerHTML = '';
-      if (prod.packages && prod.packages.length > 0) {
-        prod.packages.forEach(pkg => {
-          const bersihNama = pkg.nama.replace(/[-–—]/g, '').trim();
-          const item = document.createElement('div');
-          item.className = 'package-row';
-          item.innerHTML = `
-            <div class="pkg-info"><h4>${bersihNama}</h4><p>${pkg.harga}</p></div>
-            <a href="#" class="btn-order-tag" onclick="pesanWA('${prod.title}', '${bersihNama}', '${pkg.harga}')">💬 Pesan</a>
-          `;
-          listContainer.appendChild(item);
+                <div class="panel-card rounded-2xl p-5">
+                    <h3 class="font-bold text-sm mb-3">Riwayat Perubahan Terakhir</h3>
+                    <div id="activity-list" class="space-y-2 text-xs text-gray-300"></div>
+                </div>
+            </section>
+
+            <!-- TAB B: MANAJEMEN PRODUK -->
+            <section id="tab-products" class="tab-content hidden space-y-6">
+                <div>
+                    <h2 class="text-2xl font-extrabold">Manajemen Produk & Foto</h2>
+                    <p class="text-xs text-gray-400">Tambah, edit, ganti logo aplikasi, atur harga, garansi, dan status stok.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <!-- Form Tambah/Edit Produk -->
+                    <form id="product-form" class="lg:col-span-5 panel-card rounded-2xl p-5 space-y-3.5 h-fit">
+                        <h3 id="product-form-title" class="font-bold text-base text-purple-300">Tambah Produk Baru</h3>
+                        <input type="hidden" id="prod-id">
+
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Nama Produk / Aplikasi</label>
+                            <input id="prod-name" type="text" required placeholder="Contoh: Netflix Premium" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Kategori</label>
+                                <input id="prod-category" type="text" required placeholder="Streaming / Musik" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Harga</label>
+                                <input id="prod-price" type="text" required placeholder="Rp 35.000" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Upload Logo / Foto Produk</label>
+                            <input id="prod-file" type="file" accept="image/*" class="w-full text-xs text-gray-300 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:bg-purple-600 file:text-white file:font-semibold">
+                            <input id="prod-image-url" type="text" placeholder="Atau tempel URL gambar logo..." class="w-full mt-2 px-3.5 py-2 rounded-xl text-xs input-dark">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Deskripsi Produk</label>
+                            <textarea id="prod-desc" rows="2" placeholder="Akun Sharing & Private, 4K UHD..." class="w-full px-3.5 py-2 rounded-xl text-sm input-dark"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Informasi Garansi</label>
+                            <input id="prod-warranty" type="text" placeholder="Full Garansi 30 Hari" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-2.5">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Label</label>
+                                <select id="prod-badge" class="w-full px-2.5 py-2 rounded-xl text-xs input-dark">
+                                    <option value="">Tanpa Label</option>
+                                    <option value="Best Seller">Best Seller</option>
+                                    <option value="Promo">Promo</option>
+                                    <option value="Terbaru">Terbaru</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Urutan</label>
+                                <input id="prod-order" type="number" value="1" class="w-full px-3 py-2 rounded-xl text-xs input-dark">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Status Stok</label>
+                                <select id="prod-active" class="w-full px-2.5 py-2 rounded-xl text-xs input-dark">
+                                    <option value="true">Tersedia</option>
+                                    <option value="false">Stok Habis</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-2 pt-2">
+                            <button type="submit" class="flex-1 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-xs sm:text-sm transition">
+                                💾 Simpan & Publikasikan
+                            </button>
+                            <button type="button" onclick="resetProductForm()" class="px-4 py-2.5 rounded-xl bg-white/10 text-xs font-semibold">
+                                Batal
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Daftar Produk -->
+                    <div class="lg:col-span-7 space-y-3" id="admin-products-list"></div>
+                </div>
+            </section>
+
+            <!-- TAB C: MANAJEMEN BANNER -->
+            <section id="tab-banners" class="tab-content hidden space-y-6">
+                <div>
+                    <h2 class="text-2xl font-extrabold">Manajemen Banner & Slider</h2>
+                    <p class="text-xs text-gray-400">Kelola banner halaman utama, gambar promosi, tombol, dan urutan tampil.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <form id="banner-form" class="lg:col-span-5 panel-card rounded-2xl p-5 space-y-3.5 h-fit">
+                        <h3 id="banner-form-title" class="font-bold text-base text-purple-300">Tambah / Edit Banner</h3>
+                        <input type="hidden" id="ban-id">
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Judul Headline Banner</label>
+                            <input id="ban-title" type="text" required placeholder="APLIKASI PREMIUM & GARANSI AMAN" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Deskripsi Banner</label>
+                            <textarea id="ban-subtitle" rows="2" placeholder="Dapatkan akses resmi..." class="w-full px-3.5 py-2 rounded-xl text-sm input-dark"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Upload Gambar Banner (Opsional)</label>
+                            <input id="ban-file" type="file" accept="image/*" class="w-full text-xs text-gray-300 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:bg-purple-600 file:text-white file:font-semibold">
+                            <input id="ban-image-url" type="text" placeholder="Atau URL gambar banner..." class="w-full mt-2 px-3.5 py-2 rounded-xl text-xs input-dark">
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Teks Tombol</label>
+                                <input id="ban-btn-text" type="text" value="Lihat Produk" class="w-full px-3.5 py-2 rounded-xl text-xs input-dark">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Link Tujuan</label>
+                                <input id="ban-btn-link" type="text" value="#katalog" class="w-full px-3.5 py-2 rounded-xl text-xs input-dark">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Urutan</label>
+                                <input id="ban-order" type="number" value="1" class="w-full px-3.5 py-2 rounded-xl text-xs input-dark">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Status Tampil</label>
+                                <select id="ban-active" class="w-full px-3 py-2 rounded-xl text-xs input-dark">
+                                    <option value="true">Aktif</option>
+                                    <option value="false">Nonaktif</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 pt-2">
+                            <button type="submit" class="flex-1 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-xs sm:text-sm transition">
+                                💾 Simpan & Publikasikan
+                            </button>
+                            <button type="button" onclick="resetBannerForm()" class="px-4 py-2.5 rounded-xl bg-white/10 text-xs font-semibold">Batal</button>
+                        </div>
+                    </form>
+
+                    <div class="lg:col-span-7 space-y-3" id="admin-banners-list"></div>
+                </div>
+            </section>
+
+            <!-- TAB D: PENGATURAN TAMPILAN, LOGO & WARNA PUTIH-UNGU -->
+            <section id="tab-appearance" class="tab-content hidden space-y-6">
+                <div>
+                    <h2 class="text-2xl font-extrabold">Pengaturan Tampilan, Logo & Brand</h2>
+                    <p class="text-xs text-gray-400">Atur logo toko, warna teks NEVFA (Putih) & STORE (Ungu), warna tema, font, dan tata letak section.</p>
+                </div>
+
+                <form id="appearance-form" class="panel-card rounded-2xl p-6 space-y-6">
+                    <!-- Identitas Brand Putih & Ungu -->
+                    <div>
+                        <h3 class="font-bold text-sm text-purple-300 mb-3">1. Nama Toko & Kombinasi Warna (Putih & Ungu)</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Teks Kata Pertama</label>
+                                <input id="set-brand-first" type="text" value="NEVFA" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Warna Kata Pertama (Putih)</label>
+                                <input id="set-brand-first-color" type="color" value="#FFFFFF" class="w-full h-10 rounded-xl bg-transparent cursor-pointer">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Teks Kata Kedua</label>
+                                <input id="set-brand-second" type="text" value="STORE" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Warna Kata Kedua (Ungu)</label>
+                                <input id="set-brand-second-color" type="color" value="#A855F7" class="w-full h-10 rounded-xl bg-transparent cursor-pointer">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upload Logo Toko & Favicon -->
+                    <div class="border-t border-white/10 pt-5">
+                        <h3 class="font-bold text-sm text-purple-300 mb-3">2. Logo Toko & Favicon</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Upload Logo Toko (Navbar & Footer)</label>
+                                <input id="set-logo-file" type="file" accept="image/*" class="w-full text-xs text-gray-300 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:bg-purple-600 file:text-white">
+                                <input id="set-logo-url" type="text" placeholder="URL Logo Toko (kosongkan jika hanya teks)" class="w-full mt-2 px-3.5 py-2 rounded-xl text-xs input-dark">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Upload Favicon (Ikon Tab Browser)</label>
+                                <input id="set-favicon-file" type="file" accept="image/*" class="w-full text-xs text-gray-300 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:bg-purple-600 file:text-white">
+                                <input id="set-favicon-url" type="text" placeholder="URL Favicon" class="w-full mt-2 px-3.5 py-2 rounded-xl text-xs input-dark">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Warna Tema & Font -->
+                    <div class="border-t border-white/10 pt-5">
+                        <h3 class="font-bold text-sm text-purple-300 mb-3">3. Warna Website, Font & Jarak Elemen</h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Warna Utama (Ungu)</label>
+                                <input id="set-primary-color" type="color" value="#A855F7" class="w-full h-10 rounded-xl cursor-pointer">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Warna Aksen</label>
+                                <input id="set-accent-color" type="color" value="#EC4899" class="w-full h-10 rounded-xl cursor-pointer">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Warna Background</label>
+                                <input id="set-bg-color" type="color" value="#0B0719" class="w-full h-10 rounded-xl cursor-pointer">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Warna Card Produk</label>
+                                <input id="set-card-color" type="color" value="#16102C" class="w-full h-10 rounded-xl cursor-pointer">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Jenis Font</label>
+                                <select id="set-font-family" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                                    <option value="Plus Jakarta Sans">Plus Jakarta Sans</option>
+                                    <option value="Inter">Inter</option>
+                                    <option value="Poppins">Poppins</option>
+                                    <option value="Outfit">Outfit</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Ukuran Tulisan Dasar</label>
+                                <select id="set-font-size" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                                    <option value="15px">Kecil (15px)</option>
+                                    <option value="16px">Normal (16px)</option>
+                                    <option value="17px">Besar (17px)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Jarak Antar Section</label>
+                                <select id="set-spacing" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                                    <option value="40px">Rapat (40px)</option>
+                                    <option value="56px">Ideal (56px)</option>
+                                    <option value="72px">Lega (72px)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Urutan & Aktif/Nonaktif Section -->
+                    <div class="border-t border-white/10 pt-5">
+                        <h3 class="font-bold text-sm text-purple-300 mb-3">4. Tata Letak & Status Section</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Urutan Section Halaman Utama</label>
+                                <select id="set-section-order" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                                    <option value="banner,products,features,faq">Banner → Produk → Keunggulan → FAQ</option>
+                                    <option value="banner,features,products,faq">Banner → Keunggulan → Produk → FAQ</option>
+                                    <option value="products,banner,features,faq">Produk → Banner → Keunggulan → FAQ</option>
+                                </select>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-4 pt-5">
+                                <label class="flex items-center gap-2 text-xs font-semibold cursor-pointer">
+                                    <input id="set-show-banner" type="checkbox" checked class="accent-purple-500 w-4 h-4"> Tampilkan Banner
+                                </label>
+                                <label class="flex items-center gap-2 text-xs font-semibold cursor-pointer">
+                                    <input id="set-show-features" type="checkbox" checked class="accent-purple-500 w-4 h-4"> Tampilkan Keunggulan
+                                </label>
+                                <label class="flex items-center gap-2 text-xs font-semibold cursor-pointer">
+                                    <input id="set-show-faq" type="checkbox" checked class="accent-purple-500 w-4 h-4"> Tampilkan FAQ
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full sm:w-auto px-8 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-sm shadow-lg transition">
+                        💾 Simpan & Publikasikan Tampilan
+                    </button>
+                </form>
+            </section>
+
+            <!-- TAB E: MANAJEMEN KONTEN, KONTAK WA & FAQ -->
+            <section id="tab-content" class="tab-content hidden space-y-6">
+                <div>
+                    <h2 class="text-2xl font-extrabold">Manajemen Konten, WhatsApp & FAQ</h2>
+                    <p class="text-xs text-gray-400">Atur nomor WhatsApp tujuan checkout, link sosial media, deskripsi footer, dan daftar FAQ.</p>
+                </div>
+
+                <form id="content-form" class="panel-card rounded-2xl p-6 space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Nomor WhatsApp Admin (Awali 628...)</label>
+                            <input id="set-wa-number" type="text" required placeholder="6281234567890" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Deskripsi Singkat Toko (Footer)</label>
+                            <input id="set-footer-text" type="text" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Link Instagram</label>
+                            <input id="set-ig" type="text" placeholder="https://instagram.com/..." class="w-full px-3.5 py-2 rounded-xl text-xs input-dark">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Link Telegram</label>
+                            <input id="set-tele" type="text" placeholder="https://t.me/..." class="w-full px-3.5 py-2 rounded-xl text-xs input-dark">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Link TikTok</label>
+                            <input id="set-tiktok" type="text" placeholder="https://tiktok.com/@..." class="w-full px-3.5 py-2 rounded-xl text-xs input-dark">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="px-6 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-xs sm:text-sm transition">
+                        💾 Simpan Kontak & Sosial Media
+                    </button>
+                </form>
+
+                <!-- Kelola FAQ -->
+                <div class="panel-card rounded-2xl p-6 space-y-4">
+                    <h3 class="font-bold text-base text-purple-300">Tambah / Kelola Pertanyaan FAQ</h3>
+                    <form id="faq-form" class="grid grid-cols-1 sm:grid-cols-12 gap-3">
+                        <input id="faq-q" type="text" required placeholder="Pertanyaan..." class="sm:col-span-5 px-3.5 py-2 rounded-xl text-xs input-dark">
+                        <input id="faq-a" type="text" required placeholder="Jawaban..." class="sm:col-span-5 px-3.5 py-2 rounded-xl text-xs input-dark">
+                        <button type="submit" class="sm:col-span-2 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 font-bold text-xs">+ Tambah FAQ</button>
+                    </form>
+                    <div id="admin-faq-list" class="space-y-2 pt-2"></div>
+                </div>
+            </section>
+
+            <!-- TAB F: KEAMANAN & AKUN ADMIN -->
+            <section id="tab-security" class="tab-content hidden space-y-6">
+                <div>
+                    <h2 class="text-2xl font-extrabold">Pengaturan Akun & Keamanan</h2>
+                    <p class="text-xs text-gray-400">Kelola sesi login administrator dan ubah password keamanan.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <form id="password-form" class="panel-card rounded-2xl p-6 space-y-4">
+                        <h3 class="font-bold text-base text-purple-300">Ubah Password Admin</h3>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Password Baru (Minimal 6 Karakter)</label>
+                            <input id="new-password" type="password" required minlength="6" placeholder="••••••••" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                        </div>
+                        <button type="submit" class="px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 font-bold text-xs sm:text-sm">
+                            Perbarui Password
+                        </button>
+                    </form>
+
+                    <div class="panel-card rounded-2xl p-6 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-base text-rose-300 mb-1">Keluar dari Sesi Admin</h3>
+                            <p id="admin-user-email" class="text-xs text-gray-400 mb-4"></p>
+                        </div>
+                        <button onclick="logoutAdmin()" class="w-full py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 font-bold text-xs sm:text-sm">
+                            🚪 Logout Administrator
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // =========================================================================
+        // KONFIGURASI SUPABASE (GANTI DENGAN URL & ANON KEY DARI SUPABASE ANDA)
+        // =========================================================================
+        const SUPABASE_URL = 'https://eifrccuwxpgzmdsykarp.supabase.co'';
+        const SUPABASE_ANON_KEY = 'sb_publishable_SonCpgUv68A-vKvOXwr4Zw_nr1nKK42';
+
+        const isConfigured = SUPABASE_URL.startsWith('https://') && !SUPABASE_URL.includes('ISI_DENGAN_');
+        const supabaseClient = isConfigured ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+        if (!isConfigured) {
+            document.getElementById('config-warning').classList.remove('hidden');
+        }
+
+        function showToast(msg, isError = false) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.className = `fixed top-5 right-5 z-50 px-5 py-3.5 rounded-xl font-bold text-sm shadow-2xl ${isError ? 'bg-rose-600 text-white' : 'bg-emerald-500 text-white'}`;
+            t.classList.remove('hidden');
+            setTimeout(() => t.classList.add('hidden'), 3200);
+        }
+
+        window.switchTab = function(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-purple-600', 'text-white');
+                btn.classList.add('text-gray-300');
+            });
+            const activeBtn = document.getElementById(`tab-btn-${tabName}`);
+            activeBtn.classList.add('bg-purple-600', 'text-white');
+        };
+
+        // Fungsi Upload Gambar ke Supabase Storage (dengan fallback otomatis)
+        async function uploadImageFile(fileInput) {
+            if (!fileInput.files || fileInput.files.length === 0) return null;
+            const file = fileInput.files[0];
+            const ext = file.name.split('.').pop();
+            const fileName = `asset_${Date.now()}_${Math.random().toString(36).substring(2, 7)}.${ext}`;
+
+            const { data, error } = await supabaseClient.storage.from('nevfa-assets').upload(fileName, file, { upsert: true });
+            if (!error && data) {
+                const { data: pubUrl } = supabaseClient.storage.from('nevfa-assets').getPublicUrl(fileName);
+                return pubUrl.publicUrl;
+            }
+            // Fallback ke Data URL jika storage belum disetup
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onloadend = () => resolve(reader.result);
+                reader.readAsDataURL(file);
+            });
+        }
+
+        async function logActivity(actionText) {
+            if (!supabaseClient) return;
+            await supabaseClient.from('activity_logs').insert([{ action: actionText }]);
+            await supabaseClient.from('site_settings').update({ updated_at: new Date().toISOString() }).eq('id', 1);
+        }
+
+        // Autentikasi Login Admin
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!supabaseClient) return showToast('Harap isi SUPABASE_URL & ANON_KEY terlebih dahulu!', true);
+
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+
+            if (error) return showToast('Login gagal: ' + error.message, true);
+            checkSession();
         });
-      } else {
-        listContainer.innerHTML = `<p style="text-align:center; color:var(--text-muted); padding: 20px;">Belum ada paket tersedia.</p>`;
-      }
 
-      document.getElementById('packageModal').style.display = 'flex';
-    }
+        window.logoutAdmin = async function() {
+            if (supabaseClient) await supabaseClient.auth.signOut();
+            location.reload();
+        };
 
-    function closeModal() { document.getElementById('packageModal').style.display = 'none'; }
-    window.onclick = function(e) { if (e.target === document.getElementById('packageModal')) closeModal(); }
+        async function checkSession() {
+            if (!supabaseClient) return;
+            const { data: { session } } = await supabaseClient.auth.getSession();
+            if (session) {
+                document.getElementById('auth-screen').classList.add('hidden');
+                document.getElementById('admin-app').classList.remove('hidden');
+                document.getElementById('admin-user-email').textContent = `Login sebagai: ${session.user.email}`;
+                loadAllAdminData();
+            }
+        }
 
-    window.onload = loadProductsOnline;
+        // Muat Seluruh Data ke Admin Panel
+        let adminProducts = [];
+        let adminBanners = [];
 
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.carousel-slide');
-    const track = document.getElementById('carouselTrack');
-    function moveCarousel(direction) {
-      if (!slides.length || !track) return;
-      currentSlide = (currentSlide + direction + slides.length) % slides.length;
-      track.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }
-    setInterval(() => moveCarousel(1), 5000);
-  </script>
+        async function loadAllAdminData() {
+            const [setRes, prodRes, banRes, faqRes, logRes] = await Promise.all([
+                supabaseClient.from('site_settings').select('*').eq('id', 1).single(),
+                supabaseClient.from('products').select('*').order('sort_order', { ascending: true }),
+                supabaseClient.from('banners').select('*').order('sort_order', { ascending: true }),
+                supabaseClient.from('faqs').select('*').order('sort_order', { ascending: true }),
+                supabaseClient.from('activity_logs').select('*').order('created_at', { ascending: false }).limit(8)
+            ]);
+
+            if (setRes.data) {
+                const s = setRes.data;
+                document.getElementById('stat-visitors').textContent = s.visitor_count || 0;
+                document.getElementById('stat-updated').textContent = s.updated_at ? new Date(s.updated_at).toLocaleString('id-ID') : '-';
+
+                document.getElementById('set-brand-first').value = s.brand_first || 'NEVFA';
+                document.getElementById('set-brand-first-color').value = s.brand_first_color || '#FFFFFF';
+                document.getElementById('set-brand-second').value = s.brand_second || 'STORE';
+                document.getElementById('set-brand-second-color').value = s.brand_second_color || '#A855F7';
+                document.getElementById('set-logo-url').value = s.logo_url || '';
+                document.getElementById('set-favicon-url').value = s.favicon_url || '';
+                document.getElementById('set-primary-color').value = s.primary_color || '#A855F7';
+                document.getElementById('set-accent-color').value = s.accent_color || '#EC4899';
+                document.getElementById('set-bg-color').value = s.bg_color || '#0B0719';
+                document.getElementById('set-card-color').value = s.card_bg_color || '#16102C';
+                document.getElementById('set-font-family').value = s.font_family || 'Plus Jakarta Sans';
+                document.getElementById('set-font-size').value = s.font_size || '16px';
+                document.getElementById('set-spacing').value = s.section_spacing || '56px';
+                document.getElementById('set-show-banner').checked = s.show_banner !== false;
+                document.getElementById('set-show-features').checked = s.show_features !== false;
+                document.getElementById('set-show-faq').checked = s.show_faq !== false;
+
+                document.getElementById('set-wa-number').value = s.whatsapp_number || '';
+                document.getElementById('set-footer-text').value = s.footer_text || '';
+                document.getElementById('set-ig').value = s.social_ig || '';
+                document.getElementById('set-tele').value = s.social_tele || '';
+                document.getElementById('set-tiktok').value = s.social_tiktok || '';
+            }
+
+            adminProducts = prodRes.data || [];
+            adminBanners = banRes.data || [];
+            document.getElementById('stat-products').textContent = adminProducts.length;
+            document.getElementById('stat-banners').textContent = adminBanners.filter(b => b.is_active).length;
+
+            renderAdminProducts();
+            renderAdminBanners();
+            renderAdminFaqs(faqRes.data || []);
+
+            const logs = logRes.data || [];
+            document.getElementById('activity-list').innerHTML = logs.length
+                ? logs.map(l => `<div class="flex justify-between py-1.5 border-b border-white/5"><span>✅ ${l.action}</span><span class="text-gray-500">${new Date(l.created_at).toLocaleString('id-ID')}</span></div>`).join('')
+                : '<p class="text-gray-500">Belum ada riwayat perubahan.</p>';
+        }
+
+        // CRUD Produk
+        function renderAdminProducts() {
+            const list = document.getElementById('admin-products-list');
+            list.innerHTML = adminProducts.map(p => `
+                <div class="panel-card rounded-2xl p-4 flex items-center justify-between gap-4">
+                    <div class="flex items-center gap-3.5 min-w-0">
+                        <img src="${p.image_url || 'https://via.placeholder.com/48'}" class="w-12 h-12 rounded-xl object-contain bg-black/40 p-1.5 flex-shrink-0">
+                        <div class="min-w-0">
+                            <div class="font-bold text-sm truncate">${p.name} <span class="text-purple-400">(${p.price})</span></div>
+                            <div class="text-xs text-gray-400 truncate">${p.category} • ${p.warranty} • ${p.is_active ? '🟢 Tersedia' : '🔴 Habis'}</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 flex-shrink-0">
+                        <button onclick="editProduct('${p.id}')" class="px-3 py-1.5 rounded-lg bg-purple-500/20 text-purple-300 text-xs font-bold">Edit</button>
+                        <button onclick="deleteProduct('${p.id}')" class="px-3 py-1.5 rounded-lg bg-rose-500/20 text-rose-300 text-xs font-bold">Hapus</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        window.editProduct = function(id) {
+            const p = adminProducts.find(x => x.id === id);
+            if (!p) return;
+            document.getElementById('product-form-title').textContent = 'Edit Produk: ' + p.name;
+            document.getElementById('prod-id').value = p.id;
+            document.getElementById('prod-name').value = p.name;
+            document.getElementById('prod-category').value = p.category || '';
+            document.getElementById('prod-price').value = p.price;
+            document.getElementById('prod-image-url').value = p.image_url || '';
+            document.getElementById('prod-desc').value = p.description || '';
+            document.getElementById('prod-warranty').value = p.warranty || '';
+            document.getElementById('prod-badge').value = p.badge || '';
+            document.getElementById('prod-order').value = p.sort_order || 1;
+            document.getElementById('prod-active').value = String(p.is_active !== false);
+        };
+
+        window.resetProductForm = function() {
+            document.getElementById('product-form').reset();
+            document.getElementById('prod-id').value = '';
+            document.getElementById('product-form-title').textContent = 'Tambah Produk Baru';
+        };
+
+        document.getElementById('product-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            showToast('Menyimpan & mempublikasikan produk...');
+            const uploadedUrl = await uploadImageFile(document.getElementById('prod-file'));
+            const imageUrl = uploadedUrl || document.getElementById('prod-image-url').value;
+
+            const payload = {
+                name: document.getElementById('prod-name').value,
+                category: document.getElementById('prod-category').value,
+                price: document.getElementById('prod-price').value,
+                image_url: imageUrl,
+                description: document.getElementById('prod-desc').value,
+                warranty: document.getElementById('prod-warranty').value,
+                badge: document.getElementById('prod-badge').value,
+                sort_order: parseInt(document.getElementById('prod-order').value || '1', 10),
+                is_active: document.getElementById('prod-active').value === 'true'
+            };
+
+            const id = document.getElementById('prod-id').value;
+            const { error } = id
+                ? await supabaseClient.from('products').update(payload).eq('id', id)
+                : await supabaseClient.from('products').insert([payload]);
+
+            if (error) return showToast('Gagal menyimpan: ' + error.message, true);
+            await logActivity(`${id ? 'Mengubah' : 'Menambahkan'} produk "${payload.name}"`);
+            resetProductForm();
+            loadAllAdminData();
+            showToast('Produk berhasil dipublikasikan ke website utama!');
+        });
+
+        window.deleteProduct = async function(id) {
+            if (!confirm('Hapus produk ini dari katalog publik?')) return;
+            await supabaseClient.from('products').delete().eq('id', id);
+            await logActivity('Menghapus produk dari katalog');
+            loadAllAdminData();
+            showToast('Produk berhasil dihapus.');
+        };
+
+        // CRUD Banner
+        function renderAdminBanners() {
+            const list = document.getElementById('admin-banners-list');
+            list.innerHTML = adminBanners.map(b => `
+                <div class="panel-card rounded-2xl p-4 flex items-center justify-between gap-4">
+                    <div class="min-w-0">
+                        <div class="font-bold text-sm truncate">${b.title}</div>
+                        <div class="text-xs text-gray-400 truncate">${b.subtitle || ''} • ${b.is_active ? '🟢 Aktif' : '⚪ Nonaktif'}</div>
+                    </div>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <button onclick="editBanner('${b.id}')" class="px-3 py-1.5 rounded-lg bg-purple-500/20 text-purple-300 text-xs font-bold">Edit</button>
+                        <button onclick="deleteBanner('${b.id}')" class="px-3 py-1.5 rounded-lg bg-rose-500/20 text-rose-300 text-xs font-bold">Hapus</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        window.editBanner = function(id) {
+            const b = adminBanners.find(x => x.id === id);
+            if (!b) return;
+            document.getElementById('ban-id').value = b.id;
+            document.getElementById('ban-title').value = b.title;
+            document.getElementById('ban-subtitle').value = b.subtitle || '';
+            document.getElementById('ban-image-url').value = b.image_url || '';
+            document.getElementById('ban-btn-text').value = b.button_text || 'Lihat Produk';
+            document.getElementById('ban-btn-link').value = b.button_link || '#katalog';
+            document.getElementById('ban-order').value = b.sort_order || 1;
+            document.getElementById('ban-active').value = String(b.is_active !== false);
+        };
+
+        window.resetBannerForm = function() {
+            document.getElementById('banner-form').reset();
+            document.getElementById('ban-id').value = '';
+        };
+
+        document.getElementById('banner-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const uploadedUrl = await uploadImageFile(document.getElementById('ban-file'));
+            const payload = {
+                title: document.getElementById('ban-title').value,
+                subtitle: document.getElementById('ban-subtitle').value,
+                image_url: uploadedUrl || document.getElementById('ban-image-url').value,
+                button_text: document.getElementById('ban-btn-text').value,
+                button_link: document.getElementById('ban-btn-link').value,
+                sort_order: parseInt(document.getElementById('ban-order').value || '1', 10),
+                is_active: document.getElementById('ban-active').value === 'true'
+            };
+
+            const id = document.getElementById('ban-id').value;
+            const { error } = id
+                ? await supabaseClient.from('banners').update(payload).eq('id', id)
+                : await supabaseClient.from('banners').insert([payload]);
+
+            if (error) return showToast('Gagal menyimpan banner: ' + error.message, true);
+            await logActivity('Memperbarui banner utama website');
+            resetBannerForm();
+            loadAllAdminData();
+            showToast('Banner berhasil dipublikasikan!');
+        });
+
+        window.deleteBanner = async function(id) {
+            if (!confirm('Hapus banner ini?')) return;
+            await supabaseClient.from('banners').delete().eq('id', id);
+            loadAllAdminData();
+            showToast('Banner dihapus.');
+        };
+
+        // Simpan Pengaturan Tampilan & Warna Putih-Ungu
+        document.getElementById('appearance-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            showToast('Menyimpan tampilan website...');
+            const uploadedLogo = await uploadImageFile(document.getElementById('set-logo-file'));
+            const uploadedFavicon = await uploadImageFile(document.getElementById('set-favicon-file'));
+
+            const payload = {
+                brand_first: document.getElementById('set-brand-first').value,
+                brand_first_color: document.getElementById('set-brand-first-color').value,
+                brand_second: document.getElementById('set-brand-second').value,
+                brand_second_color: document.getElementById('set-brand-second-color').value,
+                logo_url: uploadedLogo || document.getElementById('set-logo-url').value,
+                favicon_url: uploadedFavicon || document.getElementById('set-favicon-url').value,
+                primary_color: document.getElementById('set-primary-color').value,
+                accent_color: document.getElementById('set-accent-color').value,
+                bg_color: document.getElementById('set-bg-color').value,
+                card_bg_color: document.getElementById('set-card-color').value,
+                font_family: document.getElementById('set-font-family').value,
+                font_size: document.getElementById('set-font-size').value,
+                section_spacing: document.getElementById('set-spacing').value,
+                section_order: document.getElementById('set-section-order').value.split(','),
+                show_banner: document.getElementById('set-show-banner').checked,
+                show_features: document.getElementById('set-show-features').checked,
+                show_faq: document.getElementById('set-show-faq').checked
+            };
+
+            const { error } = await supabaseClient.from('site_settings').update(payload).eq('id', 1);
+            if (error) return showToast('Gagal menyimpan: ' + error.message, true);
+            await logActivity('Mengubah pengaturan desain, logo & warna website');
+            loadAllAdminData();
+            showToast('Desain & warna website berhasil dipublikasikan!');
+        });
+
+        // Simpan Kontak & FAQ
+        document.getElementById('content-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const payload = {
+                whatsapp_number: document.getElementById('set-wa-number').value,
+                footer_text: document.getElementById('set-footer-text').value,
+                social_ig: document.getElementById('set-ig').value,
+                social_tele: document.getElementById('set-tele').value,
+                social_tiktok: document.getElementById('set-tiktok').value
+            };
+            const { error } = await supabaseClient.from('site_settings').update(payload).eq('id', 1);
+            if (error) return showToast('Gagal menyimpan kontak: ' + error.message, true);
+            await logActivity('Memperbarui nomor WhatsApp & sosial media');
+            showToast('Kontak & sosial media berhasil diperbarui!');
+        });
+
+        function renderAdminFaqs(faqs) {
+            document.getElementById('admin-faq-list').innerHTML = faqs.map(f => `
+                <div class="flex items-center justify-between p-3 rounded-xl bg-white/5 text-xs">
+                    <div><strong>${f.question}</strong> — ${f.answer}</div>
+                    <button onclick="deleteFaq('${f.id}')" class="text-rose-400 font-bold ml-3">Hapus</button>
+                </div>
+            `).join('');
+        }
+
+        document.getElementById('faq-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            await supabaseClient.from('faqs').insert([{
+                question: document.getElementById('faq-q').value,
+                answer: document.getElementById('faq-a').value
+            }]);
+            document.getElementById('faq-form').reset();
+            loadAllAdminData();
+            showToast('FAQ ditambahkan!');
+        });
+
+        window.deleteFaq = async function(id) {
+            await supabaseClient.from('faqs').delete().eq('id', id);
+            loadAllAdminData();
+        };
+
+        // Ubah Password Admin
+        document.getElementById('password-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const newPassword = document.getElementById('new-password').value;
+            const { error } = await supabaseClient.auth.updateUser({ password: newPassword });
+            if (error) return showToast('Gagal ubah password: ' + error.message, true);
+            document.getElementById('password-form').reset();
+            showToast('Password administrator berhasil diperbarui!');
+        });
+
+        checkSession();
+    </script>
 </body>
 </html>
