@@ -275,8 +275,8 @@
         // =========================================================================
         // KONFIGURASI SUPABASE (GANTI DENGAN URL & ANON KEY DARI SUPABASE ANDA)
         // =========================================================================
-        const SUPABASE_URL = 'ISI_DENGAN_PROJECT_URL_SUPABASE_ANDA';
-        const SUPABASE_ANON_KEY = 'ISI_DENGAN_ANON_KEY_SUPABASE_ANDA';
+        const SUPABASE_URL = 'https://eifrccuwxpgzmdsykarp.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_SonCpgUv68A-vKvOXwr4Zw_nr1nKK42';
 
         const isSupabaseConfigured = SUPABASE_URL.startsWith('https://') && !SUPABASE_URL.includes('ISI_DENGAN_');
         const supabaseClient = isSupabaseConfigured ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
