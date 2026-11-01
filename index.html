@@ -74,7 +74,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-3">
             <!-- Brand / Logo -->
             <a href="#" class="flex items-center gap-3 min-w-0">
-                <img id="nav-logo" src="logo.png" alt="Logo" class="h-9 w-9 sm:h-10 sm:w-10 object-contain rounded-lg">
+                <img id="nav-logo" src="logo.png" alt="Logo" onerror="this.style.display='none'" class="h-9 w-9 sm:h-10 sm:w-10 object-contain rounded-lg">
                 <div class="font-extrabold text-xl sm:text-2xl tracking-tight truncate">
                     <span id="brand-first" style="color: #FFFFFF;">NEVFA</span>
                     <span id="brand-second" style="color: #A855F7;">STORE</span>
@@ -213,7 +213,7 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
                 <div class="flex items-center gap-3 mb-3">
-                    <img id="footer-logo" src="logo.png" alt="Logo" class="h-8 w-8 object-contain rounded-lg">
+                    <img id="footer-logo" src="logo.png" alt="Logo" onerror="this.style.display='none'" class="h-8 w-8 object-contain rounded-lg">
                     <div class="font-extrabold text-xl">
                         <span id="footer-brand-first">NEVFA</span>
                         <span id="footer-brand-second" style="color: #A855F7;">STORE</span>
@@ -313,26 +313,28 @@
         let productsData = [
             {
                 id: '1',
-                name: 'Netflix Premium',
+                name: 'Netflix Premium 4K UHD',
                 category: 'Streaming',
                 price: 'Rp 35.000',
-                description: 'Akun Sharing & Private Resmi, resolusi 4K UHD, support semua perangkat.',
-                warranty: 'Full Garansi 30 Hari',
+                description: 'Akun Sharing 1 Profile / Private Resmi, resolusi 4K UHD, support semua perangkat.',
+                warranty: 'Garansi Full 30 Hari',
+                benefits: 'Kualitas Ultra HD 4K\nBisa untuk TV, HP, dan Laptop\nProfile Private dengan PIN\nAnti-Hold & Bergaransi Penuh',
                 image_url: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg',
                 badge: 'Best Seller',
                 is_active: true,
                 variants: [
-                    { name: 'Sharing 1 User', type: 'Sharing', duration: '30 Hari', price: 'Rp 35.000' },
+                    { name: 'Sharing 1 Profile', type: 'Sharing', duration: '30 Hari', price: 'Rp 35.000' },
                     { name: 'Private Account', type: 'Private', duration: '30 Hari', price: 'Rp 120.000' }
                 ]
             },
             {
                 id: '2',
-                name: 'Spotify Premium',
+                name: 'Spotify Premium Individual',
                 category: 'Musik',
                 price: 'Rp 20.000',
                 description: 'Individual / Family Plan, tanpa iklan, unduh lagu offline sepuasnya.',
                 warranty: 'Garansi Penuh Selama Aktif',
+                benefits: 'Bebas Iklan Selamanya\nBisa Download Lagu Offline\nKualitas Audio Tertinggi (320kbps)\nBisa Perpanjang Akun Pribadi',
                 image_url: 'https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg',
                 badge: 'Best Seller',
                 is_active: true,
@@ -343,11 +345,12 @@
             },
             {
                 id: '3',
-                name: 'Canva Pro',
+                name: 'Canva Pro Invite Email',
                 category: 'Desain & Edit',
                 price: 'Rp 15.000',
                 description: 'Invite Email Sendiri, akses ribuan template premium & fitur Magic Studio.',
                 warranty: 'Garansi Aktif & Aman',
+                benefits: 'Semua Elemen & Template Premium Terbuka\nFitur AI Magic Studio Lengkap\nPenghapus Latar Belakang (Brand Kit)\nInvite Langsung ke Email Pribadi',
                 image_url: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Canva_icon_2021.svg',
                 badge: 'Promo',
                 is_active: true,
@@ -357,11 +360,12 @@
             },
             {
                 id: '4',
-                name: 'YouTube Premium',
+                name: 'YouTube Premium + Music',
                 category: 'Streaming',
                 price: 'Rp 18.000',
                 description: 'Akun Individual & Famplan, bebas iklan, Background Play + YouTube Music.',
                 warranty: 'Full Garansi 30 Hari',
+                benefits: 'Bebas Iklan Video YouTube\nBisa Putar di Latar Belakang (Background Play)\nTermasuk Akses YouTube Music Premium\nBisa Download Video Offline',
                 image_url: 'https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg',
                 badge: 'Terbaru',
                 is_active: true,
@@ -372,7 +376,7 @@
         ];
 
         let faqsData = [
-            { question: 'Bagaimana cara memesan aplikasi di Nevfa Store?', answer: 'Pilih produk, klik Lihat Detail untuk memilih varian, lalu klik Pesan via WhatsApp.' },
+            { question: 'Bagaimana cara memesan aplikasi di Nevfa Store?', answer: 'Pilih produk, klik Lihat Detail untuk memilih varian dan melihat benefit akun, lalu klik Pesan via WhatsApp.' },
             { question: 'Apakah semua produk mendapatkan garansi?', answer: 'Ya, seluruh produk dilengkapi garansi penuh sesuai keterangan pada masing-masing produk.' },
             { question: 'Metode pembayaran apa saja yang bisa digunakan?', answer: 'Kami melayani pembayaran via QRIS (Semua E-Wallet & Mobile Banking), DANA, OVO, GoPay, dan Transfer Bank.' }
         ];
@@ -596,7 +600,7 @@
                         <div class="text-base font-extrabold text-purple-400 mb-3">Mulai ${p.price}</div>
 
                         <div class="space-y-2 text-xs text-gray-300 border-t border-white/10 pt-3 mb-5">
-                            <p class="leading-relaxed"><strong class="text-white">Deskripsi:</strong> ${p.description || '-'}</p>
+                            <p class="leading-relaxed line-clamp-2"><strong class="text-white">Deskripsi:</strong> ${p.description || '-'}</p>
                             <p class="flex items-center gap-1.5 text-emerald-300 font-medium">
                                 <span>🛡️</span> <span><strong>Garansi:</strong> ${p.warranty || 'Full Garansi'}</span>
                             </p>
@@ -624,20 +628,34 @@
             }).join('');
         }
 
-        // --- POPUP DETAIL & PILIHAN VARIAN ---
+        // --- POPUP DETAIL, BENEFIT, GARANSI & PILIHAN VARIAN ---
         window.openProductDetail = function(productId) {
             const p = productsData.find(item => item.id == productId);
             if (!p) return;
 
             const modal = document.getElementById('product-modal');
             const content = document.getElementById('modal-content');
-            const waClean = (siteSettings.whatsapp_number || '6285196223649').replace(/[^0-9]/g, '');
 
+            // Format Benefit Poin Checkmarks jika ada
+            let benefitsHtml = '';
+            if (p.benefits && p.benefits.trim() !== '') {
+                const lines = p.benefits.split('\n').filter(l => l.trim() !== '');
+                benefitsHtml = `
+                    <div class="mb-5 bg-white/5 p-4 rounded-2xl border border-white/10">
+                        <div class="text-xs font-bold text-purple-300 mb-2 uppercase tracking-wide">✨ Benefit & Keunggulan:</div>
+                        <div class="space-y-1.5 text-xs text-gray-200">
+                            ${lines.map(line => `<div class="flex items-start gap-2"><span class="text-emerald-400 font-bold">✔</span><span>${line}</span></div>`).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Pilihan Varian Produk
             let variantsHtml = '';
             if (p.variants && p.variants.length > 0) {
                 variantsHtml = `
                     <div class="space-y-3 mb-5">
-                        <label class="block text-xs font-bold uppercase tracking-wider text-purple-300">Pilih Varian / Durasi:</label>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-purple-300">Pilih Varian & Durasi:</label>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                             ${p.variants.map((v, idx) => `
                                 <div onclick="selectVariant('${p.id}', ${idx})" id="variant-card-${p.id}-${idx}" class="variant-card cursor-pointer p-3.5 rounded-xl border ${idx === 0 ? 'border-purple-500 bg-purple-500/20' : 'border-white/10 bg-white/5'} transition flex flex-col justify-between">
@@ -654,26 +672,32 @@
             }
 
             content.innerHTML = `
-                <div class="flex items-center gap-4 mb-5">
+                <div class="flex items-center gap-4 mb-4">
                     <div class="w-16 h-16 rounded-2xl bg-black/40 border border-white/10 flex items-center justify-center p-2 flex-shrink-0">
                         <img src="${p.image_url || ''}" class="max-h-12 max-w-12 object-contain">
                     </div>
                     <div>
                         <span class="text-xs text-purple-300 font-semibold">${p.category || 'Premium'}</span>
                         <h3 class="text-xl font-extrabold text-white">${p.name}</h3>
-                        <div class="text-sm font-extrabold text-purple-400" id="modal-selected-price">${p.price}</div>
+                        <div class="text-sm font-extrabold text-purple-400 mt-0.5" id="modal-selected-price">${p.price}</div>
                     </div>
                 </div>
-                <div class="space-y-3 text-xs text-gray-300 border-t border-white/10 pt-4 mb-5">
+
+                <div class="space-y-2 text-xs text-gray-300 border-t border-white/10 pt-3 mb-4">
                     <p class="leading-relaxed"><strong class="text-white">Deskripsi:</strong> ${p.description || '-'}</p>
-                    <p class="flex items-center gap-1.5 text-emerald-300 font-medium">
-                        <span>🛡️</span> <span><strong>Garansi:</strong> ${p.warranty || 'Full Garansi'}</span>
-                    </p>
                 </div>
+
+                <div class="mb-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-semibold">
+                    <span>🛡️</span>
+                    <span><strong>Garansi:</strong> ${p.warranty || 'Garansi Penuh Selama Aktif'}</span>
+                </div>
+
+                ${benefitsHtml}
                 ${variantsHtml}
+
                 <div class="space-y-2">
                     <a id="modal-buy-btn" href="#" target="_blank" class="w-full py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg transition">
-                        <span>Pesan Varian Ini via WhatsApp</span>
+                        <span>Pesan Sekarang via WhatsApp</span>
                         <span>💬</span>
                     </a>
                 </div>
