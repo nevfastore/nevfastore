@@ -80,27 +80,48 @@
                     <form id="product-form" class="lg:col-span-5 panel-card rounded-2xl p-5 space-y-3.5 h-fit">
                         <h3 id="product-form-title" class="font-bold text-base text-purple-300">Tambah Produk Baru</h3>
                         <input type="hidden" id="prod-id">
+                        
                         <div>
                             <label class="block text-xs font-semibold mb-1">Nama Produk / Aplikasi</label>
-                            <input id="prod-name" type="text" required placeholder="Contoh: Netflix Premium" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                            <input id="prod-name" type="text" required placeholder="Contoh: Netflix Premium 4K UHD" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
                         </div>
+
                         <div class="grid grid-cols-2 gap-3">
                             <div>
                                 <label class="block text-xs font-semibold mb-1">Kategori</label>
                                 <input id="prod-category" type="text" required placeholder="Streaming" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold mb-1">Harga Dasar</label>
+                                <label class="block text-xs font-semibold mb-1">Harga Dasar (Mulai)</label>
                                 <input id="prod-price" type="text" required placeholder="Rp 35.000" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
                             </div>
                         </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Garansi Produk</label>
+                                <input id="prod-warranty" type="text" placeholder="Garansi Full 30 Hari" class="w-full px-3.5 py-2 rounded-xl text-xs input-dark">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Badge (Label Produk)</label>
+                                <input id="prod-badge" type="text" placeholder="Best Seller / Promo" class="w-full px-3.5 py-2 rounded-xl text-xs input-dark">
+                            </div>
+                        </div>
+
                         <div>
                             <label class="block text-xs font-semibold mb-1">URL Gambar / Logo</label>
                             <input id="prod-image-url" type="text" placeholder="https://..." class="w-full px-3.5 py-2 rounded-xl text-xs input-dark">
                         </div>
+
                         <div>
-                            <label class="block text-xs font-semibold mb-1">Deskripsi</label>
-                            <textarea id="prod-desc" rows="2" placeholder="Akun Sharing & Private..." class="w-full px-3.5 py-2 rounded-xl text-sm input-dark"></textarea>
+                            <label class="block text-xs font-semibold mb-1">Deskripsi Produk</label>
+                            <textarea id="prod-desc" rows="2" placeholder="Akun Sharing 1 Profile / Private Resmi, Ultra HD 4K..." class="w-full px-3.5 py-2 rounded-xl text-sm input-dark"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Benefit / Keunggulan (1 baris per poin)</label>
+                            <textarea id="prod-benefits" rows="3" placeholder="Kualitas Ultra HD 4K&#10;Bisa untuk TV, HP, dan Laptop&#10;Profile private dengan PIN&#10;Anti screen limit & anti on-hold" class="w-full px-3.5 py-2 rounded-xl text-xs input-dark"></textarea>
+                            <span class="text-[10px] text-gray-400">Tekan Enter untuk membuat poin keunggulan berikutnya.</span>
                         </div>
                         
                         <!-- PENGATURAN VARIAN PRODUK -->
@@ -132,11 +153,15 @@
                         <input type="hidden" id="ban-id">
                         <div>
                             <label class="block text-xs font-semibold mb-1">Judul Headline</label>
-                            <input id="ban-title" type="text" required placeholder="APLIKASI PREMIUM" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                            <input id="ban-title" type="text" required placeholder="APLIKASI PREMIUM & GARANSI AMAN" class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold mb-1">Sub Judul</label>
-                            <input id="ban-subtitle" type="text" placeholder="Garansi Aman..." class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                            <input id="ban-subtitle" type="text" placeholder="Dapatkan akses resmi Netflix, Spotify, Canva Pro..." class="w-full px-3.5 py-2 rounded-xl text-sm input-dark">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">URL Gambar Banner (Opsional)</label>
+                            <input id="ban-image-url" type="text" placeholder="https://..." class="w-full px-3.5 py-2 rounded-xl text-xs input-dark">
                         </div>
                         <button type="submit" class="w-full py-2.5 rounded-xl bg-emerald-500 font-bold text-xs text-white">💾 Simpan Banner</button>
                     </form>
@@ -217,9 +242,9 @@
             div.className = 'flex items-center gap-2 bg-white/5 p-2 rounded-xl border border-white/10 variant-row text-xs';
             div.innerHTML = `
                 <input type="text" placeholder="Nama (cth: Sharing)" value="${name}" class="v-name w-1/4 px-2 py-1.5 rounded-lg input-dark">
-                <input type="text" placeholder="Jenis (cth: 1 User)" value="${type}" class="v-type w-1/4 px-2 py-1.5 rounded-lg input-dark">
+                <input type="text" placeholder="Jenis (cth: 1 Profile)" value="${type}" class="v-type w-1/4 px-2 py-1.5 rounded-lg input-dark">
                 <input type="text" placeholder="Durasi (cth: 30 Hari)" value="${duration}" class="v-dur w-1/4 px-2 py-1.5 rounded-lg input-dark">
-                <input type="text" placeholder="Harga (cth: Rp 35k)" value="${price}" class="v-price w-1/4 px-2 py-1.5 rounded-lg input-dark">
+                <input type="text" placeholder="Harga (cth: Rp 35.000)" value="${price}" class="v-price w-1/4 px-2 py-1.5 rounded-lg input-dark">
                 <button type="button" onclick="this.parentElement.remove()" class="text-rose-400 font-bold px-1.5 py-1">✕</button>
             `;
             container.appendChild(div);
@@ -252,7 +277,8 @@
                         <img src="${p.image_url || 'https://via.placeholder.com/48'}" class="w-12 h-12 rounded-xl object-contain bg-black/40 p-1 flex-shrink-0">
                         <div class="min-w-0">
                             <div class="font-bold text-sm truncate">${p.name} <span class="text-purple-400">(${p.price})</span></div>
-                            <div class="text-xs text-gray-400 truncate">${p.category} • ${p.variants ? p.variants.length + ' Varian' : 'Tanpa Varian'}</div>
+                            <div class="text-xs text-gray-400 truncate">${p.category} • 🛡️ ${p.warranty || 'Garansi Tersedia'}</div>
+                            <div class="text-[11px] text-purple-300 mt-0.5 truncate">${p.variants ? p.variants.length + ' Varian' : 'Tanpa Varian'}${p.benefits ? ' • Benefit Tersedia' : ''}</div>
                         </div>
                     </div>
                     <div class="flex items-center gap-2 flex-shrink-0">
@@ -290,8 +316,11 @@
             document.getElementById('prod-name').value = p.name;
             document.getElementById('prod-category').value = p.category || '';
             document.getElementById('prod-price').value = p.price;
+            document.getElementById('prod-warranty').value = p.warranty || '';
+            document.getElementById('prod-badge').value = p.badge || '';
             document.getElementById('prod-image-url').value = p.image_url || '';
             document.getElementById('prod-desc').value = p.description || '';
+            document.getElementById('prod-benefits').value = p.benefits || '';
 
             // Muat varian ke form
             const container = document.getElementById('variants-container');
@@ -315,8 +344,11 @@
                 name: document.getElementById('prod-name').value,
                 category: document.getElementById('prod-category').value,
                 price: document.getElementById('prod-price').value,
+                warranty: document.getElementById('prod-warranty').value,
+                badge: document.getElementById('prod-badge').value,
                 image_url: document.getElementById('prod-image-url').value,
                 description: document.getElementById('prod-desc').value,
+                benefits: document.getElementById('prod-benefits').value,
                 variants: getVariantsFromForm(),
                 is_active: true
             };
@@ -329,7 +361,7 @@
             if (error) return showToast('Gagal menyimpan: ' + error.message, true);
             resetProductForm();
             loadAllAdminData();
-            showToast('Produk dan varian berhasil disimpan!');
+            showToast('Produk, garansi, benefit, dan varian berhasil disimpan!');
         });
 
         window.deleteProduct = async function(id) {
@@ -344,6 +376,7 @@
             const payload = {
                 title: document.getElementById('ban-title').value,
                 subtitle: document.getElementById('ban-subtitle').value,
+                image_url: document.getElementById('ban-image-url').value,
                 is_active: true
             };
             const { error } = await supabaseClient.from('banners').insert([payload]);
